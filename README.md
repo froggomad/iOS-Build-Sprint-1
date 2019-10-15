@@ -1,4 +1,4 @@
-# iOS Build Week 1
+# iOS Build Sprint 1
 
 For your first iOS Build Sprint, you will be choosing an idea prompt from the list below and building an iOS app from scratch. To succeed with this project, you will be applying knowledge you've learned throughout the first unit of the iOS curriculum to this project.
 
