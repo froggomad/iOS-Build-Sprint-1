@@ -4,6 +4,15 @@ For your first iOS Build Sprint, you will be choosing an idea prompt from the li
 
 You should treat this like a real-world job assignment with your instructor as the client. Like in the real world, you may not be given all the information you need to complete the assignment up front. It is your responsibility to understand the requirements and ask questions if anything is unclear before jumping into the code.
 
+## Teams
+
+Working in a team will help you get more done in less time.
+
+* Your teammate can help unblock you 
+* You can polish your app
+* You can add more features
+* You will learn how to work with git, Github, and team members (GitFlow) to avoid merge conflicts
+
 ## App Ideas
 
 ### Binge Watching Calculator
@@ -14,6 +23,14 @@ You should treat this like a real-world job assignment with your instructor as t
 ### Medication Tracking
 #### Description
 - Track medications and when they should be taken or administered.
+
+### Unit Converter
+#### Description
+- Pick a style of unit converter: measurement or currency
+- Types of converters:
+    - Kitchen: convert between weight, convert between volume (approximate)
+    - Distance: Convert between miles, kilometers, inches, centimeters, etc.
+    - Currency: USD, CAD, etc.
 
 ### Home Mortgage Calculator
 #### Description
