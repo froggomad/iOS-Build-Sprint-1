@@ -6,7 +6,7 @@ You should treat this like a real-world job assignment with your instructor as t
 
 ## Teams
 
-Working in a team will help you get more done in less time.
+Working in a 2 person team will help you get more done in less time.
 
 * Your teammate can help unblock you 
 * You can polish your app
