@@ -7,7 +7,8 @@
 //
 
 enum ServiceType: String {
-    case takeout = "Takeout"
-    case delivery = "Delivery"
-    case dineIn = "Dine-In"
+    case viewAll = "viewAll"
+    case takeout = "takeout"
+    case delivery = "delivery"
+    case dineIn = "dineIn"
 }

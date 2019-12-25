@@ -12,7 +12,5 @@ struct Group: Searchable, Codable {
     var categoryType: String
     var name: String
     var imageData: Data
-    
-    
-    
+    var serviceTypes: [String]
 }

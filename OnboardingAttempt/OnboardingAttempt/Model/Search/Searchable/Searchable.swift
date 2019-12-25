@@ -10,4 +10,5 @@ protocol  Searchable {
     var categoryType: String {get}
     var name: String {get set}
     var imageData: Data {get set}
+    var serviceTypes: [String] {get}
 }
