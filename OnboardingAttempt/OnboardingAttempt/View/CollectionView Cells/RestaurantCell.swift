@@ -17,7 +17,7 @@ class RestaurantCell: UICollectionViewCell {
     }
     
     func updateViews() {
-        
+        setBorders(color: .black)
     }
     
 }

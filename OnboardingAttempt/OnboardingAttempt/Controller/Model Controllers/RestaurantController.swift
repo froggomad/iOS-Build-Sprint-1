@@ -19,11 +19,9 @@ class RestaurantController {
         if restaurants.count == 0 {
             print("creating restaurants")
             restaurants = [
-                Restaurant(serviceTypes: [ServiceType.takeout.rawValue], name: "Joe's Pizza Shack", imageData: Data())
+                Restaurant(serviceTypes: [ServiceType.takeout.rawValue, ServiceType.delivery.rawValue], name: "Joe's Pizza Shack", imageData: Data())
             ]
+            delegate?.saveRestaurantsToPersistentStore()
         }
-        delegate?.saveRestaurantsToPersistentStore()
     }
-    
-   
 }

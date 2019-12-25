@@ -24,7 +24,6 @@
 		B968316423B138A70068412F /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968316323B138A70068412F /* GroupCell.swift */; };
 		B968316623B13AB50068412F /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968316523B13AB50068412F /* CategoryType.swift */; };
 		B968316923B13E0E0068412F /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968316823B13E0E0068412F /* Searchable.swift */; };
-		B968316C23B13E580068412F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968316B23B13E580068412F /* Category.swift */; };
 		B968316F23B13F330068412F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968316E23B13F330068412F /* Restaurant.swift */; };
 		B968317123B13FCB0068412F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968317023B13FCB0068412F /* Group.swift */; };
 		B968317423B14A190068412F /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968317323B14A190068412F /* ServiceType.swift */; };
@@ -32,7 +31,7 @@
 		B968317823B18AD80068412F /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968317723B18AD80068412F /* CoreDataController.swift */; };
 		B968317A23B18AF80068412F /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968317923B18AF80068412F /* GroupController.swift */; };
 		B968317C23B18B040068412F /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968317B23B18B040068412F /* SearchController.swift */; };
-		B968317E23B29E240068412F /* UICollectionViewCell+borders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968317D23B29E240068412F /* UICollectionViewCell+borders.swift */; };
+		B968317E23B29E240068412F /* UICollectionViewCell+setBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968317D23B29E240068412F /* UICollectionViewCell+setBorders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +75,6 @@
 		B968316323B138A70068412F /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		B968316523B13AB50068412F /* CategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
 		B968316823B13E0E0068412F /* Searchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
-		B968316B23B13E580068412F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B968316E23B13F330068412F /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		B968317023B13FCB0068412F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		B968317323B14A190068412F /* ServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
@@ -84,7 +82,7 @@
 		B968317723B18AD80068412F /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		B968317923B18AF80068412F /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		B968317B23B18B040068412F /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
-		B968317D23B29E240068412F /* UICollectionViewCell+borders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+borders.swift"; sourceTree = "<group>"; };
+		B968317D23B29E240068412F /* UICollectionViewCell+setBorders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+setBorders.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +176,7 @@
 				B968314E23B08FAC0068412F /* Storyboards */,
 				B968315523B0949B0068412F /* IBDesignable-RoundedCorners.swift */,
 				B968316023B138670068412F /* CollectionView Cells */,
-				B968317D23B29E240068412F /* UICollectionViewCell+borders.swift */,
+				B968317D23B29E240068412F /* UICollectionViewCell+setBorders.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -279,7 +277,6 @@
 			isa = PBXGroup;
 			children = (
 				B968316823B13E0E0068412F /* Searchable.swift */,
-				B968316B23B13E580068412F /* Category.swift */,
 				B968317023B13FCB0068412F /* Group.swift */,
 			);
 			path = Searchable;
@@ -429,7 +426,7 @@
 			files = (
 				B968312123B081B30068412F /* ViewController.swift in Sources */,
 				B968315F23B136830068412F /* ExploreVC.swift in Sources */,
-				B968317E23B29E240068412F /* UICollectionViewCell+borders.swift in Sources */,
+				B968317E23B29E240068412F /* UICollectionViewCell+setBorders.swift in Sources */,
 				B968315623B0949B0068412F /* IBDesignable-RoundedCorners.swift in Sources */,
 				B968311D23B081B30068412F /* AppDelegate.swift in Sources */,
 				B968311F23B081B30068412F /* SceneDelegate.swift in Sources */,
@@ -443,7 +440,6 @@
 				B968316423B138A70068412F /* GroupCell.swift in Sources */,
 				B968316923B13E0E0068412F /* Searchable.swift in Sources */,
 				B968317A23B18AF80068412F /* GroupController.swift in Sources */,
-				B968316C23B13E580068412F /* Category.swift in Sources */,
 				B968317423B14A190068412F /* ServiceType.swift in Sources */,
 				B968317623B14AF80068412F /* RestaurantController.swift in Sources */,
 			);

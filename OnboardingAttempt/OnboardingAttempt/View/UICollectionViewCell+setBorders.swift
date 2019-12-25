@@ -1,5 +1,5 @@
 //
-//  UICollectionViewCell+borders.swift
+//  UICollectionViewCell+setBorders.swift
 //  OnboardingAttempt
 //
 //  Created by Kenny on 12/24/19.

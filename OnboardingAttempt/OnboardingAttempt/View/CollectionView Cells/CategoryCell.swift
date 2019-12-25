@@ -34,10 +34,10 @@ class CategoryCell: UICollectionViewCell {
     func setActive() {
         guard let service = service else {return}
         if self.isSelected {
-            self.setBorders(color: .black, width: 2, cornerRadius: 8)
+            self.setBorders(color: .black)
             self.imageView.image = UIImage(named: "\(service.rawValue)Filled")!
         } else {
-            self.setBorders(color: .clear, width: 0, cornerRadius: 0)
+            self.setBorders(color: .clear)
             self.imageView.image = UIImage(named: service.rawValue)!
         }
     }
