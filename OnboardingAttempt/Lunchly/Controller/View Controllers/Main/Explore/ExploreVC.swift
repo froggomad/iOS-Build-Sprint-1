@@ -14,8 +14,8 @@ class ExploreVC: UIViewController {
     @IBOutlet weak var searchResultsCollectionView: UICollectionView!
     
     //MARK: Search Outlets
-    @IBOutlet weak var searchBarView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBarView: UIView!
     
     //MARK: Class Properties
     var coreDataController: CoreDataController?
@@ -27,6 +27,7 @@ class ExploreVC: UIViewController {
     //MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //set delegates
         test.delegate = self
         test.dataSource = self
@@ -49,7 +50,20 @@ class ExploreVC: UIViewController {
                 self.searchable.append(group)
             }
         }
+        for result in searchable {
+            if let group = result as? Group {
+                let testUser = User(name: "Kenny", image: Data(), groups: [], restaurants: [])
+                coreDataController?.groupsController.addUserToGroup(group: group, user: testUser)
+            }
+        }
         filteredSearchArray = searchable //copy searchable so there's a reference and one we filter for searching
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +74,14 @@ class ExploreVC: UIViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
+        if segue.identifier == "GroupDetailSegue" {
+            guard let destination = segue.destination as? GroupDetailVC,
+                  let cell = sender as? GroupCell,
+                  let indexPath = self.searchResultsCollectionView!.indexPath(for: cell),
+                  let group = filteredSearchArray[indexPath.item] as? Group
+            else {return}
+            destination.group = group
+        }
     }
     
     //MARK: Helper Methods

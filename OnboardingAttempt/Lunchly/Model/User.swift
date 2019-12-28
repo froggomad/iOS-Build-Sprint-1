@@ -11,4 +11,5 @@ struct User: Codable, Equatable {
     var name: String
     var image: Data
     var groups: [Group]
+    var restaurants: [Restaurant]
 }

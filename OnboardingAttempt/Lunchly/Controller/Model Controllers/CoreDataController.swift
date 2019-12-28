@@ -14,10 +14,12 @@ class CoreDataController {
     private let encoder: PropertyListEncoder
     private let restaurantFile = "restaurants.plist"
     private let groupFile = "groups.plist"
+    private let userFile = "users.plist"
     
     //Custom DataType Controllers
     var restaurantController = RestaurantController()
     var groupsController = GroupController()
+    var usersController = UserController()
     
     //MARK: Init
     init() {
@@ -25,6 +27,7 @@ class CoreDataController {
         self.encoder = PropertyListEncoder()
         restaurantController.delegate = self
         groupsController.delegate = self
+        usersController.delegate = self
     }
     
     //MARK: decode Data
@@ -42,6 +45,16 @@ class CoreDataController {
         guard let fileData = dataFromFileUrl(fileName: groupFile) else { return [] }
         do {
             return try decoder.decode([Group].self, from: fileData)
+        } catch {
+            print("error decoding Groups file \(error)")
+        }
+        return []
+    }
+    
+    private func decodeUserData() throws -> [User] {
+        guard let fileData = dataFromFileUrl(fileName: userFile) else { return [] }
+        do {
+            return try decoder.decode([User].self, from: fileData)
         } catch {
             print("error decoding Groups file \(error)")
         }
@@ -69,6 +82,17 @@ class CoreDataController {
       }
     }
     
+    func loadUsersFromPersistentStore() {
+        do {
+            let userArray = try decodeUserData()
+            self.usersController.users = userArray
+            print(usersController.users)
+        } catch {
+            print("Error loading users from plist: \(error)")
+        }
+        
+    }
+    
     //MARK: Encode Data for updating
     private func encodeRestaurantData() throws -> Data { //throwing to use in do/let/try
        do {
@@ -78,12 +102,22 @@ class CoreDataController {
            print("error encoding restaurant file \(error)")
        }
        return Data()
-   }
+    }
     
-     private func encodeGroupData() throws -> Data { //throwing to use in do/let/try
+    private func encodeGroupData() throws -> Data { //throwing to use in do/let/try
         do {
          print("Groups: \(groupsController.groups)")
             return try encoder.encode(groupsController.groups)
+        } catch {
+            print("error encoding group file \(error)")
+        }
+        return Data()
+    }
+    
+    private func encodeUserData() throws -> Data { //throwing to use in do/let/try
+        do {
+         print("Users: \(usersController.users)")
+            return try encoder.encode(usersController.users)
         } catch {
             print("error encoding group file \(error)")
         }
@@ -114,18 +148,29 @@ class CoreDataController {
             let groupData = try encodeGroupData()
             try groupData.write(to: fileUrl)
         } catch {
-            print("Error saving restaurants \(error)")
+            print("Error saving groups \(error)")
+        }
+    }
+    
+    func saveUsersToPersistentStore() {
+        guard let fileUrl = fileUrl(fromFileName: userFile, inDirectory: .documentDirectory) else {
+            print("invalid file path")
+            return
+        }
+        do {
+            let userData = try encodeUserData()
+            try userData.write(to: fileUrl)
+        } catch {
+            print("Error saving users \(error)")
         }
     }
     
     func updateRestaurant(oldRestaurant: Restaurant, newRestaurant: Restaurant) {
-        #warning("this could fail if restaurantController.restaurants is being copied rather than referenced here")
-        var restaurants = restaurantController.restaurants
-        for (index, thisRestaurant) in restaurants.enumerated() where thisRestaurant == oldRestaurant {
-            restaurants[index].name = newRestaurant.name
-            restaurants[index].imageData = newRestaurant.imageData
-        }
+        for (index, thisRestaurant) in restaurantController.restaurants.enumerated() where thisRestaurant == oldRestaurant {
+            restaurantController.restaurants[index].name = newRestaurant.name
+            restaurantController.restaurants[index].imageData = newRestaurant.imageData
             saveRestaurantsToPersistentStore()
+        }
     }
     
     func updateGroup(forIndexPath indexPath: IndexPath) {
