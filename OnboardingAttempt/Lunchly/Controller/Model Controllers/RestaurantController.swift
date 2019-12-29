@@ -39,4 +39,15 @@ class RestaurantController {
             delegate?.saveRestaurantsToPersistentStore()
         }
     }
+    
+    //MARK: Read
+    func getRestaurantFromName(name: String) -> Restaurant? {
+        for restaurant in restaurants {
+            if restaurant.name == name {
+                return restaurant
+            }
+        }
+        return nil
+    }
+        
 }

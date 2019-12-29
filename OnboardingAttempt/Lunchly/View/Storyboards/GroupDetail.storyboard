@@ -129,7 +129,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroupRestaurantCell" id="55M-qW-kWu" customClass="GroupRestaurantCell" customModule="Lunchly" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroupRestaurantCell" id="55M-qW-kWu" customClass="GroupRestaurantCell" customModule="Lunchly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="186.5" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="55M-qW-kWu" id="7vP-zX-NFc">
@@ -137,7 +137,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="61C-nU-XVR">
-                                                    <rect key="frame" x="8" y="2" width="170.5" height="21"/>
+                                                    <rect key="frame" x="16" y="2" width="158.5" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
@@ -145,9 +145,9 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="61C-nU-XVR" secondAttribute="trailing" constant="8" id="1xU-eN-VPF"/>
+                                                <constraint firstAttribute="trailing" secondItem="61C-nU-XVR" secondAttribute="trailing" constant="12" id="1xU-eN-VPF"/>
                                                 <constraint firstItem="61C-nU-XVR" firstAttribute="top" secondItem="7vP-zX-NFc" secondAttribute="top" constant="2" id="ZWs-HU-T3n"/>
-                                                <constraint firstItem="61C-nU-XVR" firstAttribute="leading" secondItem="7vP-zX-NFc" secondAttribute="leading" constant="8" id="exw-lS-kWe"/>
+                                                <constraint firstItem="61C-nU-XVR" firstAttribute="leading" secondItem="7vP-zX-NFc" secondAttribute="leading" constant="16" id="exw-lS-kWe"/>
                                                 <constraint firstAttribute="bottom" secondItem="61C-nU-XVR" secondAttribute="bottom" constant="2" id="rVN-PA-IcH"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -162,7 +162,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroupMemberCell" id="1VP-jj-epM" customClass="GroupMemberCell" customModule="Lunchly" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="GroupMemberCell" id="1VP-jj-epM" customClass="GroupMemberCell" customModule="Lunchly" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="186.5" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1VP-jj-epM" id="7my-PS-3lp">
@@ -170,7 +170,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajE-IP-eLM">
-                                                    <rect key="frame" x="8" y="2" width="170.5" height="21"/>
+                                                    <rect key="frame" x="16" y="2" width="162.5" height="21"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
@@ -179,7 +179,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ajE-IP-eLM" secondAttribute="trailing" constant="8" id="B2T-h1-sB6"/>
-                                                <constraint firstItem="ajE-IP-eLM" firstAttribute="leading" secondItem="7my-PS-3lp" secondAttribute="leading" constant="8" id="Q5C-K6-ekc"/>
+                                                <constraint firstItem="ajE-IP-eLM" firstAttribute="leading" secondItem="7my-PS-3lp" secondAttribute="leading" constant="16" id="Q5C-K6-ekc"/>
                                                 <constraint firstItem="ajE-IP-eLM" firstAttribute="top" secondItem="7my-PS-3lp" secondAttribute="top" constant="2" id="WxR-oR-Pq0"/>
                                                 <constraint firstAttribute="bottom" secondItem="ajE-IP-eLM" secondAttribute="bottom" constant="2" id="l6M-Iw-wv3"/>
                                             </constraints>

@@ -52,7 +52,10 @@ class ExploreVC: UIViewController {
         }
         for result in searchable {
             if let group = result as? Group {
-                let testUser = User(name: "Kenny", image: Data(), groups: [], restaurants: [])
+                let testUser = User(name: "Kenny", image: Data(), groups: [], restaurants:
+                    [])
+                let restaurant = Restaurant(name: "Joe's Pizza Shack", imageData: Data(), serviceTypes: [])
+                coreDataController?.groupsController.addRestaurantToGroup(group: group, restaurant: restaurant)
                 coreDataController?.groupsController.addUserToGroup(group: group, user: testUser)
             }
         }
@@ -81,6 +84,9 @@ class ExploreVC: UIViewController {
                   let group = filteredSearchArray[indexPath.item] as? Group
             else {return}
             destination.group = group
+            destination.groupController = coreDataController?.groupsController
+            destination.userController = coreDataController?.usersController
+            destination.restaurantController = coreDataController?.restaurantController
         }
     }
     

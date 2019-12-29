@@ -50,15 +50,16 @@ class GroupController {
     
     func addRestaurantToGroup(group: Group, restaurant: Restaurant) {
         for (index, thisGroup) in groups.enumerated() {
-            //group found, mutate
-            if group == thisGroup {
+            if group == thisGroup { //group found, mutate
                 for thisRestaurant in group.restaurants {
                     if thisRestaurant == restaurant {
+                        print("restaurant Found")
                         return //restaurant already exists in group
                     }
                 }
                 groups[index].restaurants.append(restaurant) //restaurant doesn't exist, append to this group
                 delegate?.saveGroupsToPersistentStore()
+                print(groups[index].restaurants)
             }
         }
     }

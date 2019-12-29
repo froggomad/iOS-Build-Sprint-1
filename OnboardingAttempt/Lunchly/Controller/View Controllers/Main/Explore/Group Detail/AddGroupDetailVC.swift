@@ -13,7 +13,13 @@ class AddGroupDetailVC: UIViewController {
     @IBOutlet weak var findBtnOut: UIButton!
     
     @IBAction func findBtnTapped(_ sender: UIButton) {
-        
+        if isMember {
+            addUserToGroup()
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            addRestaurantToGroup()
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     
@@ -22,9 +28,12 @@ class AddGroupDetailVC: UIViewController {
     }
     
     var group: Group?
+    var restaurant: Restaurant?
     var groupController: GroupController?
+    var restaurantController: RestaurantController?
     var userController: UserController?
     var isMember = false
+    weak var delegate: GroupDetailVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +63,22 @@ class AddGroupDetailVC: UIViewController {
         else {return}
         groupController?.addUserToGroup(group: group, user: user)
         userController?.addGroupToUser(group: group, user: user)
+        updateGroup()
     }
     
     func addRestaurantToGroup() {
-        
+        guard let text = nameTextField.text,
+              let group = group,
+              let restaurant = restaurantController?.getRestaurantFromName(name: text)
+            else {print("failed getting text, group, or restaurant");return}
+        groupController?.addRestaurantToGroup(group: group, restaurant: restaurant)
+        self.group?.restaurants.append(restaurant)
+        updateGroup()
+    }
+    
+    func updateGroup() {
+        guard let group = group else {return}
+        delegate?.updateGroup(group: group)
     }
 
 }

@@ -21,6 +21,8 @@ class GroupDetailVC: UIViewController {
     
     var group: Group?
     var groupController: GroupController?
+    var restaurantController: RestaurantController?
+    var userController: UserController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,6 @@ class GroupDetailVC: UIViewController {
         self.membersTableView.delegate = self
         self.membersTableView.dataSource = self
         updateViews()
-        self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +39,8 @@ class GroupDetailVC: UIViewController {
     }
     
     func updateViews() {
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
         guard let group = group else {return}
         self.imageView.image = UIImage(data: group.imageData)
         self.groupNameLbl.text = group.name
@@ -46,13 +49,29 @@ class GroupDetailVC: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddRestaurantSegue" {
-            
+            guard let destination = segue.destination as? AddGroupDetailVC else {return}
+            destination.restaurantController = restaurantController
+            destination.groupController = groupController
+            destination.group = group
+            destination.delegate = self
         } else {
             if segue.identifier == "AddMemberSegue" {
                 guard let destination = segue.destination as? AddGroupDetailVC else {return}
                 destination.isMember = true
+                destination.userController = userController
+                destination.groupController = groupController
+                destination.group = group
+                destination.delegate = self
             }
         }
+    }
+    
+    //MARK: Helper Methods
+    func updateGroup(group: Group) {
+        print("updating \(group.restaurants)")
+        self.group = group
+        restaurantTableView.reloadData()
+        membersTableView.reloadData()
     }
 }
 
@@ -79,14 +98,15 @@ extension GroupDetailVC: UITableViewDataSource {
         case restaurantTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupRestaurantCell", for: indexPath) as? GroupRestaurantCell else {return UITableViewCell()}
             cell.restaurant = group?.restaurants[indexPath.row]
+            cell.backgroundColor = .clear
             return cell
         case membersTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupMemberCell", for: indexPath) as? GroupMemberCell else {return UITableViewCell()}
             cell.user = group?.users[indexPath.row]
+            cell.backgroundColor = .clear
             return cell
         default: return UITableViewCell()
         }
     }
-    
-    
 }
+
