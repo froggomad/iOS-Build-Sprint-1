@@ -63,6 +63,7 @@ class AddGroupDetailVC: UIViewController {
         else {return}
         groupController?.addUserToGroup(group: group, user: user)
         userController?.addGroupToUser(group: group, user: user)
+        self.group?.users.append(user)
         updateGroup()
     }
     

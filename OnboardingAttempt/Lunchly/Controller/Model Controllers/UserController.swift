@@ -17,7 +17,15 @@ class UserController {
     var users: [User] = []
     
     func createUsers() {
-        
+        delegate?.loadGroupsFromPersistentStore()
+        if users.count == 0 {
+            print("creating users")
+            users = [
+                User(name: "Kenny", image: Data(), groups: [delegate!.groupsController.groups[0]], restaurants: []),
+                User(name: "TestUser", image: Data(), groups: [], restaurants: [])
+            ]
+            delegate?.saveGroupsToPersistentStore()
+        }
     }
     
     func getUserFromName(username: String) -> User? {
