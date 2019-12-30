@@ -9,36 +9,32 @@
 import UIKit
 
 class AddGroupDetailVC: UIViewController {
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var findBtnOut: UIButton!
+    //MARK: IBOutlets
+    @IBOutlet weak var tableView: UITableView!
+    #warning("TODO: filter by search text")
+    @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBAction func findBtnTapped(_ sender: UIButton) {
-        if isMember {
-            addUserToGroup()
-            self.dismiss(animated: true, completion: nil)
-        } else {
-            addRestaurantToGroup()
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    
+    //MARK:IBActions
     @IBAction func closeBtnTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Class Properties
     var group: Group?
-    var restaurant: Restaurant?
+    //controllers
     var groupController: GroupController?
     var restaurantController: RestaurantController?
     var userController: UserController?
-    var isMember = false
+    //[Any] to be able to hold either users or restaurants for adding to group
+    var tableViewDataSource: [Any]?
+    
+    //MARK: Class Delegates
     weak var delegate: GroupDetailVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,39 +43,93 @@ class AddGroupDetailVC: UIViewController {
     }
     
     func updateViews() {
-        if isMember {
-            nameTextField.placeholder = "Enter Member's name"
-            findBtnOut.setTitle("Add Member", for: .normal)
-        } else {
-            nameTextField.placeholder = "Enter Restaurant's name"
-            findBtnOut.setTitle("Add Restaurant", for: .normal)
+        guard let group = group else {return}
+        if let restaurantController = restaurantController {
+            var groupRestaurantArray: [String] = []
+            for restaurant in group.restaurants {
+                groupRestaurantArray.append(restaurant.name)
+            }
+            var remainingRestaurantArray: [Restaurant] = []
+            for coreRestaurant in restaurantController.restaurants {
+                if !groupRestaurantArray.contains(coreRestaurant.name) {
+                    remainingRestaurantArray.append(coreRestaurant)
+                }
+            }
+            tableViewDataSource = remainingRestaurantArray
+        } else if let userController = userController {
+            var groupUserArray: [String] = []
+            for user in group.users {
+                groupUserArray.append(user.name)
+            }
+            var remainingUserArray: [User] = []
+            for coreUser in userController.users {
+                if !groupUserArray.contains(coreUser.name) {
+                    remainingUserArray.append(coreUser)
+                }
+            }
+            tableViewDataSource = remainingUserArray
         }
     }
     
-    func addUserToGroup() {
-        guard let text = nameTextField.text,
-              let group = group,
-              let user = userController?.getUserFromName(username: text)
-        else {return}
-        groupController?.addUserToGroup(group: group, user: user)
-        userController?.addGroupToUser(group: group, user: user)
-        self.group?.users.append(user)
-        updateGroup()
-    }
-    
-    func addRestaurantToGroup() {
-        guard let text = nameTextField.text,
-              let group = group,
-              let restaurant = restaurantController?.getRestaurantFromName(name: text)
-            else {print("failed getting text, group, or restaurant");return}
-        groupController?.addRestaurantToGroup(group: group, restaurant: restaurant)
-        self.group?.restaurants.append(restaurant)
-        updateGroup()
-    }
-    
-    func updateGroup() {
-        guard let group = group else {return}
+    func updateGroup(group: Group) {
+        self.group = group
+        print("updating group from AddGroupDetailVC")
         delegate?.updateGroup(group: group)
+        self.dismiss(animated: true, completion: nil)
     }
 
+}
+
+extension AddGroupDetailVC: UITableViewDelegate {
+    
+}
+
+extension AddGroupDetailVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableViewDataSource?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if self.userController != nil {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddMemberCell", for: indexPath) as? AddMemberCell,
+                  let member = tableViewDataSource?[indexPath.row] as? User,
+                  let group = group
+            else {return UITableViewCell()}
+            var memberGroupsArray: [String] = []
+            for group in member.groups {
+                memberGroupsArray.append(group.name)
+            }
+            if !memberGroupsArray.contains(group.name) {
+                print("This Group: \(group)\n\nMember groups: \(member.groups)")
+                cell.delegate = self
+                cell.member = member
+                cell.group = group
+                cell.groupController = groupController
+                cell.userController = userController
+                cell.backgroundColor = .clear
+                return cell
+            }
+        } else if self.restaurantController != nil {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddRestaurantCell", for: indexPath) as? AddRestaurantCell,
+                    let restaurant = tableViewDataSource?[indexPath.row] as? Restaurant,
+                    let group = group
+                else {return UITableViewCell()}
+            
+            var groupRestaurantsArray: [String] = []
+            for memberRestaurant in group.restaurants {
+               groupRestaurantsArray.append(memberRestaurant.name)
+            }
+            if !groupRestaurantsArray.contains(restaurant.name) {
+                cell.delegate = self
+                cell.backgroundColor = .clear
+                cell.restaurant = restaurant
+                cell.group = group
+                cell.groupController = groupController
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    
 }

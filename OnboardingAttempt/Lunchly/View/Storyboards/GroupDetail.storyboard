@@ -29,6 +29,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svn-Za-HXp">
                                 <rect key="frame" x="340" y="24" width="63" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="Action"/>
                                 <state key="normal" title="Close" image="xmark.square.fill" catalog="system"/>
                                 <connections>
                                     <action selector="closeBtnTapped:" destination="FVQ-2X-ZM3" eventType="touchUpInside" id="OkN-5f-LCH"/>
@@ -51,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5IQ-DN-xN6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4943" y="-372"/>
+            <point key="canvasLocation" x="-5049" y="-620"/>
         </scene>
         <!--Lunchly-->
         <scene sceneID="X4B-C6-VGw">
@@ -248,55 +249,135 @@
             <objects>
                 <viewController modalPresentationStyle="overCurrentContext" id="PxJ-2r-CME" customClass="AddGroupDetailVC" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ZX-tm-F7X">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWi-7N-rKy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWi-7N-rKy">
                                 <rect key="frame" x="340" y="24" width="63" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="Action"/>
                                 <state key="normal" title="Close" image="xmark.square.fill" catalog="system"/>
                                 <connections>
                                     <action selector="closeBtnTapped:" destination="PxJ-2r-CME" eventType="touchUpInside" id="3fC-nH-pN8"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="d85-1s-eMN">
-                                <rect key="frame" x="8" y="179.5" width="398" height="85"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TN6-y7-Kef">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Asx-Na-B9A">
-                                        <rect key="frame" x="0.0" y="55" width="398" height="30"/>
-                                        <state key="normal" title="Button"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wFQ-sQ-KnE">
+                                <rect key="frame" x="0.0" y="115" width="414" height="693"/>
+                                <color key="backgroundColor" name="Primary"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddMemberCell" id="7Ss-b0-tdw" customClass="AddMemberCell" customModule="Lunchly" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Ss-b0-tdw" id="ofx-oa-Z5S">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="SrB-BD-kux">
+                                                    <rect key="frame" x="20" y="7" width="354" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8z-nc-rMg">
+                                                            <rect key="frame" x="0.0" y="0.0" width="177" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEM-wL-a1G">
+                                                            <rect key="frame" x="265" y="0.0" width="89" height="30"/>
+                                                            <color key="tintColor" name="Action"/>
+                                                            <state key="normal" title="Add Member"/>
+                                                            <connections>
+                                                                <action selector="addBtnTapped:" destination="7Ss-b0-tdw" eventType="touchUpInside" id="V8q-hJ-Z0X"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="EEM-wL-a1G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="G8z-nc-rMg" secondAttribute="trailing" constant="12" id="mHN-q6-COd"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="SrB-BD-kux" secondAttribute="trailing" constant="40" id="Zfj-Oa-fne"/>
+                                                <constraint firstItem="SrB-BD-kux" firstAttribute="leading" secondItem="ofx-oa-Z5S" secondAttribute="leading" constant="20" id="qeA-9a-NWu"/>
+                                                <constraint firstItem="SrB-BD-kux" firstAttribute="centerY" secondItem="ofx-oa-Z5S" secondAttribute="centerY" id="ydG-eQ-iFe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                         <connections>
-                                            <action selector="findBtnTapped:" destination="PxJ-2r-CME" eventType="touchUpInside" id="9XL-2B-DFl"/>
+                                            <outlet property="nameLbl" destination="G8z-nc-rMg" id="nBA-QW-qgW"/>
                                         </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddRestaurantCell" id="TXV-bb-VXj" customClass="AddRestaurantCell" customModule="Lunchly" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TXV-bb-VXj" id="Uaq-d5-FCt">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="ArH-fV-PaN">
+                                                    <rect key="frame" x="20" y="7" width="354" height="30"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSs-VK-gG0">
+                                                            <rect key="frame" x="0.0" y="0.0" width="177" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEm-Ma-jhR">
+                                                            <rect key="frame" x="248" y="0.0" width="106" height="30"/>
+                                                            <color key="tintColor" name="Action"/>
+                                                            <state key="normal" title="Add Restaurant"/>
+                                                            <connections>
+                                                                <action selector="addBtnTapped:" destination="TXV-bb-VXj" eventType="touchUpInside" id="CT4-Ta-Hak"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="iEm-Ma-jhR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uSs-VK-gG0" secondAttribute="trailing" constant="12" id="OCX-Ub-epV"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ArH-fV-PaN" firstAttribute="centerY" secondItem="Uaq-d5-FCt" secondAttribute="centerY" id="91Q-io-WOR"/>
+                                                <constraint firstAttribute="trailing" secondItem="ArH-fV-PaN" secondAttribute="trailing" constant="40" id="kD3-Oy-6M0"/>
+                                                <constraint firstItem="ArH-fV-PaN" firstAttribute="leading" secondItem="Uaq-d5-FCt" secondAttribute="leading" constant="20" id="nmR-4A-3wT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLbl" destination="uSs-VK-gG0" id="mwx-9F-Znz"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EqX-fP-0fb">
+                                <rect key="frame" x="0.0" y="59" width="414" height="56"/>
+                                <color key="backgroundColor" name="Primary"/>
+                                <color key="tintColor" name="Action"/>
+                                <color key="barTintColor" name="Secondary"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="Secondary"/>
                         <constraints>
-                            <constraint firstItem="d85-1s-eMN" firstAttribute="centerX" secondItem="jAV-vR-PSk" secondAttribute="centerX" id="9Qz-Xn-OC9"/>
-                            <constraint firstItem="d85-1s-eMN" firstAttribute="centerY" secondItem="jAV-vR-PSk" secondAttribute="centerY" id="XGh-qK-Vvc"/>
-                            <constraint firstItem="d85-1s-eMN" firstAttribute="leading" secondItem="jAV-vR-PSk" secondAttribute="leading" constant="8" id="o4N-e0-nNH"/>
-                            <constraint firstItem="jAV-vR-PSk" firstAttribute="trailing" secondItem="d85-1s-eMN" secondAttribute="trailing" constant="8" id="qiU-OE-Zg3"/>
+                            <constraint firstItem="uWi-7N-rKy" firstAttribute="top" secondItem="jAV-vR-PSk" secondAttribute="top" constant="24" id="0Wg-rf-SAh"/>
+                            <constraint firstItem="jAV-vR-PSk" firstAttribute="trailing" secondItem="uWi-7N-rKy" secondAttribute="trailing" constant="11" id="1j3-lb-4f0"/>
+                            <constraint firstItem="wFQ-sQ-KnE" firstAttribute="top" secondItem="EqX-fP-0fb" secondAttribute="bottom" symbolic="YES" id="5lh-7d-7eD"/>
+                            <constraint firstItem="jAV-vR-PSk" firstAttribute="trailing" secondItem="wFQ-sQ-KnE" secondAttribute="trailing" id="IJo-QY-Vvt"/>
+                            <constraint firstItem="EqX-fP-0fb" firstAttribute="leading" secondItem="jAV-vR-PSk" secondAttribute="leading" id="NeH-yW-d5H"/>
+                            <constraint firstItem="jAV-vR-PSk" firstAttribute="bottom" secondItem="wFQ-sQ-KnE" secondAttribute="bottom" id="WNm-nx-44V"/>
+                            <constraint firstItem="EqX-fP-0fb" firstAttribute="top" secondItem="uWi-7N-rKy" secondAttribute="bottom" constant="13" id="ejJ-7h-cw2"/>
+                            <constraint firstItem="wFQ-sQ-KnE" firstAttribute="leading" secondItem="jAV-vR-PSk" secondAttribute="leading" id="fcU-cb-Cr6"/>
+                            <constraint firstItem="EqX-fP-0fb" firstAttribute="trailing" secondItem="jAV-vR-PSk" secondAttribute="trailing" id="lJB-nS-W8K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jAV-vR-PSk"/>
                     </view>
                     <navigationItem key="navigationItem" id="Aq7-TZ-hCu"/>
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="400"/>
-                    <size key="freeformSize" width="414" height="400"/>
                     <connections>
-                        <outlet property="findBtnOut" destination="Asx-Na-B9A" id="vLM-0w-ezp"/>
-                        <outlet property="nameTextField" destination="TN6-y7-Kef" id="BaF-B8-x9H"/>
+                        <outlet property="searchBar" destination="EqX-fP-0fb" id="TNw-dK-SN9"/>
+                        <outlet property="tableView" destination="wFQ-sQ-KnE" id="gtV-zu-1vj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMM-bA-tTA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5730" y="-372"/>
+            <point key="canvasLocation" x="-5714.4927536231889" y="-453.34821428571428"/>
         </scene>
     </scenes>
     <resources>
@@ -308,6 +389,9 @@
         </namedColor>
         <namedColor name="Primary">
             <color red="0.98400002717971802" green="0.3919999897480011" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Secondary">
+            <color red="0.98400002717971802" green="0.87099999189376831" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>

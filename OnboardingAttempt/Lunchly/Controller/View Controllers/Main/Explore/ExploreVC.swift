@@ -50,15 +50,6 @@ class ExploreVC: UIViewController {
                 self.searchable.append(group)
             }
         }
-        for result in searchable {
-            if let group = result as? Group {
-                let testUser = User(name: "Kenny", image: Data(), groups: [], restaurants:
-                    [])
-                let restaurant = Restaurant(name: "Joe's Pizza Shack", imageData: Data(), serviceTypes: [])
-                coreDataController?.groupsController.addRestaurantToGroup(group: group, restaurant: restaurant)
-                coreDataController?.groupsController.addUserToGroup(group: group, user: testUser)
-            }
-        }
         filteredSearchArray = searchable //copy searchable so there's a reference and one we filter for searching
         
         
@@ -67,6 +58,21 @@ class ExploreVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        searchable = []
+        coreDataController?.loadGroupsFromPersistentStore()
+        coreDataController?.loadRestaurantsFromPersistentStore()
+        if let restaurants = coreDataController?.restaurantController.restaurants {
+            for restaurant in  restaurants {
+                self.searchable.append(restaurant)
+            }
+        }
+        if let groups = coreDataController?.groupsController.groups {
+            for group in  groups {
+                self.searchable.append(group)
+            }
+        }
+        filteredSearchArray = searchable
+        searchResultsCollectionView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

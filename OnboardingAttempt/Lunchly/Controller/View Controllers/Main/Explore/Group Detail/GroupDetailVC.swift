@@ -57,7 +57,6 @@ class GroupDetailVC: UIViewController {
         } else {
             if segue.identifier == "AddMemberSegue" {
                 guard let destination = segue.destination as? AddGroupDetailVC else {return}
-                destination.isMember = true
                 destination.userController = userController
                 destination.groupController = groupController
                 destination.group = group
@@ -68,24 +67,29 @@ class GroupDetailVC: UIViewController {
     
     //MARK: Helper Methods
     func updateGroup(group: Group) {
-        print("updating \(group.restaurants)")
         self.group = group
+        print("updating group from GroupDetailVC")
         restaurantTableView.reloadData()
         membersTableView.reloadData()
     }
 }
 
 extension GroupDetailVC: UITableViewDelegate {
-    
+    #warning("TODO: swipe to delete")
 }
 
 extension GroupDetailVC: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch tableView {
         case restaurantTableView:
+            print("#restaurants: \(group?.restaurants.count)")
+            print(group?.restaurants)
             return group?.restaurants.count ?? 0
         case membersTableView:
+            print("#users: \(group?.users.count)")
+            print(group?.users)
             return group?.users.count ?? 0
         default:
             return 0
@@ -100,6 +104,7 @@ extension GroupDetailVC: UITableViewDataSource {
             cell.restaurant = group?.restaurants[indexPath.row]
             cell.backgroundColor = .clear
             return cell
+            
         case membersTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupMemberCell", for: indexPath) as? GroupMemberCell else {return UITableViewCell()}
             cell.user = group?.users[indexPath.row]

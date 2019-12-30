@@ -32,6 +32,11 @@ class GroupController {
         }
     }
     
+    //MARK: Read:
+    func load() {
+        delegate?.loadRestaurantsFromPersistentStore()
+    }
+    
     //MARK: Update
     func addUserToGroup(group: Group, user: User) {
         for (index, thisGroup) in groups.enumerated() {
@@ -44,6 +49,10 @@ class GroupController {
                 }
                 groups[index].users.append(user) //user doesn't exist, append to this group
                 delegate?.saveGroupsToPersistentStore()
+                for user in groups[index].users {
+                    print(user.name)
+                }
+                
             }
         }
     }
@@ -53,7 +62,7 @@ class GroupController {
             if group == thisGroup { //group found, mutate
                 for thisRestaurant in group.restaurants {
                     if thisRestaurant == restaurant {
-                        print("restaurant Found")
+                        print("restaurant Found, returning")
                         return //restaurant already exists in group
                     }
                 }
@@ -63,5 +72,7 @@ class GroupController {
             }
         }
     }
+    
+
    
 }

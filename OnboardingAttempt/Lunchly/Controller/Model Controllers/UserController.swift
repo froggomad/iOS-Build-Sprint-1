@@ -15,17 +15,22 @@ class UserController {
         }
     }
     var users: [User] = []
-    
+    //MARK: Create
     func createUsers() {
-        delegate?.loadGroupsFromPersistentStore()
+        delegate?.loadUsersFromPersistentStore()
         if users.count == 0 {
             print("creating users")
             users = [
-                User(name: "Kenny", image: Data(), groups: [delegate!.groupsController.groups[0]], restaurants: []),
+                User(name: "Kenny", image: Data(), groups: [], restaurants: []),
                 User(name: "TestUser", image: Data(), groups: [], restaurants: [])
             ]
-            delegate?.saveGroupsToPersistentStore()
+            delegate?.saveUsersToPersistentStore()
         }
+    }
+    
+    //MARK: Read:
+    func load() {
+        delegate?.loadUsersFromPersistentStore()
     }
     
     func getUserFromName(username: String) -> User? {
@@ -36,6 +41,8 @@ class UserController {
         }
         return nil
     }
+    
+    //MARK: Update
     
     func addGroupToUser(group: Group, user: User) {
         for userGroup in user.groups {

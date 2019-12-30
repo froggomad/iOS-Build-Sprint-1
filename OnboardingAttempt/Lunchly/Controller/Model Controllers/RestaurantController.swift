@@ -49,5 +49,9 @@ class RestaurantController {
         }
         return nil
     }
+    
+    func load() {
+        delegate?.loadRestaurantsFromPersistentStore()
+    }
         
 }

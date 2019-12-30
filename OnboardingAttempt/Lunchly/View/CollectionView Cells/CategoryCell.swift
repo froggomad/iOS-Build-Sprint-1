@@ -31,6 +31,7 @@ class CategoryCell: UICollectionViewCell {
         }
     }
     
+    //MARK: Helper Methods
     func setActive() {
         guard let service = service else {return}
         if self.isSelected {

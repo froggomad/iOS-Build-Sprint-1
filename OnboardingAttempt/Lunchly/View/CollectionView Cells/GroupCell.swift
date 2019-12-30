@@ -19,8 +19,10 @@ class GroupCell: UICollectionViewCell {
         }
     }
     
+    //MARK: Helper Methods
     func updateViews() {
         imgView.image = UIImage(data: group!.imageData)
         nameLbl.text = group!.name
     }
+    
 }

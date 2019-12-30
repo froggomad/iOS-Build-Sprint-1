@@ -280,6 +280,11 @@
                         <color key="tintColor" name="Action"/>
                         <color key="barTintColor" name="Secondary"/>
                         <color key="selectedImageTintColor" name="Action"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="cSE-tk-t47" kind="relationship" relationship="viewControllers" id="ihX-EO-0zH"/>

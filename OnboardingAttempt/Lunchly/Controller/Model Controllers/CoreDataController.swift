@@ -66,7 +66,6 @@ class CoreDataController {
         do {
             let restaurantArray = try decodeRestaurantData()
             self.restaurantController.restaurants = restaurantArray
-            print(restaurantController.restaurants)
         } catch {
             print("Error loading restaurants from plist: \(error)")
         }
@@ -76,7 +75,6 @@ class CoreDataController {
       do {
           let groupArray = try decodeGroupData()
           self.groupsController.groups = groupArray
-          print(groupsController.groups)
       } catch {
           print("Error loading restaurants from plist: \(error)")
       }
@@ -86,7 +84,6 @@ class CoreDataController {
         do {
             let userArray = try decodeUserData()
             self.usersController.users = userArray
-            print(usersController.users)
         } catch {
             print("Error loading users from plist: \(error)")
         }
@@ -96,7 +93,6 @@ class CoreDataController {
     //MARK: Encode Data for updating
     private func encodeRestaurantData() throws -> Data { //throwing to use in do/let/try
        do {
-        print("Restaurants: \(restaurantController.restaurants)")
         return try encoder.encode(restaurantController.restaurants)
        } catch {
            print("error encoding restaurant file \(error)")
@@ -106,7 +102,6 @@ class CoreDataController {
     
     private func encodeGroupData() throws -> Data { //throwing to use in do/let/try
         do {
-         print("Groups: \(groupsController.groups)")
             return try encoder.encode(groupsController.groups)
         } catch {
             print("error encoding group file \(error)")
@@ -116,7 +111,6 @@ class CoreDataController {
     
     private func encodeUserData() throws -> Data { //throwing to use in do/let/try
         do {
-         print("Users: \(usersController.users)")
             return try encoder.encode(usersController.users)
         } catch {
             print("error encoding group file \(error)")

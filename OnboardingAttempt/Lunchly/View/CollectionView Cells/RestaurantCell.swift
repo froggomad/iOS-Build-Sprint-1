@@ -18,6 +18,7 @@ class RestaurantCell: UICollectionViewCell {
         }
     }
     
+    //MARK: Helper Methods
     func updateViews() {
         setBorders(color: .black)
         imgView.image = UIImage(data: restaurant!.imageData)
