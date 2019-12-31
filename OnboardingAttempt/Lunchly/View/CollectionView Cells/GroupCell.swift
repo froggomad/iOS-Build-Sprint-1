@@ -9,8 +9,8 @@
 import UIKit
 
 class GroupCell: UICollectionViewCell {
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     
     var group: Group? {
@@ -21,8 +21,8 @@ class GroupCell: UICollectionViewCell {
     
     //MARK: Helper Methods
     func updateViews() {
-        imgView.image = UIImage(data: group!.imageData)
-        nameLbl.text = group!.name
+        imageView.image = UIImage(data: group!.imageData)
+        nameLabel.text = group!.name
     }
     
 }

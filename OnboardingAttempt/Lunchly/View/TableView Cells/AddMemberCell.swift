@@ -9,7 +9,7 @@
 import UIKit
 
 class AddMemberCell: UITableViewCell {
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func addBtnTapped(_ sender: UIButton) {
         addUserToGroup()
@@ -29,7 +29,7 @@ class AddMemberCell: UITableViewCell {
     }
     
     func updateViews() {
-        self.nameLbl.text = member?.name
+        self.nameLabel.text = member?.name
     }
     
     func addUserToGroup() {

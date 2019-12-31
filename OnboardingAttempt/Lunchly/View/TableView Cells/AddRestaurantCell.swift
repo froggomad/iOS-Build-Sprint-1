@@ -9,7 +9,7 @@
 import UIKit
 
 class AddRestaurantCell: UITableViewCell {
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func addBtnTapped(_ sender: UIButton) {
         addRestaurantToGroup()
@@ -29,7 +29,7 @@ class AddRestaurantCell: UITableViewCell {
     }
     
     func updateViews() {
-        nameLbl.text = restaurant?.name
+        nameLabel.text = restaurant?.name
     }
     
     func addRestaurantToGroup() {

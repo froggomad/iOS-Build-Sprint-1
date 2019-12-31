@@ -10,9 +10,11 @@ import UIKit
 
 class GroupDetailVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var groupNameLbl: UILabel!
+    @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var meetupTableView: UITableView!
     @IBOutlet weak var restaurantTableView: UITableView!
     @IBOutlet weak var membersTableView: UITableView!
+    
     
     @IBAction func backBtnTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -30,6 +32,8 @@ class GroupDetailVC: UIViewController {
         self.restaurantTableView.dataSource = self
         self.membersTableView.delegate = self
         self.membersTableView.dataSource = self
+        self.meetupTableView.delegate = self
+        self.meetupTableView.dataSource = self
         updateViews()
     }
     
@@ -43,7 +47,7 @@ class GroupDetailVC: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
         guard let group = group else {return}
         self.imageView.image = UIImage(data: group.imageData)
-        self.groupNameLbl.text = group.name
+        self.groupNameLabel.text = group.name
     }
   
     // MARK: - Navigation
@@ -54,28 +58,62 @@ class GroupDetailVC: UIViewController {
             destination.groupController = groupController
             destination.group = group
             destination.delegate = self
-        } else {
-            if segue.identifier == "AddMemberSegue" {
+        } else if segue.identifier == "AddMemberSegue" {
                 guard let destination = segue.destination as? AddGroupDetailVC else {return}
                 destination.userController = userController
                 destination.groupController = groupController
                 destination.group = group
                 destination.delegate = self
-            }
+        } else if segue.identifier == "ImagePickerSegue" {
+            guard let destination = segue.destination as? ChangeGroupImageVC else {return}
+            destination.delegate = self
+            destination.group = group
+            destination.groupController = groupController
         }
     }
     
     //MARK: Helper Methods
     func updateGroup(group: Group) {
         self.group = group
+        self.imageView.image = UIImage(data: group.imageData)
         print("updating group from GroupDetailVC")
         restaurantTableView.reloadData()
         membersTableView.reloadData()
+    }
+    
+    @objc func performAddRestaurantSegue() {
+        performSegue(withIdentifier: "AddRestaurantSegue", sender: nil)
+    }
+    @objc func performAddMemberSegue() {
+        performSegue(withIdentifier: "AddMemberSegue", sender: nil)
+    }
+    @objc func performAddMeetupSegue() {
+        performSegue(withIdentifier: "AddMeetupSegue", sender: nil)
     }
 }
 
 extension GroupDetailVC: UITableViewDelegate {
     #warning("TODO: swipe to delete")
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let addButton = UIButton(type: .contactAdd)
+        switch tableView {
+        case meetupTableView:
+            addButton.setTitle("Add Meetup", for: .normal)
+            addButton.addTarget(self, action: #selector(performAddMeetupSegue), for: .touchUpInside)
+            return addButton
+        case restaurantTableView:
+            addButton.setTitle("Add Restaurant", for: .normal)
+            addButton.addTarget(self, action: #selector(performAddRestaurantSegue), for: .touchUpInside)
+            return addButton
+        case membersTableView:
+            addButton.setTitle("Add Member", for: .normal)
+            addButton.addTarget(self, action: #selector(performAddMemberSegue), for: .touchUpInside)
+            return addButton
+        default:
+            let clearView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+            return clearView
+        }
+    }
 }
 
 extension GroupDetailVC: UITableViewDataSource {

@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     
     var service: ServiceType? {
@@ -18,14 +18,14 @@ class CategoryCell: UICollectionViewCell {
             guard let service = service else {return}
             switch service {
             case .delivery:
-                self.nameLbl.text = "Delivery"
+                self.nameLabel.text = "Delivery"
             case .dineIn:
-                self.nameLbl.text = "Dine In"
+                self.nameLabel.text = "Dine In"
             case .takeout:
-                self.nameLbl.text = "Take Out"
+                self.nameLabel.text = "Take Out"
             case .viewAll:
                 self.isSelected = true
-                self.nameLbl.text = "View All"
+                self.nameLabel.text = "View All"
             }
             setActive()
         }
@@ -35,7 +35,7 @@ class CategoryCell: UICollectionViewCell {
     func setActive() {
         guard let service = service else {return}
         if self.isSelected {
-            self.setBorders(color: .black)
+            self.setBorders(color: UIColor(named: "Action")!)
             self.imageView.image = UIImage(named: "\(service.rawValue)Filled")!
         } else {
             self.setBorders(color: .clear)

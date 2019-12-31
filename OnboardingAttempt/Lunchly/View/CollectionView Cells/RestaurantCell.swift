@@ -9,8 +9,8 @@
 import UIKit
 
 class RestaurantCell: UICollectionViewCell {
-    @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     var restaurant: Restaurant? {
         didSet {
@@ -21,8 +21,8 @@ class RestaurantCell: UICollectionViewCell {
     //MARK: Helper Methods
     func updateViews() {
         setBorders(color: .black)
-        imgView.image = UIImage(data: restaurant!.imageData)
-        nameLbl.text = restaurant!.name
+        imageView.image = UIImage(data: restaurant!.imageData)
+        nameLabel.text = restaurant!.name
     }
     
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class GroupMemberCell: UITableViewCell {
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     var user: User? {
         didSet {
@@ -18,7 +18,7 @@ class GroupMemberCell: UITableViewCell {
     }
     
     func updateViews() {
-        self.nameLbl.text = user!.name
+        self.nameLabel.text = user!.name
     }
 
 }

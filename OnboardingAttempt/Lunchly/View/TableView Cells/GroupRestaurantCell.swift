@@ -9,7 +9,7 @@
 import UIKit
 
 class GroupRestaurantCell: UITableViewCell {
-    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
     var restaurant: Restaurant? {
         didSet {
@@ -18,7 +18,7 @@ class GroupRestaurantCell: UITableViewCell {
     }
     
     func updateViews() {
-        self.nameLbl.text = restaurant!.name
+        self.nameLabel.text = restaurant!.name
     }
 
 }

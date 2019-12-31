@@ -104,7 +104,7 @@
                                         <size key="customSize" width="80" height="80"/>
                                         <connections>
                                             <outlet property="imageView" destination="KD2-mc-Xz9" id="guZ-oS-BFm"/>
-                                            <outlet property="nameLbl" destination="NbA-my-v5q" id="ME4-OL-QJ5"/>
+                                            <outlet property="nameLabel" destination="NbA-my-v5q" id="ME4-OL-QJ5"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -134,6 +134,10 @@
                                                         <constraint firstAttribute="width" constant="110" id="rSU-BJ-oTC"/>
                                                     </constraints>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASo-ZO-t0V">
+                                                    <rect key="frame" x="0.0" y="78.5" width="110" height="31.5"/>
+                                                    <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joes Pizza" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CyV-tg-Gqx">
                                                     <rect key="frame" x="8" y="86.5" width="94" height="17.5"/>
                                                     <constraints>
@@ -150,6 +154,10 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="CyV-tg-Gqx" secondAttribute="bottom" constant="6" id="DIK-Yz-iBW"/>
                                                 <constraint firstItem="CyV-tg-Gqx" firstAttribute="centerX" secondItem="b3v-if-SI3" secondAttribute="centerX" id="El2-9b-nT5"/>
                                                 <constraint firstItem="CyV-tg-Gqx" firstAttribute="trailing" secondItem="b3v-if-SI3" secondAttribute="trailing" constant="-8" id="LfP-VK-hrE"/>
+                                                <constraint firstItem="ASo-ZO-t0V" firstAttribute="top" secondItem="b3v-if-SI3" secondAttribute="bottom" id="OkY-eo-ncl"/>
+                                                <constraint firstAttribute="bottom" secondItem="ASo-ZO-t0V" secondAttribute="bottom" id="XfW-OT-zGh"/>
+                                                <constraint firstItem="ASo-ZO-t0V" firstAttribute="leading" secondItem="WPp-9X-XgS" secondAttribute="leading" id="aBS-ux-640"/>
+                                                <constraint firstAttribute="trailing" secondItem="ASo-ZO-t0V" secondAttribute="trailing" id="erU-yU-19p"/>
                                                 <constraint firstAttribute="trailing" secondItem="b3v-if-SI3" secondAttribute="trailing" id="fPX-Ha-3sZ"/>
                                                 <constraint firstItem="CyV-tg-Gqx" firstAttribute="top" secondItem="b3v-if-SI3" secondAttribute="bottom" constant="8" id="g1s-JQ-bKq"/>
                                                 <constraint firstItem="CyV-tg-Gqx" firstAttribute="leading" secondItem="b3v-if-SI3" secondAttribute="leading" constant="8" id="ruy-B2-Aa7"/>
@@ -157,8 +165,8 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="110" height="110"/>
                                         <connections>
-                                            <outlet property="imgView" destination="b3v-if-SI3" id="E1X-IY-h4U"/>
-                                            <outlet property="nameLbl" destination="CyV-tg-Gqx" id="9Ff-uJ-Zxf"/>
+                                            <outlet property="imageView" destination="b3v-if-SI3" id="E1X-IY-h4U"/>
+                                            <outlet property="nameLabel" destination="CyV-tg-Gqx" id="9Ff-uJ-Zxf"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="GroupCell" id="W28-Xd-AFD" customClass="GroupCell" customModule="Lunchly" customModuleProvider="target">
@@ -175,6 +183,10 @@
                                                         <constraint firstAttribute="width" secondItem="uZk-ou-EBY" secondAttribute="height" multiplier="7:5" id="5VK-M1-eAg"/>
                                                     </constraints>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUa-8I-Wod">
+                                                    <rect key="frame" x="0.0" y="78.5" width="110" height="31.5"/>
+                                                    <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Co-workers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="TR8-95-A0Q">
                                                     <rect key="frame" x="8" y="86.5" width="94" height="17.5"/>
                                                     <constraints>
@@ -188,18 +200,22 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TR8-95-A0Q" secondAttribute="bottom" constant="6" id="BtR-un-Ktp"/>
                                                 <constraint firstItem="TR8-95-A0Q" firstAttribute="top" secondItem="uZk-ou-EBY" secondAttribute="bottom" constant="8" id="ENQ-PH-2j0"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZUa-8I-Wod" secondAttribute="bottom" id="GQu-8R-Fmp"/>
                                                 <constraint firstItem="TR8-95-A0Q" firstAttribute="leading" secondItem="uZk-ou-EBY" secondAttribute="leading" constant="8" id="OcB-EW-GGG"/>
                                                 <constraint firstItem="TR8-95-A0Q" firstAttribute="centerX" secondItem="uZk-ou-EBY" secondAttribute="centerX" id="PN4-Jm-tRd"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZUa-8I-Wod" secondAttribute="trailing" id="bte-26-c5c"/>
                                                 <constraint firstItem="uZk-ou-EBY" firstAttribute="top" secondItem="xOc-7U-WdR" secondAttribute="top" id="gPb-Cy-XNF"/>
+                                                <constraint firstItem="ZUa-8I-Wod" firstAttribute="top" secondItem="uZk-ou-EBY" secondAttribute="bottom" id="oSk-AK-Ct7"/>
                                                 <constraint firstItem="uZk-ou-EBY" firstAttribute="leading" secondItem="xOc-7U-WdR" secondAttribute="leading" id="p3t-qn-0L6"/>
                                                 <constraint firstItem="TR8-95-A0Q" firstAttribute="trailing" secondItem="uZk-ou-EBY" secondAttribute="trailing" constant="-8" id="rLU-2f-Ngu"/>
+                                                <constraint firstItem="ZUa-8I-Wod" firstAttribute="leading" secondItem="xOc-7U-WdR" secondAttribute="leading" id="rbV-YT-qNd"/>
                                                 <constraint firstAttribute="trailing" secondItem="uZk-ou-EBY" secondAttribute="trailing" id="yjz-Wq-mnC"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="110" height="110"/>
                                         <connections>
-                                            <outlet property="imgView" destination="uZk-ou-EBY" id="TX1-2a-qIS"/>
-                                            <outlet property="nameLbl" destination="TR8-95-A0Q" id="eQQ-kO-hKj"/>
+                                            <outlet property="imageView" destination="uZk-ou-EBY" id="TX1-2a-qIS"/>
+                                            <outlet property="nameLabel" destination="TR8-95-A0Q" id="eQQ-kO-hKj"/>
                                             <segue destination="VrE-um-dVw" kind="show" identifier="GroupDetailSegue" id="EhF-xy-tEs"/>
                                         </connections>
                                     </collectionViewCell>
@@ -257,7 +273,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIF-9a-fWE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="-409"/>
+            <point key="canvasLocation" x="1376.8115942028987" y="-409.15178571428572"/>
         </scene>
         <!--GroupDetail-->
         <scene sceneID="GTS-2R-m4r">

@@ -68,6 +68,7 @@ class AddGroupDetailVC: UIViewController {
                 }
             }
             tableViewDataSource = remainingUserArray
+            print("#remaining users: \(remainingUserArray.count)")
         }
     }
     
@@ -94,13 +95,13 @@ extension AddGroupDetailVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddMemberCell", for: indexPath) as? AddMemberCell,
                   let member = tableViewDataSource?[indexPath.row] as? User,
                   let group = group
-            else {return UITableViewCell()}
+                else {return UITableViewCell()}
             var memberGroupsArray: [String] = []
             for group in member.groups {
                 memberGroupsArray.append(group.name)
             }
             if !memberGroupsArray.contains(group.name) {
-                print("This Group: \(group)\n\nMember groups: \(member.groups)")
+                print("configuring cell")
                 cell.delegate = self
                 cell.member = member
                 cell.group = group

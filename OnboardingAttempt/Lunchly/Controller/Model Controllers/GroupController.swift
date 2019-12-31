@@ -21,20 +21,20 @@ class GroupController {
     
     //MARK: Create
     func createGroups() {
-        delegate?.loadGroupsFromPersistentStore()
+        load()
         if groups.count == 0 {
             print("creating groups")
-            let dineInImg = UIImage(systemName: "person.3.fill")!
+            let dineInImage = UIImage(systemName: "person.3.fill")!
             groups = [
-                Group(name: "Dine in only group", imageData: dineInImg.jpegData(compressionQuality: 1.0)!, serviceTypes: [.dineIn])
+                Group(name: "Dine in only group", imageData: dineInImage.jpegData(compressionQuality: 1.0)!, serviceTypes: [.dineIn])
             ]
-            delegate?.saveGroupsToPersistentStore()
+            save()
         }
     }
     
     //MARK: Read:
     func load() {
-        delegate?.loadRestaurantsFromPersistentStore()
+        delegate?.loadGroupsFromPersistentStore()
     }
     
     //MARK: Update
@@ -48,7 +48,7 @@ class GroupController {
                     }
                 }
                 groups[index].users.append(user) //user doesn't exist, append to this group
-                delegate?.saveGroupsToPersistentStore()
+                save()
                 for user in groups[index].users {
                     print(user.name)
                 }
@@ -67,12 +67,24 @@ class GroupController {
                     }
                 }
                 groups[index].restaurants.append(restaurant) //restaurant doesn't exist, append to this group
-                delegate?.saveGroupsToPersistentStore()
+                save()
                 print(groups[index].restaurants)
             }
         }
     }
     
-
+    func updateImageData(group: Group, imageData: Data) {
+        for (index, thisGroup) in groups.enumerated() {
+            if group == thisGroup { //group found, mutate
+                groups[index].imageData = imageData //restaurant doesn't exist, append to this group
+                save()
+                print(groups[index].restaurants)
+            }
+        }
+    }
+    
+    func save() {
+        delegate?.saveGroupsToPersistentStore()
+    }
    
 }
