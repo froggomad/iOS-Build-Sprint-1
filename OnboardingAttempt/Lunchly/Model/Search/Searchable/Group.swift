@@ -15,4 +15,5 @@ struct Group: Searchable, Codable, Equatable {
     var serviceTypes: [ServiceType]
     var users: [User] = []
     var restaurants: [Restaurant] = []
+    var meetups: [Meetup] = []
 }

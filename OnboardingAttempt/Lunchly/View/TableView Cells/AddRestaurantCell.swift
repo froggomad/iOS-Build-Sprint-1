@@ -38,7 +38,6 @@ class AddRestaurantCell: UITableViewCell {
         else {return}
         groupController?.addRestaurantToGroup(group: group, restaurant: restaurant)
         self.group?.restaurants.append(restaurant)
-        print(self.group?.restaurants)
     }
     
 }

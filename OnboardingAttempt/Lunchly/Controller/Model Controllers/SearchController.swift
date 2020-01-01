@@ -10,10 +10,10 @@ import Foundation
 
 class SearchController {
     let categoryNames: [String] = [
-        "viewAll",
-        "delivery",
-        "takeout",
-        "dineIn"
+        "View All",
+        "Delivery",
+        "Takeout",
+        "Dine In"
     ]
 }
 

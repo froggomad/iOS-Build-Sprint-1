@@ -12,5 +12,6 @@ struct Restaurant: Searchable, Equatable, Codable {
     var categoryType: CategoryType = .restaurant
     var name: String
     var imageData: Data
+    var address: String
     var serviceTypes: [ServiceType]
 }

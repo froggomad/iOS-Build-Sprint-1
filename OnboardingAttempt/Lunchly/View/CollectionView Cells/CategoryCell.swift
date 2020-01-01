@@ -17,16 +17,13 @@ class CategoryCell: UICollectionViewCell {
         didSet {
             guard let service = service else {return}
             switch service {
-            case .delivery:
-                self.nameLabel.text = "Delivery"
-            case .dineIn:
-                self.nameLabel.text = "Dine In"
-            case .takeout:
-                self.nameLabel.text = "Take Out"
             case .viewAll:
                 self.isSelected = true
-                self.nameLabel.text = "View All"
+                self.nameLabel.text = service.rawValue
+            default:
+            self.nameLabel.text = service.rawValue
             }
+            
             setActive()
         }
     }

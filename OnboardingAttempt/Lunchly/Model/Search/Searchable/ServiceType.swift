@@ -7,8 +7,8 @@
 //
 
 enum ServiceType: String, Codable {
-    case viewAll = "viewAll"
-    case takeout = "takeout"
-    case delivery = "delivery"
-    case dineIn = "dineIn"
+    case viewAll = "View All"
+    case takeout = "Takeout"
+    case delivery = "Delivery"
+    case dineIn = "Dine In"
 }

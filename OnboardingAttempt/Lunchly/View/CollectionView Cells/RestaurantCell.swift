@@ -17,6 +17,7 @@ class RestaurantCell: UICollectionViewCell {
             updateViews()
         }
     }
+    var address: String?
     
     //MARK: Helper Methods
     func updateViews() {

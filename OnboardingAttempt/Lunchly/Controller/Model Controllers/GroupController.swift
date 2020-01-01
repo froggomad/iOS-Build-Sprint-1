@@ -83,6 +83,34 @@ class GroupController {
         }
     }
     
+    func addMeetupToGroup(group: Group, meetup: Meetup) {
+        for (index, thisGroup) in groups.enumerated() {
+            if group == thisGroup {
+                for thisMeetup in groups[index].meetups {
+                    if thisMeetup == meetup {
+                        return
+                    }
+                }
+                //meetup not found, append
+                groups[index].meetups.append(meetup)
+                save()
+            }
+        }
+    }
+    
+    func updateMeetup(group: Group, originalMeetup: Meetup, amendedMeetup: Meetup) {
+        for (index, thisGroup) in groups.enumerated() {
+            if group == thisGroup {
+                for (meetupIndex, thisMeetup) in groups[index].meetups.enumerated() {
+                    if thisMeetup == originalMeetup { //meetup found
+                        groups[index].meetups[meetupIndex] = amendedMeetup
+                        save()
+                    }
+                }
+            }
+        }
+    }
+    
     func save() {
         delegate?.saveGroupsToPersistentStore()
     }

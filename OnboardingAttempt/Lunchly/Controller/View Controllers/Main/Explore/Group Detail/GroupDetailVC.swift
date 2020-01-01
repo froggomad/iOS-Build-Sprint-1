@@ -14,6 +14,8 @@ class GroupDetailVC: UIViewController {
     @IBOutlet weak var meetupTableView: UITableView!
     @IBOutlet weak var restaurantTableView: UITableView!
     @IBOutlet weak var membersTableView: UITableView!
+    @IBOutlet weak var segueButtonOutlet: UIButton!
+    
     
     
     @IBAction func backBtnTapped(_ sender: Any) {
@@ -38,8 +40,7 @@ class GroupDetailVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        membersTableView.reloadData()
-        restaurantTableView.reloadData()
+        reloadTableViews()
     }
     
     func updateViews() {
@@ -47,6 +48,8 @@ class GroupDetailVC: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
         guard let group = group else {return}
         self.imageView.image = UIImage(data: group.imageData)
+        segueButtonOutlet.frame.size.width = imageView.image?.size.width ?? 0
+        segueButtonOutlet.layoutIfNeeded()
         self.groupNameLabel.text = group.name
     }
   
@@ -69,6 +72,11 @@ class GroupDetailVC: UIViewController {
             destination.delegate = self
             destination.group = group
             destination.groupController = groupController
+        } else if segue.identifier == "AddMeetupSegue" {
+            guard let destination = segue.destination as? AddMeetupVC else {return}
+            destination.delegate = self
+            destination.group = group
+            destination.groupController = groupController
         }
     }
     
@@ -77,8 +85,13 @@ class GroupDetailVC: UIViewController {
         self.group = group
         self.imageView.image = UIImage(data: group.imageData)
         print("updating group from GroupDetailVC")
-        restaurantTableView.reloadData()
+        reloadTableViews()
+    }
+    
+    func reloadTableViews() {
+        meetupTableView.reloadData()
         membersTableView.reloadData()
+        restaurantTableView.reloadData()
     }
     
     @objc func performAddRestaurantSegue() {
@@ -95,23 +108,44 @@ class GroupDetailVC: UIViewController {
 extension GroupDetailVC: UITableViewDelegate {
     #warning("TODO: swipe to delete")
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let addButton = UIButton(type: .contactAdd)
         switch tableView {
         case meetupTableView:
-            addButton.setTitle("Add Meetup", for: .normal)
-            addButton.addTarget(self, action: #selector(performAddMeetupSegue), for: .touchUpInside)
-            return addButton
+            return constructHeaderView(type: .meetup, tableView: meetupTableView)
         case restaurantTableView:
-            addButton.setTitle("Add Restaurant", for: .normal)
-            addButton.addTarget(self, action: #selector(performAddRestaurantSegue), for: .touchUpInside)
-            return addButton
+            return constructHeaderView(type: .restaurant, tableView: restaurantTableView)
         case membersTableView:
-            addButton.setTitle("Add Member", for: .normal)
-            addButton.addTarget(self, action: #selector(performAddMemberSegue), for: .touchUpInside)
-            return addButton
+            return constructHeaderView(type: .member, tableView: membersTableView)
         default:
-            let clearView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-            return clearView
+            return UIView()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        28
+    }
+    
+    //MARK: Helper Methods
+    func constructHeaderView(type: HeaderCellCategoryType, tableView: UITableView) -> UIView {
+        let clearView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        switch type {
+        case .meetup:
+            guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "AddMeetupHeaderCell") as? AddGroupDetailCell else {return clearView}
+            headerCell.delegate = self
+            headerCell.updateViews(type: .meetup)
+            tableView.tableHeaderView = headerCell;
+            return headerCell
+        case .restaurant:
+            guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "AddRestaurantHeaderCell") as? AddGroupDetailCell else {return clearView}
+            headerCell.delegate = self
+            headerCell.updateViews(type: .restaurant)
+            tableView.tableHeaderView = headerCell;
+            return headerCell
+        case .member:
+            guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "AddMemberHeaderCell") as? AddGroupDetailCell else {return clearView}
+            headerCell.delegate = self
+            headerCell.updateViews(type: .member)
+            tableView.tableHeaderView = headerCell;
+            return headerCell
         }
     }
 }
@@ -122,13 +156,11 @@ extension GroupDetailVC: UITableViewDataSource {
         
         switch tableView {
         case restaurantTableView:
-            print("#restaurants: \(group?.restaurants.count)")
-            print(group?.restaurants)
             return group?.restaurants.count ?? 0
         case membersTableView:
-            print("#users: \(group?.users.count)")
-            print(group?.users)
             return group?.users.count ?? 0
+        case meetupTableView:
+            return group?.meetups.count ?? 0
         default:
             return 0
         }
@@ -142,10 +174,14 @@ extension GroupDetailVC: UITableViewDataSource {
             cell.restaurant = group?.restaurants[indexPath.row]
             cell.backgroundColor = .clear
             return cell
-            
         case membersTableView:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupMemberCell", for: indexPath) as? GroupMemberCell else {return UITableViewCell()}
             cell.user = group?.users[indexPath.row]
+            cell.backgroundColor = .clear
+            return cell
+        case meetupTableView:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MeetupCell", for: indexPath) as? MeetupCell else { return UITableViewCell()}
+            cell.meetup = group?.meetups[indexPath.row]
             cell.backgroundColor = .clear
             return cell
         default: return UITableViewCell()

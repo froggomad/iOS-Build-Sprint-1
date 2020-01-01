@@ -63,6 +63,7 @@ extension ChangeGroupImageVC: UIImagePickerControllerDelegate {
             delegate?.updateGroup(group: group) //finally the delegate gets the updated group
         }
         imagePicker.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

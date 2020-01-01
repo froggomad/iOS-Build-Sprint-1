@@ -43,6 +43,14 @@
 		B968317C23B18B040068412F /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968317B23B18B040068412F /* SearchController.swift */; };
 		B968317E23B29E240068412F /* UICollectionViewCell+setBorders.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968317D23B29E240068412F /* UICollectionViewCell+setBorders.swift */; };
 		B9DB216623B42A6A00B6849E /* CollectionViewLeftAlign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB216523B42A6A00B6849E /* CollectionViewLeftAlign.swift */; };
+		B9EF5CFD23BB000E0075A19D /* AddMeetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF5CFC23BB000E0075A19D /* AddMeetupVC.swift */; };
+		B9EF5D0023BB25FE0075A19D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF5CFF23BB25FE0075A19D /* Alert.swift */; };
+		B9EF5D0223BB8D160075A19D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF5D0123BB8D160075A19D /* NotificationController.swift */; };
+		B9EF5D0723BB9FC30075A19D /* AddGroupDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF5D0623BB9FC30075A19D /* AddGroupDetailCell.swift */; };
+		B9EF5D0923BBA9520075A19D /* HeaderCellCategoryTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF5D0823BBA9520075A19D /* HeaderCellCategoryTypes.swift */; };
+		B9EF5D0B23BBD2720075A19D /* Meetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF5D0A23BBD2720075A19D /* Meetup.swift */; };
+		B9EF5D4923BCDD9C0075A19D /* MeetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF5D4823BCDD9C0075A19D /* MeetupCell.swift */; };
+		B9EF5D4B23BD1A520075A19D /* MeetupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EF5D4A23BD1A520075A19D /* MeetupController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +113,14 @@
 		B968317B23B18B040068412F /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
 		B968317D23B29E240068412F /* UICollectionViewCell+setBorders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+setBorders.swift"; sourceTree = "<group>"; };
 		B9DB216523B42A6A00B6849E /* CollectionViewLeftAlign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLeftAlign.swift; sourceTree = "<group>"; };
+		B9EF5CFC23BB000E0075A19D /* AddMeetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMeetupVC.swift; sourceTree = "<group>"; };
+		B9EF5CFF23BB25FE0075A19D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		B9EF5D0123BB8D160075A19D /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		B9EF5D0623BB9FC30075A19D /* AddGroupDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupDetailCell.swift; sourceTree = "<group>"; };
+		B9EF5D0823BBA9520075A19D /* HeaderCellCategoryTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellCategoryTypes.swift; sourceTree = "<group>"; };
+		B9EF5D0A23BBD2720075A19D /* Meetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meetup.swift; sourceTree = "<group>"; };
+		B9EF5D4823BCDD9C0075A19D /* MeetupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupCell.swift; sourceTree = "<group>"; };
+		B9EF5D4A23BD1A520075A19D /* MeetupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +154,7 @@
 				B93291A723B7B23E002D633A /* GroupDetailVC.swift */,
 				B93291A923B7CB63002D633A /* ChangeGroupImageVC.swift */,
 				B93291AB23B7CFC4002D633A /* AddGroupDetailVC.swift */,
+				B9EF5CFC23BB000E0075A19D /* AddMeetupVC.swift */,
 			);
 			path = "Group Detail";
 			sourceTree = "<group>";
@@ -149,6 +166,8 @@
 				B93291B223B7D4A2002D633A /* GroupRestaurantCell.swift */,
 				B93291B623B900CF002D633A /* AddMemberCell.swift */,
 				B93291B823B900E5002D633A /* AddRestaurantCell.swift */,
+				B9EF5D0623BB9FC30075A19D /* AddGroupDetailCell.swift */,
+				B9EF5D4823BCDD9C0075A19D /* MeetupCell.swift */,
 			);
 			path = "TableView Cells";
 			sourceTree = "<group>";
@@ -259,11 +278,13 @@
 		B968315323B08FE20068412F /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B9EF5D0123BB8D160075A19D /* NotificationController.swift */,
 				B968317523B14AF80068412F /* RestaurantController.swift */,
 				B968317723B18AD80068412F /* CoreDataController.swift */,
 				B968317923B18AF80068412F /* GroupController.swift */,
 				B968317B23B18B040068412F /* SearchController.swift */,
 				B93291B423B7EE20002D633A /* UserController.swift */,
+				B9EF5D4A23BD1A520075A19D /* MeetupController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -279,8 +300,10 @@
 		B968315B23B1282F0068412F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B9EF5CFE23BB25EC0075A19D /* Helper Classes */,
 				B968316723B13DF50068412F /* Search */,
 				B932917B23B569E6002D633A /* User.swift */,
+				B9EF5D0823BBA9520075A19D /* HeaderCellCategoryTypes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				B968316A23B13E130068412F /* Searchable */,
+				B9EF5D0A23BBD2720075A19D /* Meetup.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -330,6 +354,14 @@
 				B968317023B13FCB0068412F /* Group.swift */,
 			);
 			path = Searchable;
+			sourceTree = "<group>";
+		};
+		B9EF5CFE23BB25EC0075A19D /* Helper Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B9EF5CFF23BB25FE0075A19D /* Alert.swift */,
+			);
+			path = "Helper Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,24 +507,32 @@
 				B968311F23B081B30068412F /* SceneDelegate.swift in Sources */,
 				B968316623B13AB50068412F /* CategoryType.swift in Sources */,
 				B93291B923B900E5002D633A /* AddRestaurantCell.swift in Sources */,
+				B9EF5D0B23BBD2720075A19D /* Meetup.swift in Sources */,
 				B968317123B13FCB0068412F /* Group.swift in Sources */,
 				B93291B323B7D4A2002D633A /* GroupRestaurantCell.swift in Sources */,
 				B93291AA23B7CB63002D633A /* ChangeGroupImageVC.swift in Sources */,
+				B9EF5CFD23BB000E0075A19D /* AddMeetupVC.swift in Sources */,
 				B932917C23B569E6002D633A /* User.swift in Sources */,
 				B968317C23B18B040068412F /* SearchController.swift in Sources */,
 				B968315A23B1257D0068412F /* CategoryCell.swift in Sources */,
+				B9EF5D4B23BD1A520075A19D /* MeetupController.swift in Sources */,
 				B968316223B138890068412F /* RestaurantCell.swift in Sources */,
 				B9DB216623B42A6A00B6849E /* CollectionViewLeftAlign.swift in Sources */,
+				B9EF5D0023BB25FE0075A19D /* Alert.swift in Sources */,
+				B9EF5D4923BCDD9C0075A19D /* MeetupCell.swift in Sources */,
 				B968316F23B13F330068412F /* Restaurant.swift in Sources */,
 				B968317823B18AD80068412F /* CoreDataController.swift in Sources */,
 				B93291B523B7EE20002D633A /* UserController.swift in Sources */,
+				B9EF5D0923BBA9520075A19D /* HeaderCellCategoryTypes.swift in Sources */,
 				B93291A823B7B23E002D633A /* GroupDetailVC.swift in Sources */,
 				B968316423B138A70068412F /* GroupCell.swift in Sources */,
 				B93291B723B900CF002D633A /* AddMemberCell.swift in Sources */,
 				B968316923B13E0E0068412F /* Searchable.swift in Sources */,
 				B968317A23B18AF80068412F /* GroupController.swift in Sources */,
 				B93291B123B7D495002D633A /* GroupMemberCell.swift in Sources */,
+				B9EF5D0723BB9FC30075A19D /* AddGroupDetailCell.swift in Sources */,
 				B968317423B14A190068412F /* ServiceType.swift in Sources */,
+				B9EF5D0223BB8D160075A19D /* NotificationController.swift in Sources */,
 				B968317623B14AF80068412F /* RestaurantController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
