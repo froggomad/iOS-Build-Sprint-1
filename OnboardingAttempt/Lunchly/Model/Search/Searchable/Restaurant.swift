@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Restaurant: Searchable, Equatable, Codable {
+struct Restaurant: Searchable, Equatable, Codable, Hashable {
     var categoryType: CategoryType = .restaurant
     var name: String
     var imageData: Data

@@ -14,15 +14,21 @@ class MeetupCell: UITableViewCell {
     
     var meetup: Meetup? {
         didSet {
-            guard let meetup = meetup, //redundant, could force unwrap meetup since it's been set when didSet is called, but force unwrapping would also technically be redundant, and I like to avoid force unwrapping
-                  let meetupStarts = meetup.meetupStarts
-            else {return}
-            let timeDifference = Calendar.current.dateComponents([.minute], from: meetup.voteEnds ?? Date(), to: Date()).minute ?? 0
-            self.nameLabel.text = meetup.location ?? "voting ends in \(timeDifference) minutes)"
+            guard let meetup = meetup else {return}
+            let timeDifference = Calendar.current.dateComponents([.minute], from: Date(), to: meetup.voteEnds ?? Date()).minute ?? 0
+            var votingString = ""
+            if meetup.restaurant == nil {
+                if timeDifference > 0 {
+                    votingString = "Location TBD voting ends in \(timeDifference.timeDisplay())"
+                } else {
+                    votingString = "Voting ended \(timeDifference.timeDisplay()) ago. Please see the results!"
+                }
+            }
+            self.nameLabel.text = meetup.restaurant?.name ?? votingString
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .short
             dateFormatter.timeStyle = .short
-            let dateString = dateFormatter.string(from: meetupStarts)
+            let dateString = dateFormatter.string(from: meetup.meetupStarts)
             self.dateLabel.text = dateString
         }
     }

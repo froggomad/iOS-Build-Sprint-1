@@ -18,6 +18,11 @@ class GroupController {
         }
     }
     var groups: [Group] = []
+    var meetupController = MeetupController()
+    
+    init() {
+        meetupController.delegate = self
+    }
     
     //MARK: Create
     func createGroups() {
@@ -100,6 +105,7 @@ class GroupController {
     
     func updateMeetup(group: Group, originalMeetup: Meetup, amendedMeetup: Meetup) {
         for (index, thisGroup) in groups.enumerated() {
+            print("updating meetup from group controller")
             if group == thisGroup {
                 for (meetupIndex, thisMeetup) in groups[index].meetups.enumerated() {
                     if thisMeetup == originalMeetup { //meetup found

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddRestaurantCell: UITableViewCell {
+class AddRestaurantToGroupCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBAction func addBtnTapped(_ sender: UIButton) {

@@ -9,14 +9,24 @@
 import Foundation
 
 struct Meetup: Codable, Equatable {
-    let id: String //for tracking notifications
+    let id: String //for tracking notifications, comparing meetups for updating
     var name: String
+    var possibleRestaurants: [Restaurant]
+    var restaurant: Restaurant?
     var location: String?
-    var meetupStarts: Date? {
-        didSet {
-            voteEnds = Date(timeInterval: -1800, since: meetupStarts!)
+    var voteEnds: Date?
+    var meetupStarts: Date
+    var userVotes: [String:Restaurant] = [:]
+    
+    init(id: String, name: String, meetupStarts: Date, possibleRestaurants: [Restaurant]) {
+        self.id = id
+        self.name = name
+        self.meetupStarts = meetupStarts
+        self.possibleRestaurants = possibleRestaurants
+        if possibleRestaurants.count == 1 {
+            self.restaurant = possibleRestaurants[0]
         }
+        voteEnds = Date(timeInterval: -1800, since: meetupStarts)
     }
-    var voteEnds: Date? = Date()
     
 }

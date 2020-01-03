@@ -265,10 +265,9 @@
                     <navigationItem key="navigationItem" title="Lunchly" largeTitleDisplayMode="always" id="sDi-1D-frv"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="categoryCollectionView" destination="qaH-yo-XBa" id="GLi-HL-zIv"/>
                         <outlet property="searchBar" destination="OfT-4T-JJb" id="8AC-tR-EZp"/>
-                        <outlet property="searchBarView" destination="MA4-N2-o6Y" id="gIj-3N-LCM"/>
                         <outlet property="searchResultsCollectionView" destination="oBl-yR-jF5" id="aTg-Cn-VMY"/>
-                        <outlet property="test" destination="qaH-yo-XBa" id="GLi-HL-zIv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BIF-9a-fWE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

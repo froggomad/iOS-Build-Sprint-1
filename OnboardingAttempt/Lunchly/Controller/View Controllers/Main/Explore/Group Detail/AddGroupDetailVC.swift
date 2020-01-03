@@ -55,7 +55,15 @@ class AddGroupDetailVC: UIViewController {
                     remainingRestaurantArray.append(coreRestaurant)
                 }
             }
-            tableViewDataSource = remainingRestaurantArray
+            var filteredRestaurantArray: [Restaurant] = []
+            for restaurant in remainingRestaurantArray {
+                for serviceType in group.serviceTypes {
+                    if restaurant.serviceTypes.contains(serviceType) {
+                        filteredRestaurantArray.append(restaurant)
+                    }
+                }
+            }
+            tableViewDataSource = filteredRestaurantArray
         } else if let userController = userController {
             var groupUserArray: [String] = []
             for user in group.users {
@@ -111,7 +119,7 @@ extension AddGroupDetailVC: UITableViewDataSource {
                 return cell
             }
         } else if self.restaurantController != nil {
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddRestaurantCell", for: indexPath) as? AddRestaurantCell,
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddRestaurantCell", for: indexPath) as? AddRestaurantToGroupCell,
                     let restaurant = tableViewDataSource?[indexPath.row] as? Restaurant,
                     let group = group
                 else {return UITableViewCell()}

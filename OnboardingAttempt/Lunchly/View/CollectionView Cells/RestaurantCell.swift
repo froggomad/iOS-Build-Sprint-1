@@ -21,7 +21,7 @@ class RestaurantCell: UICollectionViewCell {
     
     //MARK: Helper Methods
     func updateViews() {
-        setBorders(color: .black)
+        setBorders(color: .label)
         imageView.image = UIImage(data: restaurant!.imageData)
         nameLabel.text = restaurant!.name
     }

@@ -27,6 +27,8 @@ class GroupDetailVC: UIViewController {
     var groupController: GroupController?
     var restaurantController: RestaurantController?
     var userController: UserController?
+    //Timer for updating meetupTableView to update remaining time
+    var timer = Timer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,7 @@ class GroupDetailVC: UIViewController {
         self.meetupTableView.delegate = self
         self.meetupTableView.dataSource = self
         updateViews()
+        timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(updateMeetupTableView), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +80,15 @@ class GroupDetailVC: UIViewController {
             destination.delegate = self
             destination.group = group
             destination.groupController = groupController
+        } else if segue.identifier == "MeetupDetailSegue" {
+            guard let destination = segue.destination as? MeetupDetailVC,
+                  let row = meetupTableView.indexPathForSelectedRow?.row
+                else {return}
+            destination.meetup = group?.meetups[row]
+            guard let meetupController = groupController?.meetupController else {return}
+            destination.meetupController = meetupController
+            destination.group = group
+            #warning("Pass meetup controller once delegate patter with groupController is established")
         }
     }
     
@@ -92,6 +104,10 @@ class GroupDetailVC: UIViewController {
         meetupTableView.reloadData()
         membersTableView.reloadData()
         restaurantTableView.reloadData()
+    }
+    
+    @objc func updateMeetupTableView() {
+        meetupTableView.reloadData()
     }
     
     @objc func performAddRestaurantSegue() {
@@ -121,7 +137,9 @@ extension GroupDetailVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        28
+        switch tableView {
+        default: return 40
+        }
     }
     
     //MARK: Helper Methods
@@ -132,19 +150,20 @@ extension GroupDetailVC: UITableViewDelegate {
             guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "AddMeetupHeaderCell") as? AddGroupDetailCell else {return clearView}
             headerCell.delegate = self
             headerCell.updateViews(type: .meetup)
-            tableView.tableHeaderView = headerCell;
+            headerCell.layoutMargins = .zero
+            headerCell.backgroundColor = UIColor(named:"Primary")
             return headerCell
         case .restaurant:
             guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "AddRestaurantHeaderCell") as? AddGroupDetailCell else {return clearView}
             headerCell.delegate = self
             headerCell.updateViews(type: .restaurant)
-            tableView.tableHeaderView = headerCell;
+            headerCell.backgroundColor = UIColor(named:"Primary")
             return headerCell
         case .member:
             guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "AddMemberHeaderCell") as? AddGroupDetailCell else {return clearView}
             headerCell.delegate = self
             headerCell.updateViews(type: .member)
-            tableView.tableHeaderView = headerCell;
+            headerCell.backgroundColor = UIColor(named:"Primary")
             return headerCell
         }
     }
