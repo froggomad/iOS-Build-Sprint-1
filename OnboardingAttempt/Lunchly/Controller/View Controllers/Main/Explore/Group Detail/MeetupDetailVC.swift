@@ -19,6 +19,7 @@ class MeetupDetailVC: UIViewController, UpdatesMeetup {
     var restaurantVotes: [Restaurant:Int] = [:]
     var user: User?
     var group: Group?
+    weak var delegate: GroupDetailVC?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +56,7 @@ class MeetupDetailVC: UIViewController, UpdatesMeetup {
               let group = group else {return}
         self.meetup!.userVotes[user?.name ?? "none"] = restaurant
         meetupController?.updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: self.meetup!)
-        //update meetup (use meetupController)
-        //update group (use delegate)
-        //saveToPersistentStore (use meetupController -> delegate)
+        //tableView.reloadData()
         #warning("move this call")
         tallyVotes()
     }
@@ -78,9 +77,17 @@ class MeetupDetailVC: UIViewController, UpdatesMeetup {
             }
             let sortedKeys = restaurantVotes.keys.sorted{restaurantVotes[$0]! > restaurantVotes[$1]!}
             if let firstKey = sortedKeys.first {
-                self.meetup?.restaurant = firstKey
                 guard let group = group else {return}
+                self.meetup?.restaurant = firstKey
                 meetupController?.updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: self.meetup!)
+                for (index,groupMeetup) in group.meetups.enumerated() {
+                    if groupMeetup.id == meetup.id {
+                        print("Group found, updating")
+                        self.group?.meetups[index] = self.meetup!
+                    }
+                }
+                delegate?.updateGroup(group: self.group!)
+                tableView.reloadData()
             }
             //for user in group, notify them that the vote ended, ask if they'd like to set a reminder for a time to leave (implement notification switch)
         }

@@ -69,11 +69,12 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
             return nil
         }
         guard let meetupName = meetupNameTextField.text,
-                   meetupName != ""
-               else {
-                   Alert.show(title: "Name not entered", message: "Please type a name for your Meetup", vc: self)
-                  return nil
-               }
+               meetupName != ""
+        else {
+               Alert.show(title: "Name not entered", message: "Please type a name for your Meetup", vc: self)
+              return nil
+        }
+        
         var meetup: Meetup
         if pickedRestaurant != nil {
             meetup = Meetup(id: "\(group.name)-\(meetupTime)", name: meetupName, meetupStarts: meetupTime, possibleRestaurants: pickedRestaurants)

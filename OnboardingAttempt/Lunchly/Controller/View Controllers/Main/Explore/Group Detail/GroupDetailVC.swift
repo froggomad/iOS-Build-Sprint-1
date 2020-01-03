@@ -86,9 +86,9 @@ class GroupDetailVC: UIViewController {
                 else {return}
             destination.meetup = group?.meetups[row]
             guard let meetupController = groupController?.meetupController else {return}
+            destination.delegate = self
             destination.meetupController = meetupController
             destination.group = group
-            #warning("Pass meetup controller once delegate patter with groupController is established")
         }
     }
     
@@ -97,6 +97,7 @@ class GroupDetailVC: UIViewController {
         self.group = group
         self.imageView.image = UIImage(data: group.imageData)
         print("updating group from GroupDetailVC")
+        print(group.meetups)
         reloadTableViews()
     }
     
