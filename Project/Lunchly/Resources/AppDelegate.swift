@@ -46,3 +46,5 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler([.alert, .badge, .sound])
     }
 }
+
+
