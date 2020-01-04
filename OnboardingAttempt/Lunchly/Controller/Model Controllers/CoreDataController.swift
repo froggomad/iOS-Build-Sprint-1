@@ -10,18 +10,19 @@ import Foundation
 
 class CoreDataController {
     
+    //MARK: Class Properties
     private let decoder: PropertyListDecoder
     private let encoder: PropertyListEncoder
     private let restaurantFile = "restaurants.plist"
     private let groupFile = "groups.plist"
     private let userFile = "users.plist"
     
-    //Custom DataType Controllers
+    //MARK: Model Controllers
     var restaurantController = RestaurantController()
     var groupsController = GroupController()
     var usersController = UserController()
     
-    //MARK: Init
+    //MARK: Init and Set Child Controller Delegates
     init() {
         self.decoder = PropertyListDecoder()
         self.encoder = PropertyListEncoder()
@@ -159,38 +160,22 @@ class CoreDataController {
         }
     }
     
-    func updateRestaurant(oldRestaurant: Restaurant, newRestaurant: Restaurant) {
-        for (index, thisRestaurant) in restaurantController.restaurants.enumerated() where thisRestaurant == oldRestaurant {
-            restaurantController.restaurants[index].name = newRestaurant.name
-            restaurantController.restaurants[index].imageData = newRestaurant.imageData
-            saveRestaurantsToPersistentStore()
-        }
-    }
-    
-    func updateGroup(forIndexPath indexPath: IndexPath) {
-         
-     }
-     
-     func updateUser(forIndexPath indexPath: IndexPath) {
-         
-     }
-
-     //MARK: Delete
-     func removeFromPersistentStore() {
+    //MARK: Delete (unused)
+    func removeFromPersistentStore() {
         
     }
      
-     //MARK: Helper Methods
+    //MARK: Helper Methods
      
-     //create fileUrl from filename and directory
-     private func fileUrl(fromFileName file: String, inDirectory directory: FileManager.SearchPathDirectory) -> URL? {
-         let fileManager = FileManager.default
-         guard let directory = fileManager.urls(for: directory, in: .userDomainMask).first else {print("directory invalid"); return nil}
-         let fileUrl = directory.appendingPathComponent(file)
-         return fileUrl
-     }
+    //create fileUrl from filename and directory
+    private func fileUrl(fromFileName file: String, inDirectory directory: FileManager.SearchPathDirectory) -> URL? {
+        let fileManager = FileManager.default
+        guard let directory = fileManager.urls(for: directory, in: .userDomainMask).first else {print("directory invalid"); return nil}
+        let fileUrl = directory.appendingPathComponent(file)
+        return fileUrl
+    }
      
-     //create data from fileUrl
+    //create data from fileUrl
     private func dataFromFileUrl(fileName file: String) -> Data? {
         guard let fileUrl = fileUrl(fromFileName: file, inDirectory: .documentDirectory) else {
             print("returning empty data, couldn't construct fileURL")

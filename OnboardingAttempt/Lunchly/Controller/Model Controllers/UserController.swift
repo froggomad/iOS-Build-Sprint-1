@@ -9,12 +9,15 @@
 import Foundation
 
 class UserController {
+    
+    //MARK: Class Properties
     weak var delegate: CoreDataController? {
         didSet {
             createUsers()
         }
     }
     var users: [User] = []
+    
     //MARK: Create
     func createUsers() {
         delegate?.loadUsersFromPersistentStore()

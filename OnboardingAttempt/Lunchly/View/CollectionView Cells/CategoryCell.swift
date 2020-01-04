@@ -9,10 +9,12 @@
 import UIKit
 
 class CategoryCell: UICollectionViewCell {
+    //MARK: IBOutlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    
+    //MARK: SetupView
+    //set .viewAll categry to active on instantiation
     var service: ServiceType? {
         didSet {
             guard let service = service else {return}

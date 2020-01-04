@@ -12,6 +12,7 @@ import Foundation
 import UIKit
 
 class GroupController {
+    //MARK: Class Properties
     weak var delegate: CoreDataController? {
         didSet {
             createGroups()
@@ -20,6 +21,7 @@ class GroupController {
     var groups: [Group] = []
     var meetupController = MeetupController()
     
+    //MARK: Set Child Controller Delegate
     init() {
         meetupController.delegate = self
     }
@@ -64,7 +66,7 @@ class GroupController {
     
     func addRestaurantToGroup(group: Group, restaurant: Restaurant) {
         for (index, thisGroup) in groups.enumerated() {
-            if group == thisGroup { //group found, mutate
+            if group == thisGroup { //group found, replace
                 for thisRestaurant in group.restaurants {
                     if thisRestaurant == restaurant {
                         print("restaurant Found, returning")
@@ -73,17 +75,15 @@ class GroupController {
                 }
                 groups[index].restaurants.append(restaurant) //restaurant doesn't exist, append to this group
                 save()
-                print(groups[index].restaurants)
             }
         }
     }
     
     func updateImageData(group: Group, imageData: Data) {
         for (index, thisGroup) in groups.enumerated() {
-            if group == thisGroup { //group found, mutate
-                groups[index].imageData = imageData //restaurant doesn't exist, append to this group
+            if group == thisGroup { //group found, replace
+                groups[index].imageData = imageData
                 save()
-                print(groups[index].restaurants)
             }
         }
     }

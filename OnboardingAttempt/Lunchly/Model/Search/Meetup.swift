@@ -17,12 +17,15 @@ struct Meetup: Codable, Equatable {
     var voteEnds: Date?
     var meetupStarts: Date
     var userVotes: [String:Restaurant] = [:]
+    private var restaurantVotes: [Restaurant:Int] = [:]
+    
     
     init(id: String, name: String, meetupStarts: Date, possibleRestaurants: [Restaurant]) {
         self.id = id
         self.name = name
         self.meetupStarts = meetupStarts
         self.possibleRestaurants = possibleRestaurants
+        //set the meetup's restaurant if only one was chosen for the meetup
         if possibleRestaurants.count == 1 {
             self.restaurant = possibleRestaurants[0]
         }

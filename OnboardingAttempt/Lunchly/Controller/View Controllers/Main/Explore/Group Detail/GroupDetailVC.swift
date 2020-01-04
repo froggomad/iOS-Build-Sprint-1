@@ -9,6 +9,7 @@
 import UIKit
 
 class GroupDetailVC: UIViewController {
+    //MARK: IBOutlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var meetupTableView: UITableView!
@@ -16,20 +17,20 @@ class GroupDetailVC: UIViewController {
     @IBOutlet weak var membersTableView: UITableView!
     @IBOutlet weak var segueButtonOutlet: UIButton!
     
-    
-    
+    //MARK: IBActions
     @IBAction func backBtnTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
+    //MARK: Class Properties
     var group: Group?
     var groupController: GroupController?
     var restaurantController: RestaurantController?
     var userController: UserController?
     //Timer for updating meetupTableView to update remaining time
     var timer = Timer()
-
+    
+    //MARK: View Lifecycle (Update View)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restaurantTableView.delegate = self
@@ -44,16 +45,6 @@ class GroupDetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         reloadTableViews()
-    }
-    
-    func updateViews() {
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
-        guard let group = group else {return}
-        self.imageView.image = UIImage(data: group.imageData)
-        segueButtonOutlet.frame.size.width = imageView.image?.size.width ?? 0
-        segueButtonOutlet.layoutIfNeeded()
-        self.groupNameLabel.text = group.name
     }
   
     // MARK: - Navigation
@@ -93,11 +84,20 @@ class GroupDetailVC: UIViewController {
     }
     
     //MARK: Helper Methods
+    func updateViews() {
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
+        guard let group = group else {return}
+        self.imageView.image = UIImage(data: group.imageData)
+        segueButtonOutlet.frame.size.width = imageView.image?.size.width ?? 0
+        segueButtonOutlet.layoutIfNeeded()
+        self.groupNameLabel.text = group.name
+    }
+    
     func updateGroup(group: Group) {
         self.group = group
         self.imageView.image = UIImage(data: group.imageData)
         print("updating group from GroupDetailVC")
-        print(group.meetups)
         reloadTableViews()
     }
     
@@ -122,6 +122,8 @@ class GroupDetailVC: UIViewController {
     }
 }
 
+
+//MARK: TableView Delegate
 extension GroupDetailVC: UITableViewDelegate {
     #warning("TODO: swipe to delete")
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -143,7 +145,7 @@ extension GroupDetailVC: UITableViewDelegate {
         }
     }
     
-    //MARK: Helper Methods
+    //MARK: TableView Delegate Helper Methods
     func constructHeaderView(type: HeaderCellCategoryType, tableView: UITableView) -> UIView {
         let clearView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         switch type {
@@ -208,4 +210,3 @@ extension GroupDetailVC: UITableViewDataSource {
         }
     }
 }
-

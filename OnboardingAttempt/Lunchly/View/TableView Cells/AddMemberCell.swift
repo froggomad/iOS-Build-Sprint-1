@@ -9,19 +9,24 @@
 import UIKit
 
 class AddMemberCell: UITableViewCell {
+    //MARK: IBOutlets
     @IBOutlet weak var nameLabel: UILabel!
     
+    
+    //MARK: IBActions
     @IBAction func addBtnTapped(_ sender: UIButton) {
         addUserToGroup()
         guard let group = group else {return}
         delegate?.updateGroup(group: group)
     }
     
+    //MARK: Class Properties
     weak var delegate: AddGroupDetailVC?
     var group: Group?
     var groupController: GroupController?
     var userController: UserController?
     
+    //MARK: Setup View
     var member: User? {
         didSet {
             updateViews()
@@ -32,6 +37,7 @@ class AddMemberCell: UITableViewCell {
         self.nameLabel.text = member?.name
     }
     
+    //MARK: Helper Methods
     func addUserToGroup() {
         guard let group = group,
               let user = member

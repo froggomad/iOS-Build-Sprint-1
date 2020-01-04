@@ -9,10 +9,11 @@
 import UIKit
 
 class GroupCell: UICollectionViewCell {
+    //MARK: IBOutlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    
+    //MARK: SetupView
     var group: Group? {
         didSet {
             updateViews()
@@ -21,6 +22,7 @@ class GroupCell: UICollectionViewCell {
     
     //MARK: Helper Methods
     func updateViews() {
+        setBorders(color: .label)
         imageView.image = UIImage(data: group!.imageData)
         nameLabel.text = group!.name
     }

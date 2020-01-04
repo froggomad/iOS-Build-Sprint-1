@@ -51,7 +51,9 @@ class ExploreVC: UIViewController {
             }
         }
         filteredSearchArray = searchable //copy searchable so there's a reference to the original and one we filter for searching
-        
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notification) in
+            print(notification.description)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +63,8 @@ class ExploreVC: UIViewController {
         searchable = []
         coreDataController?.loadGroupsFromPersistentStore()
         coreDataController?.loadRestaurantsFromPersistentStore()
+        tallyVotes()
+        //construct search array
         if let restaurants = coreDataController?.restaurantController.restaurants {
             for restaurant in  restaurants {
                 self.searchable.append(restaurant)
@@ -71,6 +75,7 @@ class ExploreVC: UIViewController {
                 self.searchable.append(group)
             }
         }
+        //create copy used as tableView DataSource for filtering
         filteredSearchArray = searchable
         searchResultsCollectionView.reloadData()
     }
@@ -99,6 +104,15 @@ class ExploreVC: UIViewController {
                 return
             }
             servicesArray.append(thisService)
+        }
+    }
+    
+    func tallyVotes() {
+        guard let groupsController = coreDataController?.groupsController else {return}
+        for group in groupsController.groups {
+            for meetup in group.meetups {
+                groupsController.meetupController.tallyVotes(group: group, meetup: meetup)
+            }
         }
     }
 }
@@ -161,7 +175,6 @@ extension ExploreVC: UICollectionViewDataSource {
                 } else if let groupData = filteredSearchArray[indexPath.item] as? Group {
                     guard let groupCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCell", for: indexPath) as? GroupCell else {return UICollectionViewCell()}
                     groupCell.group = groupData
-                    groupCell.setBorders(color: .label)
                     return groupCell
                 }
             return UICollectionViewCell() //failed
@@ -173,6 +186,7 @@ extension ExploreVC: UICollectionViewDataSource {
     
 }
 
+//MARK: Search Delegate
 extension ExploreVC: UISearchBarDelegate {
     
 }

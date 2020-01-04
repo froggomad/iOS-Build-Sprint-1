@@ -9,9 +9,11 @@
 import UIKit
 
 class AddGroupDetailCell: UITableViewCell {
-    
+    //MARK: IBOutlets
     @IBOutlet weak var addButtonOutlet: UIButton!
     
+    
+    //MARK: IBActions
     @IBAction func addButtonTapped(_ sender: UIButton) {
         guard let delegate = delegate,
               let type = type else {return}
@@ -26,9 +28,11 @@ class AddGroupDetailCell: UITableViewCell {
         }
     }
     
+    //MARK: Class Properties
     weak var delegate: GroupDetailVC?
     var type: HeaderCellCategoryType?
     
+    //MARK: Setup View (triggered in GroupDetailVC)
     func updateViews(type: HeaderCellCategoryType) {
         self.type = type
     }

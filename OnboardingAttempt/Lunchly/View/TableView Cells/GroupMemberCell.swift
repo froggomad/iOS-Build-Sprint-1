@@ -9,14 +9,18 @@
 import UIKit
 
 class GroupMemberCell: UITableViewCell {
+    //MARK: Class Properties
     @IBOutlet weak var nameLabel: UILabel!
     
+    
+    //MARK: Setup View
     var user: User? {
         didSet {
             updateViews()
         }
     }
     
+    //MARK: Helper Methods
     func updateViews() {
         self.nameLabel.text = user!.name
     }

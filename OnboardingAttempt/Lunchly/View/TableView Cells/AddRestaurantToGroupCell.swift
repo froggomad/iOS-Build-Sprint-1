@@ -9,25 +9,29 @@
 import UIKit
 
 class AddRestaurantToGroupCell: UITableViewCell {
+    //MARK: IBOutlets
     @IBOutlet weak var nameLabel: UILabel!
     
+    //MARK: IBActions
     @IBAction func addBtnTapped(_ sender: UIButton) {
         addRestaurantToGroup()
         guard let group = group else {return}
-        print(group.restaurants)
         delegate?.updateGroup(group: group)
     }
     
+    //MARK: Class Properties
     weak var delegate: AddGroupDetailVC?
     var group: Group?
     var groupController: GroupController?
     
+    //MARK: Setup View
     var restaurant: Restaurant? {
         didSet {
             updateViews()
         }
     }
     
+    //MARK: Helper Methods
     func updateViews() {
         nameLabel.text = restaurant?.name
     }

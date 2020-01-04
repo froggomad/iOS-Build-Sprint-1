@@ -36,8 +36,6 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
         save()
     }
     
-    
-    
     //MARK: Class Properties
     private let minimumDate: Date? = Date(timeIntervalSinceNow: 3600)
     weak var delegate: GroupDetailVC?
@@ -99,14 +97,28 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
                 Alert.inputForMeetupNotification(title: "Travel Time", message: "How long does it normally take you to get to \(pickedRestaurant.name)?", vc: self) { time, status in
                     if status { //the input returned is an Int, set the meetup's timeToLeave and trigger the notification for when it's time to leave for the meetup
                         let timeToLeave = Calendar.current.date(byAdding: .minute, value: -time, to: meetup.meetupStarts)
-                        self.notificationHandler.triggerNotification(onDate: timeToLeave!, withId: meetup.id)
+                        
+                        self.notificationHandler.triggerNotification(notificationType: .timeToLeave, onDate: timeToLeave!, withId: "\(meetup.id)-\(NotificationType.timeToLeave.rawValue)")
+                        
+                        
                     } else {
                         self.notificationSwitch.isOn = false
                         Alert.show(title: "Oops!", message: "Please enter a number", vc: self)
                     }
                 }
             } else {
-              //trigger vote notification
+                if pickedRestaurants.count > 1 {
+                    print("Vote triggered, scheduling notifications")
+                    notificationHandler.triggerNotification(notificationType: .votingBegan, onDate: Date(timeIntervalSinceNow: 15), withId: "\(meetup.id)-\(NotificationType.votingBegan.rawValue)")
+                    if let voteEnds = meetup.voteEnds {
+                        if voteEnds > Date(timeIntervalSinceNow: 1800) {
+                            notificationHandler.triggerNotification(notificationType: .votingEndsSoon, onDate: Date(timeInterval: -1800, since: voteEnds), withId: "\(meetup.id)-\(NotificationType.votingEndsSoon.rawValue)")
+                        }
+                    }
+                }
+            }
+            UNUserNotificationCenter.current().getPendingNotificationRequests { (notification) in
+                print(notification.description)
             }
         }
     }
@@ -144,7 +156,7 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
 extension AddMeetupVC: UITableViewDelegate {
     
 }
-
+//MARK: TableView DataSource
 extension AddMeetupVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.group?.restaurants.count ?? 0

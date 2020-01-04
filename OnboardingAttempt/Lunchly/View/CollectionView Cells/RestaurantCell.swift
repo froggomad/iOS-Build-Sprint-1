@@ -9,14 +9,17 @@
 import UIKit
 
 class RestaurantCell: UICollectionViewCell {
+    //MARK: IBOutlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    //MARK: SetupView
     var restaurant: Restaurant? {
         didSet {
             updateViews()
         }
     }
+    //MARK: Class Properties
     var address: String?
     
     //MARK: Helper Methods

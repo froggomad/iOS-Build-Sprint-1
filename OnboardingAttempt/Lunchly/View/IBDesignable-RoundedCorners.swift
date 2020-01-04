@@ -8,8 +8,13 @@
 
 import UIKit
 
-//extension UIView {
-//    @IBInspectable var cornerRadiusValue: CGFloat = 10.0 {
-//       
-//    }
-//}
+extension UIView {
+    @IBInspectable var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+        }
+    }
+}

@@ -20,6 +20,7 @@ class AddGroupDetailVC: UIViewController {
     }
     
     //MARK: Class Properties
+    weak var delegate: GroupDetailVC?
     var group: Group?
     //controllers
     var groupController: GroupController?
@@ -28,9 +29,7 @@ class AddGroupDetailVC: UIViewController {
     //[Any] to be able to hold either users or restaurants for adding to group
     var tableViewDataSource: [Any]?
     
-    //MARK: Class Delegates
-    weak var delegate: GroupDetailVC?
-    
+    //MARK: View Lifecycle (update view)
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -42,6 +41,7 @@ class AddGroupDetailVC: UIViewController {
         updateViews()
     }
     
+    //MARK: Helper Methods
     func updateViews() {
         guard let group = group else {return}
         if let restaurantController = restaurantController {
@@ -92,7 +92,7 @@ class AddGroupDetailVC: UIViewController {
 extension AddGroupDetailVC: UITableViewDelegate {
     
 }
-
+//MARK: TableView DataSource
 extension AddGroupDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableViewDataSource?.count ?? 0

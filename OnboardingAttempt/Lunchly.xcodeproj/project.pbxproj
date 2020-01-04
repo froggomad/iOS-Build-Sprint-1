@@ -18,6 +18,8 @@
 		B93291B723B900CF002D633A /* AddMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291B623B900CF002D633A /* AddMemberCell.swift */; };
 		B93291B923B900E5002D633A /* AddRestaurantToGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291B823B900E5002D633A /* AddRestaurantToGroupCell.swift */; };
 		B94B95DF23BEE10500AD8952 /* UpdatesMeetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94B95DE23BEE10500AD8952 /* UpdatesMeetup.swift */; };
+		B94F154023C0180800B3345A /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F153F23C0180800B3345A /* NotificationType.swift */; };
+		B94F154523C0744C00B3345A /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F154423C0744C00B3345A /* UserProfileVC.swift */; };
 		B968311D23B081B30068412F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968311C23B081B30068412F /* AppDelegate.swift */; };
 		B968311F23B081B30068412F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968311E23B081B30068412F /* SceneDelegate.swift */; };
 		B968312123B081B30068412F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968312023B081B30068412F /* ViewController.swift */; };
@@ -86,6 +88,8 @@
 		B93291B623B900CF002D633A /* AddMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberCell.swift; sourceTree = "<group>"; };
 		B93291B823B900E5002D633A /* AddRestaurantToGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantToGroupCell.swift; sourceTree = "<group>"; };
 		B94B95DE23BEE10500AD8952 /* UpdatesMeetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesMeetup.swift; sourceTree = "<group>"; };
+		B94F153F23C0180800B3345A /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
+		B94F154423C0744C00B3345A /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		B968311923B081B30068412F /* Lunchly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunchly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B968311C23B081B30068412F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B968311E23B081B30068412F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +184,14 @@
 				B9EF5D4823BCDD9C0075A19D /* MeetupCell.swift */,
 			);
 			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
+		B94F154323C073B900B3345A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B94F154423C0744C00B3345A /* UserProfileVC.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		B968311023B081B30068412F = {
@@ -302,6 +314,7 @@
 		B968315423B08FFA0068412F /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				B94F154323C073B900B3345A /* Profile */,
 				B968315D23B1366A0068412F /* Explore */,
 			);
 			path = Main;
@@ -316,6 +329,7 @@
 				B9EF5D0823BBA9520075A19D /* HeaderCellCategoryTypes.swift */,
 				B9EF5D4C23BDAFD70075A19D /* Int+TimeDisplay.swift */,
 				B94B95DE23BEE10500AD8952 /* UpdatesMeetup.swift */,
+				B94F153F23C0180800B3345A /* NotificationType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -516,6 +530,7 @@
 				B968317E23B29E240068412F /* UICollectionViewCell+setBorders.swift in Sources */,
 				B94B95DF23BEE10500AD8952 /* UpdatesMeetup.swift in Sources */,
 				B968315623B0949B0068412F /* IBDesignable-RoundedCorners.swift in Sources */,
+				B94F154023C0180800B3345A /* NotificationType.swift in Sources */,
 				B968311D23B081B30068412F /* AppDelegate.swift in Sources */,
 				B968311F23B081B30068412F /* SceneDelegate.swift in Sources */,
 				B968316623B13AB50068412F /* CategoryType.swift in Sources */,
@@ -532,6 +547,7 @@
 				B968315A23B1257D0068412F /* CategoryCell.swift in Sources */,
 				B9EF5D4B23BD1A520075A19D /* MeetupController.swift in Sources */,
 				B968316223B138890068412F /* RestaurantCell.swift in Sources */,
+				B94F154523C0744C00B3345A /* UserProfileVC.swift in Sources */,
 				B9DB216623B42A6A00B6849E /* CollectionViewLeftAlign.swift in Sources */,
 				B9EF5D0023BB25FE0075A19D /* Alert.swift in Sources */,
 				B9EF5D4923BCDD9C0075A19D /* MeetupCell.swift in Sources */,

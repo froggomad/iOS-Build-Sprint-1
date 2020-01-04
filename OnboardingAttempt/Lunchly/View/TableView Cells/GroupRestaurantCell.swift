@@ -9,14 +9,17 @@
 import UIKit
 
 class GroupRestaurantCell: UITableViewCell {
+    //MARK: IBOutlets
     @IBOutlet weak var nameLabel: UILabel!
     
+    //MARK: Setup View
     var restaurant: Restaurant? {
         didSet {
             updateViews()
         }
     }
     
+    //MARK: Helper Methods
     func updateViews() {
         self.nameLabel.text = restaurant!.name
     }

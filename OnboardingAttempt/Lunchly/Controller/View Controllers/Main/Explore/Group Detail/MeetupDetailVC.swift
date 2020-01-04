@@ -9,28 +9,37 @@
 import UIKit
 
 class MeetupDetailVC: UIViewController, UpdatesMeetup {
+    //MARK: IBOutlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
+    //MARK: Class Properties
+    weak var delegate: GroupDetailVC?
     var meetup: Meetup?
     var meetupController: MeetupController?
     var restaurantVotes: [Restaurant:Int] = [:]
     var user: User?
     var group: Group?
-    weak var delegate: GroupDetailVC?
     
+    //MARK: View Lifecycle (Update View)
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
         tableView.delegate = self
         tableView.dataSource = self
-        tallyVotes()
-        // Do any additional setup after loading the view.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let group = group,
+              let meetup = meetup
+        else {return}
+        meetupController?.tallyVotes(group: group, meetup: meetup)
+    }
+    
+    //MARK: Helper Methods
     func updateViews() {
         guard let meetup = meetup else {return}
         nameLabel.text = meetup.name
@@ -52,52 +61,27 @@ class MeetupDetailVC: UIViewController, UpdatesMeetup {
     }
     
     func updateRestaurantSelection(restaurant: Restaurant) {
+        let restaurantDict = ["restaurant":restaurant]
+        print(restaurantDict)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "changeSwitch"), object: nil, userInfo: restaurantDict)
         guard let meetup = meetup,
               let group = group else {return}
         self.meetup!.userVotes[user?.name ?? "none"] = restaurant
         meetupController?.updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: self.meetup!)
-        //tableView.reloadData()
-        #warning("move this call")
-        tallyVotes()
-    }
-    
-    //fire after meetup.voteEnds
-    func tallyVotes() {
-        guard let meetup = meetup,
-            let voteEnds = meetup.voteEnds
-        else {return}
-        if Date() >= voteEnds {
-            print(meetup.userVotes)
-            for (_ , restaurant) in meetup.userVotes {
-                if restaurantVotes[restaurant] != nil {
-                    restaurantVotes[restaurant]! += 1
-                } else {
-                    restaurantVotes[restaurant] = 1
-                }
+        for (index,groupMeetup) in group.meetups.enumerated() {
+            if meetup.id == groupMeetup.id {
+                self.group!.meetups[index] = self.meetup!
             }
-            let sortedKeys = restaurantVotes.keys.sorted{restaurantVotes[$0]! > restaurantVotes[$1]!}
-            if let firstKey = sortedKeys.first {
-                guard let group = group else {return}
-                self.meetup?.restaurant = firstKey
-                meetupController?.updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: self.meetup!)
-                for (index,groupMeetup) in group.meetups.enumerated() {
-                    if groupMeetup.id == meetup.id {
-                        print("Group found, updating")
-                        self.group?.meetups[index] = self.meetup!
-                    }
-                }
-                delegate?.updateGroup(group: self.group!)
-                tableView.reloadData()
-            }
-            //for user in group, notify them that the vote ended, ask if they'd like to set a reminder for a time to leave (implement notification switch)
         }
+        delegate?.updateGroup(group: self.group!)
     }
+
 }
 
 extension MeetupDetailVC: UITableViewDelegate {
     
 }
-
+//MARK: TableView DataSource
 extension MeetupDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.meetup?.possibleRestaurants.count ?? 0
@@ -109,12 +93,21 @@ extension MeetupDetailVC: UITableViewDataSource {
         cell.delegate = self
         cell.backgroundColor = .clear
         cell.wasVotedOnOutlet.setTitleColor(.label, for: .normal)
+        if let userVotes = meetup?.userVotes {
+            if let userVote = userVotes[user?.name ?? "none"] {
+                print("user voted on \(userVote.name)")
+                if cell.restaurant == userVote {
+                    cell.wasVotedOnOutlet.setImage(UIImage(systemName: "rectangle.fill.badge.checkmark"), for: .normal)
+                    cell.wasVotedOnOutlet.setTitle("", for: .normal)
+                }
+            }
+        }
         if let meetupRestaurant = meetup?.restaurant {
+            cell.wasVotedOnOutlet.setImage(nil, for: .normal)
+            cell.wasVotedOnOutlet.isEnabled = false
             if cell.restaurant == meetupRestaurant {
                 cell.backgroundColor = UIColor(named: "Secondary")
-                cell.wasVotedOnOutlet.setImage(nil, for: .normal)
                 cell.wasVotedOnOutlet.setTitle("Winner!", for: .normal)
-                cell.wasVotedOnOutlet.isEnabled = false
             }
         }
         return cell

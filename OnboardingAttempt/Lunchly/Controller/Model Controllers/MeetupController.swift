@@ -8,8 +8,8 @@
 import Foundation
 
 class MeetupController {
+    //MARK: Class Properties
     weak var delegate: GroupController?
-    
     var meetups: [Meetup] = []
     
     //MARK: Update
@@ -18,19 +18,31 @@ class MeetupController {
         delegate?.updateMeetup(group: group, originalMeetup: originalMeetup, amendedMeetup: mutatedMeetup)
     }
     
-    func voteHasEnded(group: Group, meetup: Meetup) -> Bool {
-        guard let voteEnds = meetup.voteEnds else {return false}
-        let voteEnded = voteEnds > Date()
-        if voteEnded && meetup.restaurant == nil {
-            #warning("use Restaurant from vote function")
-            let randomRestaurant = Int.random(in: 0..<meetup.possibleRestaurants.count)
-            for (index,thisMeetup) in group.meetups.enumerated() where meetup == thisMeetup {
-                //meetups[index] = meetup
-                meetups[index].restaurant = meetup.possibleRestaurants[randomRestaurant]
-                delegate?.updateMeetup(group: group, originalMeetup: meetup, amendedMeetup: meetups[index])
+    //MARK: Class Methods
+    func tallyVotes(group: Group, meetup: Meetup) {
+        var restaurantVotes: [Restaurant:Int] = [:]
+        for meetup in group.meetups {
+            guard let voteEnds = meetup.voteEnds else {return}
+            if Date() >= voteEnds {
+                print(meetup.userVotes)
+                for (_ , restaurant) in meetup.userVotes {
+                    if restaurantVotes[restaurant] != nil {
+                        restaurantVotes[restaurant]! += 1
+                    } else {
+                        restaurantVotes[restaurant] = 1
+                    }
+                }
+                let sortedKeys = restaurantVotes.keys.sorted{restaurantVotes[$0]! > restaurantVotes[$1]!}
+                if let firstKey = sortedKeys.first {
+                    var mutatedMeetup = meetup
+                    mutatedMeetup.restaurant = firstKey
+                    updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: mutatedMeetup)
+                }
+            } else {
+                print("It's not time to tally until the vote ends at \(voteEnds)")
             }
         }
-        return voteEnded
+
     }
     
 }

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class RestaurantController {
+    //MARK: Class Properties
     weak var delegate: CoreDataController? {
         didSet {
             createRestaurants()
@@ -41,7 +42,7 @@ class RestaurantController {
     }
     
     //MARK: Read
-    func getRestaurantFromName(name: String) -> Restaurant? {
+    func getRestaurantFromName(name: String) -> Restaurant? { //currently unused
         for restaurant in restaurants {
             if restaurant.name == name {
                 return restaurant
@@ -52,6 +53,15 @@ class RestaurantController {
     
     func load() {
         delegate?.loadRestaurantsFromPersistentStore()
+    }
+    
+    //MARK: Update
+    func updateRestaurant(oldRestaurant: Restaurant, newRestaurant: Restaurant) {
+        for (index, thisRestaurant) in restaurants.enumerated() where thisRestaurant == oldRestaurant {
+            restaurants[index].name = newRestaurant.name
+            restaurants[index].imageData = newRestaurant.imageData
+            delegate?.saveRestaurantsToPersistentStore()
+        }
     }
         
 }

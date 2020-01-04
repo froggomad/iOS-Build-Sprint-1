@@ -34,7 +34,7 @@ class ChangeGroupImageVC: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    //MARK: View Lifecycle
+    //MARK: View Lifecycle (Update View)
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
@@ -47,8 +47,8 @@ class ChangeGroupImageVC: UIViewController, UINavigationControllerDelegate {
     }
 
 }
-//MARK: ImagePickerDelegate
 
+//MARK: ImagePickerDelegate
 extension ChangeGroupImageVC: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
