@@ -9,6 +9,6 @@
 import Foundation
 
 struct Vote: Codable, Equatable {
-    var username: String
-    var Restaurant: Restaurant
+    var restaurant: Restaurant
+    var votes: Int
 }
