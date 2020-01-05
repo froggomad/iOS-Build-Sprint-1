@@ -26,11 +26,16 @@
                                     <constraint firstAttribute="width" secondItem="O1E-Hl-gLj" secondAttribute="height" multiplier="199:106" id="MkH-RS-2GD"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1k-iF-gbW">
-                                <rect key="frame" x="112.66666666666669" y="401" width="189" height="22"/>
-                                <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" name="Action"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1k-iF-gbW">
+                                <rect key="frame" x="101.66666666666667" y="401" width="210.66666666666663" height="22"/>
+                                <color key="backgroundColor" name="Action"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <state key="normal" title="Replace Group's Image" image="camera.fill" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="imagePickerBtnTapped:" destination="FVQ-2X-ZM3" eventType="touchUpInside" id="aXB-dv-WQK"/>
                                 </connections>
@@ -64,6 +69,7 @@
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="400"/>
                     <size key="freeformSize" width="414" height="460"/>
                     <connections>
+                        <outlet property="imagePickerButtonOutlet" destination="g1k-iF-gbW" id="nx0-Lx-cBQ"/>
                         <outlet property="imageView" destination="O1E-Hl-gLj" id="Ovh-Tg-9bK"/>
                     </connections>
                 </viewController>
@@ -518,7 +524,7 @@
                                 <state key="normal" title="Close" image="xmark.square.fill" catalog="system"/>
                                 <connections>
                                     <action selector="closeBtnTapped:" destination="PxJ-2r-CME" eventType="touchUpInside" id="FWm-x3-wYe"/>
-                                    <action selector="closeBtnTapped:" destination="gBs-n7-4Ke" eventType="touchUpInside" id="r2f-Ke-VMS"/>
+                                    <action selector="closeButtonTapped:" destination="gBs-n7-4Ke" eventType="touchUpInside" id="r2f-Ke-VMS"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLt-kh-E0g">
@@ -634,10 +640,22 @@
                                             <constraint firstAttribute="height" constant="45" id="uG6-0t-8R6"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqA-rG-UhW">
-                                        <rect key="frame" x="126" y="523" width="123" height="30"/>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqA-rG-UhW">
+                                        <rect key="frame" x="115" y="523" width="145" height="34"/>
+                                        <color key="backgroundColor" name="Action"/>
                                         <color key="tintColor" name="Action"/>
                                         <state key="normal" title="Save This Meetup"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="saveBtnTapped:" destination="gBs-n7-4Ke" eventType="touchUpInside" id="92I-Ko-MhB"/>
                                         </connections>
@@ -709,6 +727,7 @@
                         <outlet property="datePicker" destination="vAL-rl-vjx" id="J7D-BZ-ra7"/>
                         <outlet property="meetupNameTextField" destination="6so-SQ-ZpO" id="HkR-6U-sxb"/>
                         <outlet property="notificationSwitch" destination="iyr-IV-q8h" id="jbj-b1-qx1"/>
+                        <outlet property="saveButtonOutlet" destination="fqA-rG-UhW" id="h4w-Mj-TXK"/>
                         <outlet property="tableView" destination="Few-BI-6Mh" id="QQt-34-BKb"/>
                     </connections>
                 </viewController>

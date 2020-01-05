@@ -21,6 +21,7 @@
 		B94F154023C0180800B3345A /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F153F23C0180800B3345A /* NotificationType.swift */; };
 		B94F154523C0744C00B3345A /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F154423C0744C00B3345A /* UserProfileVC.swift */; };
 		B94F154723C0F7AE00B3345A /* UIViewController+endEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F154623C0F7AE00B3345A /* UIViewController+endEditing.swift */; };
+		B94F154C23C0FE5000B3345A /* UIButton+titlePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F154B23C0FE5000B3345A /* UIButton+titlePadding.swift */; };
 		B968311D23B081B30068412F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968311C23B081B30068412F /* AppDelegate.swift */; };
 		B968311F23B081B30068412F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968311E23B081B30068412F /* SceneDelegate.swift */; };
 		B968312123B081B30068412F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968312023B081B30068412F /* ViewController.swift */; };
@@ -73,6 +74,7 @@
 		B94F153F23C0180800B3345A /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
 		B94F154423C0744C00B3345A /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		B94F154623C0F7AE00B3345A /* UIViewController+endEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+endEditing.swift"; sourceTree = "<group>"; };
+		B94F154B23C0FE5000B3345A /* UIButton+titlePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+titlePadding.swift"; sourceTree = "<group>"; };
 		B968311923B081B30068412F /* Lunchly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunchly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B968311C23B081B30068412F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B968311E23B081B30068412F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +159,18 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		B94F154823C0FC3900B3345A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B968315523B0949B0068412F /* IBDesignable-RoundedCorners.swift */,
+				B9EF5D4C23BDAFD70075A19D /* Int+TimeDisplay.swift */,
+				B94F154623C0F7AE00B3345A /* UIViewController+endEditing.swift */,
+				B968317D23B29E240068412F /* UICollectionViewCell+setBorders.swift */,
+				B94F154B23C0FE5000B3345A /* UIButton+titlePadding.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B968311023B081B30068412F = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				B968315B23B1282F0068412F /* Model */,
+				B94F154823C0FC3900B3345A /* Extensions */,
 				B968314F23B08FB50068412F /* View */,
 				B968315223B08FD20068412F /* Controller */,
 				B968315023B08FC00068412F /* Resources */,
@@ -200,10 +215,8 @@
 			isa = PBXGroup;
 			children = (
 				B968314E23B08FAC0068412F /* Storyboards */,
-				B968315523B0949B0068412F /* IBDesignable-RoundedCorners.swift */,
 				B968316023B138670068412F /* CollectionView Cells */,
 				B93291AD23B7D447002D633A /* TableView Cells */,
-				B968317D23B29E240068412F /* UICollectionViewCell+setBorders.swift */,
 				B9DB216523B42A6A00B6849E /* CollectionViewLeftAlign.swift */,
 			);
 			path = View;
@@ -268,10 +281,8 @@
 				B968316723B13DF50068412F /* Search */,
 				B932917B23B569E6002D633A /* User.swift */,
 				B9EF5D0823BBA9520075A19D /* HeaderCellCategoryTypes.swift */,
-				B9EF5D4C23BDAFD70075A19D /* Int+TimeDisplay.swift */,
 				B94B95DE23BEE10500AD8952 /* UpdatesMeetup.swift */,
 				B94F153F23C0180800B3345A /* NotificationType.swift */,
-				B94F154623C0F7AE00B3345A /* UIViewController+endEditing.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +425,7 @@
 				B94B95DF23BEE10500AD8952 /* UpdatesMeetup.swift in Sources */,
 				B968315623B0949B0068412F /* IBDesignable-RoundedCorners.swift in Sources */,
 				B94F154023C0180800B3345A /* NotificationType.swift in Sources */,
+				B94F154C23C0FE5000B3345A /* UIButton+titlePadding.swift in Sources */,
 				B968311D23B081B30068412F /* AppDelegate.swift in Sources */,
 				B968311F23B081B30068412F /* SceneDelegate.swift in Sources */,
 				B968316623B13AB50068412F /* CategoryType.swift in Sources */,

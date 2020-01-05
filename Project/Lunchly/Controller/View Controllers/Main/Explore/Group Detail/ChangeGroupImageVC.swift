@@ -11,6 +11,7 @@ import UIKit
 class ChangeGroupImageVC: UIViewController, UINavigationControllerDelegate {
     //MARK: IBOutlets
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imagePickerButtonOutlet: UIButton!
     
     
     //MARK: IBActions
@@ -44,6 +45,7 @@ class ChangeGroupImageVC: UIViewController, UINavigationControllerDelegate {
     //MARK: Helper Functions
     func updateViews() {
         self.imageView.image = UIImage(data: group?.imageData ?? Data())
+        imagePickerButtonOutlet.titlePadding(left: 8, right: 8, bottom: 8, top: 8)
     }
 
 }

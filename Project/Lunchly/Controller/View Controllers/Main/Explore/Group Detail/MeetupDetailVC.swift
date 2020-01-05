@@ -66,7 +66,7 @@ class MeetupDetailVC: UIViewController, UpdatesMeetup {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "changeSwitch"), object: nil, userInfo: restaurantDict)
         guard let meetup = meetup,
               let group = group else {return}
-        self.meetup!.userVotes[user?.name ?? "none"] = restaurant
+        self.meetup!.userVotes[user?.name ?? "coffeLvr2001"] = restaurant
         meetupController?.updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: self.meetup!)
         for (index,groupMeetup) in group.meetups.enumerated() {
             if meetup.id == groupMeetup.id {
@@ -94,8 +94,8 @@ extension MeetupDetailVC: UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.wasVotedOnOutlet.setTitleColor(.label, for: .normal)
         if let userVotes = meetup?.userVotes {
-            if let userVote = userVotes[user?.name ?? "none"] {
-                print("user voted on \(userVote.name)")
+            if let userVote = userVotes[user?.name ?? "fred"] {
+                print("\(user?.name ?? "fred") voted on \(userVote.name)")
                 if cell.restaurant == userVote {
                     cell.wasVotedOnOutlet.setImage(UIImage(systemName: "rectangle.fill.badge.checkmark"), for: .normal)
                     cell.wasVotedOnOutlet.setTitle("", for: .normal)
@@ -108,6 +108,8 @@ extension MeetupDetailVC: UITableViewDataSource {
             if cell.restaurant == meetupRestaurant {
                 cell.backgroundColor = UIColor(named: "Secondary")
                 cell.wasVotedOnOutlet.setTitle("Winner!", for: .normal)
+            } else {
+                cell.wasVotedOnOutlet.setTitle("", for: .normal)
             }
         }
         return cell

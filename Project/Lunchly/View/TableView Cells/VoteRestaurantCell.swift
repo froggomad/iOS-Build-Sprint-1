@@ -41,7 +41,7 @@ class VoteRestaurantCell: UITableViewCell {
     //MARK: Class Properties
     weak var delegate: UpdatesMeetup?
     var votes: [User] = []
-    var meetup: Meetup?
+    var pickedRestaurant: Restaurant?
     
     //MARK: Helper Methods
     @objc func disableBtn(_ notification: Notification) {

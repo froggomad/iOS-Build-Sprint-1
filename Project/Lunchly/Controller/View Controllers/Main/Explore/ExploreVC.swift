@@ -32,7 +32,6 @@ class ExploreVC: UIViewController {
         searchResultsCollectionView.delegate = self
         searchResultsCollectionView.dataSource = self
         searchBar.delegate = self
-        searchBar.searchTextField.delegate = self
         
         //MARK: CollectionView DataSource
         self.searchController = SearchController()
@@ -40,6 +39,7 @@ class ExploreVC: UIViewController {
             self.coreDataController = CoreDataController()
         }
         constructServiceArray()
+        #warning("Move this to a helper")
         if let restaurants = coreDataController?.restaurantController.restaurants {
             for restaurant in  restaurants {
                 self.searchable.append(restaurant)
@@ -51,9 +51,8 @@ class ExploreVC: UIViewController {
             }
         }
         filteredSearchArray = searchable //copy searchable so there's a reference to the original and one we filter for searching
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notification) in
-            print(notification.description)
-        }
+        
+        self.keyboardHidesOnTap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -188,12 +187,16 @@ extension ExploreVC: UICollectionViewDataSource {
 
 //MARK: Search Delegate
 extension ExploreVC: UISearchBarDelegate {
-    
-}
-
-extension ExploreVC: UISearchTextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        
     }
 }
+
+//extension ExploreVC: UISearchTextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
+//}

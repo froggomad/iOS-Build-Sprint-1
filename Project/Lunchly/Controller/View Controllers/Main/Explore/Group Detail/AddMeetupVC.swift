@@ -15,9 +15,10 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var notificationSwitch: UISwitch!
     @IBOutlet weak var meetupNameTextField: UITextField!
+    @IBOutlet weak var saveButtonOutlet: UIButton!
     
     //MARK: IBActions
-    @IBAction func closeBtnTapped(_ sender: UIButton) {
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -57,20 +58,31 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
         tableView.delegate = self
         tableView.dataSource = self
         notificationSwitch.isOn = false
+        saveButtonOutlet.titlePadding()
+        self.keyboardHidesOnTap()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     //MARK: Helper Methods
     func constructMeetup() -> Meetup? {
         guard let group = group else {return nil}
         guard let meetupTime = self.meetupTime else {
-            Alert.show(title: "Time not entered", message: "Please Choose a Time to Leave", vc: self)
+            Alert.show(title: "Time not entered", message: "Please Choose a Time to Leave", vc: self) {
+                
+            }
             return nil
         }
         guard let meetupName = meetupNameTextField.text,
-               meetupName != ""
+            meetupName != ""
         else {
-               Alert.show(title: "Name not entered", message: "Please type a name for your Meetup", vc: self)
-              return nil
+            Alert.show(title: "Name not entered", message: "Please enter a name for your Meetup", vc: self) {
+                self.meetupNameTextField.becomeFirstResponder()
+            }
+            return nil
         }
         
         var meetup: Meetup
@@ -84,7 +96,9 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
     
     func setPickedRestaurant() {
         if pickedRestaurants.count == 0 {
-            Alert.show(title: "No Restaurant Chosen", message: "Please Choose at least one Restaurant", vc: self)
+            Alert.show(title: "No Restaurant Chosen", message: "Please Choose at least one Restaurant", vc: self) {
+                
+            }
             return
         } else if pickedRestaurants.count == 1 {
             pickedRestaurant = pickedRestaurants[0]
@@ -103,7 +117,9 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
                         
                     } else {
                         self.notificationSwitch.isOn = false
-                        Alert.show(title: "Oops!", message: "Please enter a number", vc: self)
+                        Alert.show(title: "Oops!", message: "Please enter a number", vc: self) {
+                            
+                        }
                     }
                 }
             } else {
@@ -126,7 +142,9 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
     func save() {
         setPickedRestaurant() //sets self.pickedRestaurant if only 1 restaurant is picked
         if self.meetupTime == nil {
-            Alert.show(title: "Time not entered", message: "Please Choose a Time to Leave", vc: self)
+            Alert.show(title: "Time not entered", message: "Please Choose a Time to Leave", vc: self) {
+                
+            }
             return
         }
         guard let group = group,

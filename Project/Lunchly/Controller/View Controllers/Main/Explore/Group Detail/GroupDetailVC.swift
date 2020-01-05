@@ -125,7 +125,6 @@ class GroupDetailVC: UIViewController {
 
 //MARK: TableView Delegate
 extension GroupDetailVC: UITableViewDelegate {
-    #warning("TODO: swipe to delete")
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch tableView {
         case meetupTableView:
@@ -140,9 +139,7 @@ extension GroupDetailVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        switch tableView {
-        default: return 40
-        }
+        40
     }
     
     //MARK: TableView Delegate Helper Methods

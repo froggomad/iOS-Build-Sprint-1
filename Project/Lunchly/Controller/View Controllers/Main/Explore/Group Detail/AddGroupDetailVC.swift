@@ -34,6 +34,7 @@ class AddGroupDetailVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        self.keyboardHidesOnTap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
