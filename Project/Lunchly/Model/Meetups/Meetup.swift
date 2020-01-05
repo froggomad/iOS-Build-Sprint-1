@@ -16,7 +16,7 @@ struct Meetup: Codable, Equatable {
     var location: String?
     var voteEnds: Date?
     var meetupStarts: Date
-    var userVotes: [String:Restaurant] = [:]
+    var userVotes: [Vote]?
     private var restaurantVotes: [Restaurant:Int] = [:]
     
     
