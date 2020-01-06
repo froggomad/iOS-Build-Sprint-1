@@ -446,8 +446,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x42-cV-7go">
-                                                    <rect key="frame" x="264.33333333333331" y="14" width="63.666666666666686" height="22"/>
-                                                    <state key="normal" title="Vote" image="rectangle.badge.checkmark" catalog="system"/>
+                                                    <rect key="frame" x="271" y="14" width="64" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="vBO-qI-5mr"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Vote" image="rectangle.badge.checkmark" catalog="system">
+                                                        <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="wasVotedOnTapped:" destination="WQs-l2-9Mj" eventType="touchUpInside" id="qIj-u7-Ujs"/>
                                                     </connections>
@@ -458,7 +463,7 @@
                                                 <constraint firstItem="FGj-5t-huF" firstAttribute="centerY" secondItem="ue2-o3-RVD" secondAttribute="centerY" id="JVI-7O-ZKy"/>
                                                 <constraint firstItem="x42-cV-7go" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="FGj-5t-huF" secondAttribute="trailing" constant="8" id="ZeX-4E-tm8"/>
                                                 <constraint firstItem="x42-cV-7go" firstAttribute="centerY" secondItem="FGj-5t-huF" secondAttribute="centerY" id="dju-2e-kyo"/>
-                                                <constraint firstAttribute="trailing" secondItem="x42-cV-7go" secondAttribute="trailing" constant="15" id="dvp-JT-5X6"/>
+                                                <constraint firstAttribute="trailing" secondItem="x42-cV-7go" secondAttribute="trailing" constant="8" id="dvp-JT-5X6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -102,6 +102,7 @@ extension MeetupDetailVC: UITableViewDataSource {
                 }
             }
         }
+        
         if let meetupRestaurant = meetup?.restaurant {
             cell.wasVotedOnOutlet.setImage(nil, for: .normal)
             cell.wasVotedOnOutlet.isEnabled = false

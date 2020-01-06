@@ -39,18 +39,7 @@ class ExploreVC: UIViewController {
             self.coreDataController = CoreDataController()
         }
         constructServiceArray()
-        #warning("Move this to a helper")
-        if let restaurants = coreDataController?.restaurantController.restaurants {
-            for restaurant in  restaurants {
-                self.searchable.append(restaurant)
-            }
-        }
-        if let groups = coreDataController?.groupsController.groups {
-            for group in  groups {
-                self.searchable.append(group)
-            }
-        }
-        filteredSearchArray = searchable //copy searchable so there's a reference to the original and one we filter for searching
+        constructSearchArray()
         
         self.keyboardHidesOnTap()
     }
@@ -104,6 +93,20 @@ class ExploreVC: UIViewController {
             }
             servicesArray.append(thisService)
         }
+    }
+    
+    func constructSearchArray() {
+        if let restaurants = coreDataController?.restaurantController.restaurants {
+            for restaurant in  restaurants {
+                self.searchable.append(restaurant)
+            }
+        }
+        if let groups = coreDataController?.groupsController.groups {
+            for group in  groups {
+                self.searchable.append(group)
+            }
+        }
+        filteredSearchArray = searchable //copy searchable so there's a reference to the original and one we filter for searching
     }
     
     func tallyVotes() {

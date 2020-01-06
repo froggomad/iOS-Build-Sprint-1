@@ -23,16 +23,17 @@ class MeetupCell: UITableViewCell {
     //MARK: Helper Methods
     func updateViews() {
         guard let meetup = meetup else {return}
+        //number of minutes until vote ends
         let timeDifference = Calendar.current.dateComponents([.minute], from: Date(), to: meetup.voteEnds ?? Date()).minute ?? 0
         var votingString = ""
         if meetup.restaurant == nil {
             if timeDifference > 0 {
-                votingString = "Location TBD voting ends in \(timeDifference.timeDisplay())"
+                votingString = "TBD: voting ends in \(timeDifference.timeDisplay())"
             } else {
-                votingString = "Voting ended \(timeDifference.timeDisplay()) ago. Please see the results!"
+                votingString = "\(meetup.name): Voting ended \(timeDifference.timeDisplay()) ago. Please see the results!" //during dev, voting was failing to update the tableView sometimes
             }
         }
-        self.nameLabel.text = meetup.restaurant?.name ?? votingString
+        self.nameLabel.text = "\(meetup.name) at \(meetup.restaurant?.name ?? votingString)"
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
