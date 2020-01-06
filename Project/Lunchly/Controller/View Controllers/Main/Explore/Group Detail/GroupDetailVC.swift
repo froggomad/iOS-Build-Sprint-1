@@ -114,11 +114,21 @@ class GroupDetailVC: UIViewController {
     @objc func performAddRestaurantSegue() {
         performSegue(withIdentifier: "AddRestaurantSegue", sender: nil)
     }
+    
     @objc func performAddMemberSegue() {
         performSegue(withIdentifier: "AddMemberSegue", sender: nil)
     }
+    
     @objc func performAddMeetupSegue() {
-        performSegue(withIdentifier: "AddMeetupSegue", sender: nil)
+        if let group = group,
+        !group.restaurants.isEmpty{
+            performSegue(withIdentifier: "AddMeetupSegue", sender: nil)
+        } else {
+            Alert.show(title: "No Restaurants", message: "Please add at least 1 restaurant to your group before scheduling a meetup.", vc: self) {
+                
+            }
+            return
+        }
     }
 }
 
@@ -202,6 +212,7 @@ extension GroupDetailVC: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "MeetupCell", for: indexPath) as? MeetupCell else { return UITableViewCell()}
             cell.meetup = group?.meetups[indexPath.row]
             cell.backgroundColor = .clear
+            cell.selectionStyle = .none
             return cell
         default: return UITableViewCell()
         }

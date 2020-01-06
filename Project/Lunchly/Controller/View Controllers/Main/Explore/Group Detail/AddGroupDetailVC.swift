@@ -105,6 +105,7 @@ extension AddGroupDetailVC: UITableViewDataSource {
                   let member = tableViewDataSource?[indexPath.row] as? User,
                   let group = group
                 else {return UITableViewCell()}
+            cell.selectionStyle = .none
             var memberGroupsArray: [String] = []
             for group in member.groups {
                 memberGroupsArray.append(group.name)
@@ -124,7 +125,7 @@ extension AddGroupDetailVC: UITableViewDataSource {
                     let restaurant = tableViewDataSource?[indexPath.row] as? Restaurant,
                     let group = group
                 else {return UITableViewCell()}
-            
+            cell.selectionStyle = .none
             var groupRestaurantsArray: [String] = []
             for memberRestaurant in group.restaurants {
                groupRestaurantsArray.append(memberRestaurant.name)

@@ -45,6 +45,11 @@ class GroupController {
     }
     
     //MARK: Update
+    func addGroup(group: Group) {
+        groups.append(group)
+        save()
+    }
+    
     func addUserToGroup(group: Group, user: User) {
         for (index, thisGroup) in groups.enumerated() {
             //group found, mutate

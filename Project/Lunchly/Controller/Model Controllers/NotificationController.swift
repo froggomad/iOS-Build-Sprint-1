@@ -25,13 +25,13 @@ class NotificationController: NSObject, UNUserNotificationCenterDelegate {
        }
     }
     
-    func triggerNotification(notificationType: NotificationType, onDate date: Date, withId id: String) {
+    func triggerNotification(meetup: Meetup, notificationType: NotificationType, onDate date: Date, withId id: String) {
         self.date = date
         let notificationDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: notificationDate, repeats: false)
         let identifier = id
         let request = UNNotificationRequest(identifier: identifier,
-                                            content: scheduleNotification(notificationType: notificationType),
+                                            content: scheduleNotification(meetup: meetup, notificationType: notificationType),
                                             trigger: trigger)
         notificationCenter.add(request) { (error) in
             print("notification: \(request.identifier)")
@@ -42,14 +42,14 @@ class NotificationController: NSObject, UNUserNotificationCenterDelegate {
     }
     
     //MARK: Helper Methods
-    private func scheduleNotification(notificationType: NotificationType) -> UNMutableNotificationContent {
+    private func scheduleNotification(meetup: Meetup, notificationType: NotificationType) -> UNMutableNotificationContent {
         print("Scheduling")
         let content = UNMutableNotificationContent()
         content.sound = .default
         switch notificationType {
         case .timeToLeave:
             content.title = "Time to Leave!"
-            content.body = "Your meetup is happening soon, let's roll!"
+            content.body = "Your meetup at \(meetup.restaurant?.name ?? "Your group's restaurant") is happening soon, let's roll!"
         case .votingBegan:
             content.title = "Time to vote!"
             content.body = "One of your groups has scheduled a new meetup!"
@@ -58,7 +58,7 @@ class NotificationController: NSObject, UNUserNotificationCenterDelegate {
             content.body = "You only have about 30 minutes left to vote on your group's meetup location!"
         case .votingEnded:
             content.title = "Voting Finished"
-            content.body = "Your group's meetup location has been set!"
+            content.body = "Your group's meetup location has been set to \(meetup.restaurant?.name ?? "the winning vote")! Remember to go to your group's meetup and tell us how much time it'll take you to get there so we can send you a reminder!"
         }
         //content.badge = 1 (can't figure out how to clear this)
         return content

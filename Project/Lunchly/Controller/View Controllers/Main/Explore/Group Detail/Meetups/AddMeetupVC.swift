@@ -95,12 +95,7 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
     }
     
     func setPickedRestaurant() {
-        if pickedRestaurants.count == 0 {
-            Alert.show(title: "No Restaurant Chosen", message: "Please Choose at least one Restaurant", vc: self) {
-                
-            }
-            return
-        } else if pickedRestaurants.count == 1 {
+        if pickedRestaurants.count == 1 {
             pickedRestaurant = pickedRestaurants[0]
         }
     }
@@ -112,7 +107,7 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
                     if status { //the input returned is an Int, set the meetup's timeToLeave and trigger the notification for when it's time to leave for the meetup
                         let timeToLeave = Calendar.current.date(byAdding: .minute, value: -time, to: meetup.meetupStarts)
                         
-                        self.notificationHandler.triggerNotification(notificationType: .timeToLeave, onDate: timeToLeave!, withId: "\(meetup.id)-\(NotificationType.timeToLeave.rawValue)")
+                        self.notificationHandler.triggerNotification(meetup: meetup, notificationType: .timeToLeave, onDate: timeToLeave!, withId: "\(meetup.id)-\(NotificationType.timeToLeave.rawValue)")
                         
                         
                     } else {
@@ -125,10 +120,10 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
             } else {
                 if pickedRestaurants.count > 1 {
                     print("Vote triggered, scheduling notifications")
-                    notificationHandler.triggerNotification(notificationType: .votingBegan, onDate: Date(timeIntervalSinceNow: 15), withId: "\(meetup.id)-\(NotificationType.votingBegan.rawValue)")
+                    notificationHandler.triggerNotification(meetup: meetup, notificationType: .votingBegan, onDate: Date(timeIntervalSinceNow: 15), withId: "\(meetup.id)-\(NotificationType.votingBegan.rawValue)")
                     if let voteEnds = meetup.voteEnds {
                         if voteEnds > Date(timeIntervalSinceNow: 1800) {
-                            notificationHandler.triggerNotification(notificationType: .votingEndsSoon, onDate: Date(timeInterval: -1800, since: voteEnds), withId: "\(meetup.id)-\(NotificationType.votingEndsSoon.rawValue)")
+                            notificationHandler.triggerNotification(meetup: meetup, notificationType: .votingEndsSoon, onDate: Date(timeInterval: -1800, since: voteEnds), withId: "\(meetup.id)-\(NotificationType.votingEndsSoon.rawValue)")
                         }
                     }
                 }
@@ -140,24 +135,31 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
     }
     
     func save() {
-        setPickedRestaurant() //sets self.pickedRestaurant if only 1 restaurant is picked
-        if self.meetupTime == nil {
-            Alert.show(title: "Time not entered", message: "Please Choose a Time to Leave", vc: self) {
-                
+        if !pickedRestaurants.isEmpty {
+            setPickedRestaurant() //sets self.pickedRestaurant if only 1 restaurant is picked
+            
+            if self.meetupTime == nil {
+                Alert.show(title: "Time not entered", message: "Please Choose a Time to Leave", vc: self) {
+                    
+                }
+                return
             }
-            return
+            guard let group = group,
+                  let meetup = constructMeetup()
+            else {return}
+            checkNotifications(meetup: meetup)
+            
+            //save meetup
+            //group is force unwrapped because we definitely have a group at this point
+            self.group!.meetups.append(meetup)
+            groupController?.addMeetupToGroup(group: group, meetup: meetup)
+            delegate?.updateGroup(group: self.group!)
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            Alert.show(title: "No Restaurant Chosen", message: "Please Choose at least one Restaurant", vc: self) {
+                           
+            }
         }
-        guard let group = group,
-              let meetup = constructMeetup()
-        else {return}
-        checkNotifications(meetup: meetup)
-        
-        //save meetup
-        //group is force unwrapped because we definitely have a group at this point
-        self.group!.meetups.append(meetup)
-        groupController?.addMeetupToGroup(group: group, meetup: meetup)
-        delegate?.updateGroup(group: self.group!)
-        self.dismiss(animated: true, completion: nil)
     }
     
     func updateRestaurantSelection(restaurant: Restaurant) {
@@ -182,6 +184,7 @@ extension AddMeetupVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AddRestaurantToMeetupCell") as? VoteRestaurantCell else {return UITableViewCell()}
+        cell.selectionStyle = .none
         cell.restaurant = group?.restaurants[indexPath.row]
         cell.backgroundColor = .clear
         cell.delegate = self

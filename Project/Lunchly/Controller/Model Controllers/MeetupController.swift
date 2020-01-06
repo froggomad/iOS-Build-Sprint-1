@@ -26,8 +26,6 @@ class MeetupController {
         for meetup in group.meetups {
             guard let voteEnds = meetup.voteEnds else {return}
             //check if the vote has ended
-            //MARK: Testing
-            #warning("uncomment below after testing")
             if Date() >= voteEnds {
                 //Construct restaurantVotes Dictionary using meetup.userVotes
                 //userVotes has the username as Key and restaurant they voted on as Value.
@@ -101,6 +99,6 @@ class MeetupController {
     
     private func triggerVoteEndNotification(meetup: Meetup) {
         notificationHandler.notificationRequest()
-        notificationHandler.triggerNotification(notificationType: .votingEnded, onDate: Date(), withId: "\(meetup.id)-\(NotificationType.timeToLeave.rawValue)")
+        notificationHandler.triggerNotification(meetup: meetup, notificationType: .votingEnded, onDate: Date(), withId: "\(meetup.id)-\(NotificationType.timeToLeave.rawValue)")
     }
 }

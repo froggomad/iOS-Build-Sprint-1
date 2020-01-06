@@ -133,8 +133,7 @@
 				B93291A723B7B23E002D633A /* GroupDetailVC.swift */,
 				B93291A923B7CB63002D633A /* ChangeGroupImageVC.swift */,
 				B93291AB23B7CFC4002D633A /* AddGroupDetailVC.swift */,
-				B9EF5CFC23BB000E0075A19D /* AddMeetupVC.swift */,
-				B9EF5D5023BE97730075A19D /* MeetupDetailVC.swift */,
+				B94F155223C2CAB000B3345A /* Meetups */,
 			);
 			path = "Group Detail";
 			sourceTree = "<group>";
@@ -179,6 +178,15 @@
 				B9EF5D0A23BBD2720075A19D /* Meetup.swift */,
 				B94B95DE23BEE10500AD8952 /* UpdatesMeetup.swift */,
 				B94F155023C29A1C00B3345A /* Vote.swift */,
+			);
+			path = Meetups;
+			sourceTree = "<group>";
+		};
+		B94F155223C2CAB000B3345A /* Meetups */ = {
+			isa = PBXGroup;
+			children = (
+				B9EF5CFC23BB000E0075A19D /* AddMeetupVC.swift */,
+				B9EF5D5023BE97730075A19D /* MeetupDetailVC.swift */,
 			);
 			path = Meetups;
 			sourceTree = "<group>";

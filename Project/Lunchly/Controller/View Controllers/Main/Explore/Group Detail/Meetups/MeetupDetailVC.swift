@@ -92,6 +92,7 @@ extension MeetupDetailVC: UITableViewDataSource {
         cell.restaurant = meetup?.possibleRestaurants[indexPath.row]
         cell.delegate = self
         cell.backgroundColor = .clear
+        cell.selectionStyle = .none
         cell.wasVotedOnOutlet.setTitleColor(.label, for: .normal)
         if let userVotes = meetup?.userVotes {
             if let userVote = userVotes[user?.name ?? "fred"] {

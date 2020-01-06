@@ -20,14 +20,14 @@ class UserController {
     
     //MARK: Create
     func createUsers() {
-        delegate?.loadUsersFromPersistentStore()
+        load()
         if users.count == 0 {
             print("creating users")
             users = [
                 User(name: "Kenny", image: Data(), groups: [], restaurants: []),
                 User(name: "TestUser", image: Data(), groups: [], restaurants: [])
             ]
-            delegate?.saveUsersToPersistentStore()
+            save()
         }
     }
     
@@ -47,6 +47,11 @@ class UserController {
     
     //MARK: Update
     
+    func addUser(user: User) {
+        self.users.append(user)
+        save()
+    }
+    
     func addGroupToUser(group: Group, user: User) {
         for userGroup in user.groups {
             if userGroup == group {
@@ -56,9 +61,23 @@ class UserController {
         for (index,modelUser) in users.enumerated() {
             if user == modelUser {
                 users[index].groups.append(group)
-                delegate?.saveUsersToPersistentStore()
+                save()
             }
         }
+    }
+    
+    func updateUser(originalUser: User, mutatedUser: User) {
+        for (index, user) in users.enumerated() {
+            if user == originalUser {
+                users[index] = mutatedUser
+                save()
+                return
+            }
+        }
+    }
+    
+    func save() {
+        delegate?.saveUsersToPersistentStore()
     }
 }
 
