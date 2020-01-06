@@ -45,14 +45,14 @@ class MeetupController {
                     mutatedMeetup.restaurant = sortedVotes[0].restaurant
                     updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: mutatedMeetup)
                     print("\(sortedVotes[0].restaurant.name) is clearly the winner!")
-                    notificationHandler.notificationRequest()
-                    notificationHandler.triggerNotification(notificationType: .votingEnded, onDate: Date(), withId: "\(meetup.id)-\(NotificationType.timeToLeave.rawValue)")
+                    triggerVoteEndNotification(meetup: meetup)
                 } else {
                     if let duplicateVotes = getDuplicateWinningVotes(sortedRestaurantVotes: sortedVotes) {
                         mutatedMeetup.restaurant = randomVote(duplicateRestaurants: duplicateVotes)
                         updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: mutatedMeetup)
                         print("There was a tie between \(duplicateVotes)")
                         print("The winner is \(String(describing: mutatedMeetup.restaurant?.name))")
+                        triggerVoteEndNotification(meetup: meetup)
                     }
                 }
             } else {
@@ -60,6 +60,7 @@ class MeetupController {
                 mutatedMeetup.restaurant = randomVote(duplicateRestaurants: restaurantArray)
                 updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: mutatedMeetup)
                 print("nobody voted, so a random restaurant was chosen: \(String(describing: mutatedMeetup.restaurant?.name))")
+                triggerVoteEndNotification(meetup: meetup)
             }
             
             } else {
@@ -98,4 +99,8 @@ class MeetupController {
         return votes.sorted(by: {$0.votes > $1.votes})
     }
     
+    private func triggerVoteEndNotification(meetup: Meetup) {
+        notificationHandler.notificationRequest()
+        notificationHandler.triggerNotification(notificationType: .votingEnded, onDate: Date(), withId: "\(meetup.id)-\(NotificationType.timeToLeave.rawValue)")
+    }
 }
