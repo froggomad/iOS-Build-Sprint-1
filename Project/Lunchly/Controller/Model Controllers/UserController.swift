@@ -17,17 +17,23 @@ class UserController {
         }
     }
     var users: [User] = []
+    var currentUser: User?
     
     //MARK: Create
     func createUsers() {
         load()
         if users.count == 0 {
             print("creating users")
+            let currentUser = User(name: "Enter Your Name", image: Data(), groups: [], restaurants: [])
+            self.currentUser = currentUser
             users = [
+                currentUser,
                 User(name: "Kenny", image: Data(), groups: [], restaurants: []),
                 User(name: "TestUser", image: Data(), groups: [], restaurants: [])
             ]
             save()
+        } else {
+            currentUser = users[0]
         }
     }
     
@@ -46,7 +52,6 @@ class UserController {
     }
     
     //MARK: Update
-    
     func addUser(user: User) {
         self.users.append(user)
         save()

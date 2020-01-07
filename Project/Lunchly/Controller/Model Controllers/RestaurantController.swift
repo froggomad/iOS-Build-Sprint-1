@@ -31,11 +31,26 @@ class RestaurantController {
             let barrelistaImage = UIImage(named: "barrelistaCoffee")
             
             restaurants = [
-                Restaurant(name: "Joe's Pizza Shack", imageData: pizzaImage?.pngData() ?? Data(), address: "123 Main St.\nMartinez, CA 94553", serviceTypes: [.takeout, .delivery]),
-                Restaurant(name: "State's Coffee", imageData: statesImage?.pngData() ?? Data(), address: "609 Ward St.\nMartinez, CA 94553", serviceTypes: [.takeout, .dineIn]),
-                Restaurant(name: "Mountain Grounds", imageData: mountainImage?.pngData() ?? Data(), address: "3750 Alhambra Ave. #2\nMartinez, CA 94553", serviceTypes: [.takeout, .dineIn]),
-                Restaurant(name: "Lemongrass Bistro", imageData: lemongrassImage?.pngData() ?? Data(), address: "501 Main St.\nMartinez, CA 94553",serviceTypes: [.takeout, .dineIn]),
-                Restaurant(name: "Barrelista Coffee House", imageData: barrelistaImage?.pngData() ?? Data(), address: "736 Main St.\n Martinez, CA 94553", serviceTypes: [.takeout, .dineIn]),
+                Restaurant(name: "Joe's Pizza Shack",
+                           imageData: pizzaImage?.pngData() ?? Data(),
+                           address: "123 Main St.\nMartinez, CA 94553",
+                           serviceTypes: [.takeout, .delivery]),
+                Restaurant(name: "State's Coffee",
+                           imageData: statesImage?.pngData() ?? Data(),
+                           address: "609 Ward St.\nMartinez, CA 94553",
+                           serviceTypes: [.takeout, .dineIn]),
+                Restaurant(name: "Mountain Grounds",
+                           imageData: mountainImage?.pngData() ?? Data(),
+                           address: "3750 Alhambra Ave. #2\nMartinez, CA 94553",
+                           serviceTypes: [.takeout, .dineIn]),
+                Restaurant(name: "Lemongrass Bistro",
+                           imageData: lemongrassImage?.pngData() ?? Data(),
+                           address: "501 Main St.\nMartinez, CA 94553",
+                           serviceTypes: [.takeout, .dineIn]),
+                Restaurant(name: "Barrelista Coffee House",
+                           imageData: barrelistaImage?.pngData() ?? Data(),
+                           address: "736 Main St.\n Martinez, CA 94553",
+                           serviceTypes: [.takeout, .dineIn])
             ]
             delegate?.saveRestaurantsToPersistentStore()
         }

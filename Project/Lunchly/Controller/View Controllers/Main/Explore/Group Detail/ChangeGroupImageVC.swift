@@ -68,4 +68,3 @@ extension ChangeGroupImageVC: UIImagePickerControllerDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 }
-

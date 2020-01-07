@@ -26,7 +26,8 @@ class MeetupController {
         for meetup in group.meetups {
             guard let voteEnds = meetup.voteEnds else {return}
             //check if the vote has ended
-            if Date() >= voteEnds {
+            if Date() >= voteEnds && meetup.restaurant == nil { //found out the hard way that the restaurant could be set (ie only one was chosen) and this function would then make it nil
+                
                 //Construct restaurantVotes Dictionary using meetup.userVotes
                 //userVotes has the username as Key and restaurant they voted on as Value.
                 for (_ , restaurant) in meetup.userVotes {
@@ -55,7 +56,11 @@ class MeetupController {
                 }
             } else {
                 let restaurantArray = meetup.possibleRestaurants
-                mutatedMeetup.restaurant = randomVote(duplicateRestaurants: restaurantArray)
+                if let randomRestaurant = randomVote(duplicateRestaurants: restaurantArray) {
+                    mutatedMeetup.restaurant = randomRestaurant
+                } else {
+                    mutatedMeetup.restaurant = meetup.possibleRestaurants[0]
+                }
                 updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: mutatedMeetup)
                 print("nobody voted, so a random restaurant was chosen: \(String(describing: mutatedMeetup.restaurant?.name))")
                 triggerVoteEndNotification(meetup: meetup)

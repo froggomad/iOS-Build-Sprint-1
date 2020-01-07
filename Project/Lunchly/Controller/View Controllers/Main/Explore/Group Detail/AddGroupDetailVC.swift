@@ -11,7 +11,6 @@ import UIKit
 class AddGroupDetailVC: UIViewController {
     //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    #warning("TODO: filter by search text")
     @IBOutlet weak var searchBar: UISearchBar!
     
     //MARK:IBActions
@@ -26,6 +25,7 @@ class AddGroupDetailVC: UIViewController {
     var groupController: GroupController?
     var restaurantController: RestaurantController?
     var userController: UserController?
+    #warning("Could use a protocol here instead of Any")
     //[Any] to be able to hold either users or restaurants for adding to group
     var tableViewDataSource: [Any]?
     
@@ -45,18 +45,22 @@ class AddGroupDetailVC: UIViewController {
     //MARK: Helper Methods
     func updateViews() {
         guard let group = group else {return}
+        //if there's a restaurant controller, we're displaying restaurants
         if let restaurantController = restaurantController {
             var groupRestaurantArray: [String] = []
+            //equatable didn't seem to be working properly, so I used an array of strings to compare restaurants
             for restaurant in group.restaurants {
                 groupRestaurantArray.append(restaurant.name)
             }
             var remainingRestaurantArray: [Restaurant] = []
             for coreRestaurant in restaurantController.restaurants {
+                //if the restaurant in the groupController doesn't equal the restaurant in the group's array, append it to the remainingRestaurant Array
                 if !groupRestaurantArray.contains(coreRestaurant.name) {
                     remainingRestaurantArray.append(coreRestaurant)
                 }
             }
             var filteredRestaurantArray: [Restaurant] = []
+            //filter restaurant by serviceTypes the group allows
             for restaurant in remainingRestaurantArray {
                 for serviceType in group.serviceTypes {
                     if restaurant.serviceTypes.contains(serviceType) {
@@ -64,6 +68,7 @@ class AddGroupDetailVC: UIViewController {
                     }
                 }
             }
+            //only show restaurants with allowed service types in the tableView's array
             tableViewDataSource = filteredRestaurantArray
         } else if let userController = userController {
             var groupUserArray: [String] = []

@@ -30,7 +30,7 @@ class MeetupCell: UITableViewCell {
             if timeDifference > 0 {
                 votingString = "TBD: voting ends in \(timeDifference.timeDisplay())"
             } else {
-                votingString = "\(meetup.name): Voting ended \(timeDifference.timeDisplay()) ago. Please see the results!" //during dev, voting was failing to update the tableView sometimes
+                votingString = "SEE RESULTS - Voting ended \(timeDifference.timeDisplay()) ago. Please see the results!" //during dev, voting was failing to update the tableView sometimes
             }
         }
         self.nameLabel.text = "\(meetup.name) at \(meetup.restaurant?.name ?? votingString)"
