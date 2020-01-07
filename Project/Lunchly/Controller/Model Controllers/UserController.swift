@@ -17,23 +17,20 @@ class UserController {
         }
     }
     var users: [User] = []
-    var currentUser: User?
+    var currentUser: User? {
+        return users[0]
+    }
     
     //MARK: Create
     func createUsers() {
         load()
         if users.count == 0 {
             print("creating users")
-            let currentUser = User(name: "Enter Your Name", image: Data(), groups: [], restaurants: [])
-            self.currentUser = currentUser
             users = [
-                currentUser,
-                User(name: "Kenny", image: Data(), groups: [], restaurants: []),
+                User(name: "Enter Your Name", image: Data(), groups: [], restaurants: []),
                 User(name: "TestUser", image: Data(), groups: [], restaurants: [])
             ]
             save()
-        } else {
-            currentUser = users[0]
         }
     }
     

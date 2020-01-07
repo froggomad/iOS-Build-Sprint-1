@@ -10,6 +10,10 @@
 		B90AC2C623C3AA3800938F1B /* OnboardingUserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2C523C3AA3800938F1B /* OnboardingUserProfileVC.swift */; };
 		B90AC2C823C3C77F00938F1B /* OnboardingEntryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2C723C3C77F00938F1B /* OnboardingEntryVC.swift */; };
 		B90AC2CA23C4089C00938F1B /* OnboardingGroupProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2C923C4089C00938F1B /* OnboardingGroupProfileVC.swift */; };
+		B90AC2CE23C4CBDD00938F1B /* ExploreTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2CD23C4CBDD00938F1B /* ExploreTabBarController.swift */; };
+		B90AC2D023C4E9F200938F1B /* ExploreNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2CF23C4E9F200938F1B /* ExploreNavController.swift */; };
+		B90AC2D223C4EA0200938F1B /* UserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2D123C4EA0200938F1B /* UserNavigationController.swift */; };
+		B90AC2D423C5240B00938F1B /* OnboardingLetsGetStartedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2D323C5240B00938F1B /* OnboardingLetsGetStartedVC.swift */; };
 		B932917C23B569E6002D633A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B932917B23B569E6002D633A /* User.swift */; };
 		B93291A523B794DC002D633A /* GroupDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93291A423B794DC002D633A /* GroupDetail.storyboard */; };
 		B93291A823B7B23E002D633A /* GroupDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291A723B7B23E002D633A /* GroupDetailVC.swift */; };
@@ -65,6 +69,10 @@
 		B90AC2C523C3AA3800938F1B /* OnboardingUserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingUserProfileVC.swift; sourceTree = "<group>"; };
 		B90AC2C723C3C77F00938F1B /* OnboardingEntryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEntryVC.swift; sourceTree = "<group>"; };
 		B90AC2C923C4089C00938F1B /* OnboardingGroupProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGroupProfileVC.swift; sourceTree = "<group>"; };
+		B90AC2CD23C4CBDD00938F1B /* ExploreTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreTabBarController.swift; sourceTree = "<group>"; };
+		B90AC2CF23C4E9F200938F1B /* ExploreNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNavController.swift; sourceTree = "<group>"; };
+		B90AC2D123C4EA0200938F1B /* UserNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNavigationController.swift; sourceTree = "<group>"; };
+		B90AC2D323C5240B00938F1B /* OnboardingLetsGetStartedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLetsGetStartedVC.swift; sourceTree = "<group>"; };
 		B932917B23B569E6002D633A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B93291A423B794DC002D633A /* GroupDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupDetail.storyboard; sourceTree = "<group>"; };
 		B93291A723B7B23E002D633A /* GroupDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailVC.swift; sourceTree = "<group>"; };
@@ -135,8 +143,19 @@
 				B90AC2C723C3C77F00938F1B /* OnboardingEntryVC.swift */,
 				B90AC2C523C3AA3800938F1B /* OnboardingUserProfileVC.swift */,
 				B90AC2C923C4089C00938F1B /* OnboardingGroupProfileVC.swift */,
+				B90AC2D323C5240B00938F1B /* OnboardingLetsGetStartedVC.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B90AC2CC23C4CB6000938F1B /* Parent Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B90AC2CD23C4CBDD00938F1B /* ExploreTabBarController.swift */,
+				B90AC2CF23C4E9F200938F1B /* ExploreNavController.swift */,
+				B90AC2D123C4EA0200938F1B /* UserNavigationController.swift */,
+			);
+			path = "Parent Controllers";
 			sourceTree = "<group>";
 		};
 		B93291A623B7B202002D633A /* Group Detail */ = {
@@ -321,6 +340,7 @@
 		B968315D23B1366A0068412F /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				B90AC2CC23C4CB6000938F1B /* Parent Controllers */,
 				B968315E23B136830068412F /* ExploreVC.swift */,
 				B93291A623B7B202002D633A /* Group Detail */,
 			);
@@ -453,6 +473,7 @@
 				B968316623B13AB50068412F /* CategoryType.swift in Sources */,
 				B90AC2CA23C4089C00938F1B /* OnboardingGroupProfileVC.swift in Sources */,
 				B93291B923B900E5002D633A /* AddRestaurantToGroupCell.swift in Sources */,
+				B90AC2D423C5240B00938F1B /* OnboardingLetsGetStartedVC.swift in Sources */,
 				B9EF5D0B23BBD2720075A19D /* Meetup.swift in Sources */,
 				B9EF5D5723BEC7AD0075A19D /* VoteRestaurantCell.swift in Sources */,
 				B968317123B13FCB0068412F /* Group.swift in Sources */,
@@ -461,11 +482,14 @@
 				B93291AA23B7CB63002D633A /* ChangeGroupImageVC.swift in Sources */,
 				B9EF5CFD23BB000E0075A19D /* AddMeetupVC.swift in Sources */,
 				B932917C23B569E6002D633A /* User.swift in Sources */,
+				B90AC2CE23C4CBDD00938F1B /* ExploreTabBarController.swift in Sources */,
 				B968317C23B18B040068412F /* SearchController.swift in Sources */,
 				B968315A23B1257D0068412F /* CategoryCell.swift in Sources */,
 				B9EF5D4B23BD1A520075A19D /* MeetupController.swift in Sources */,
 				B968316223B138890068412F /* RestaurantCell.swift in Sources */,
 				B94F154523C0744C00B3345A /* UserProfileVC.swift in Sources */,
+				B90AC2D023C4E9F200938F1B /* ExploreNavController.swift in Sources */,
+				B90AC2D223C4EA0200938F1B /* UserNavigationController.swift in Sources */,
 				B9DB216623B42A6A00B6849E /* CollectionViewLeftAlign.swift in Sources */,
 				B9EF5D0023BB25FE0075A19D /* Alert.swift in Sources */,
 				B9EF5D4923BCDD9C0075A19D /* MeetupCell.swift in Sources */,

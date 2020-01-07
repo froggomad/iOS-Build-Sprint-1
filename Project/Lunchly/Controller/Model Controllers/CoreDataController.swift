@@ -57,7 +57,7 @@ class CoreDataController {
         do {
             return try decoder.decode([User].self, from: fileData)
         } catch {
-            print("error decoding Groups file \(error)")
+            print("error decoding Users file \(error)")
         }
         return []
     }
@@ -77,7 +77,7 @@ class CoreDataController {
           let groupArray = try decodeGroupData()
           self.groupsController.groups = groupArray
       } catch {
-          print("Error loading restaurants from plist: \(error)")
+          print("Error loading groups from plist: \(error)")
       }
     }
     
@@ -85,6 +85,7 @@ class CoreDataController {
         do {
             let userArray = try decodeUserData()
             self.usersController.users = userArray
+            print(self.usersController.users)
         } catch {
             print("Error loading users from plist: \(error)")
         }

@@ -12,7 +12,7 @@
         <!--Lunchly-->
         <scene sceneID="clg-xs-c1h">
             <objects>
-                <viewController interfaceStyle="dark" id="Bcr-JR-8lT" customClass="ExploreVC" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExploreVC" interfaceStyle="dark" id="Bcr-JR-8lT" customClass="ExploreVC" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xwc-pZ-oHI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -284,10 +284,10 @@
             </objects>
             <point key="canvasLocation" x="2075" y="-409"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Explore Tab Bar Controller-->
         <scene sceneID="tUP-O4-zhL">
             <objects>
-                <tabBarController storyboardIdentifier="GroupTabBarController" modalPresentationStyle="fullScreen" id="jh7-rY-3W2" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="GroupTabBarController" modalPresentationStyle="fullScreen" id="jh7-rY-3W2" customClass="ExploreTabBarController" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="m7Z-gh-fZM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -302,8 +302,8 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="cSE-tk-t47" kind="relationship" relationship="viewControllers" id="ihX-EO-0zH"/>
-                        <segue destination="PBP-tm-GZM" kind="relationship" relationship="viewControllers" id="Fc6-tY-YUc"/>
+                        <segue destination="cSE-tk-t47" kind="relationship" relationship="viewControllers" destinationCreationSelector="ExploreRootSegue" id="ihX-EO-0zH"/>
+                        <segue destination="PBP-tm-GZM" kind="relationship" relationship="viewControllers" destinationCreationSelector="UserProfileRootSegue" id="Fc6-tY-YUc"/>
                         <segue destination="qb6-5V-tlF" kind="relationship" relationship="viewControllers" id="yiH-IL-565"/>
                     </connections>
                 </tabBarController>
@@ -330,7 +330,7 @@
         <!--Profile-->
         <scene sceneID="fRE-4y-O9g">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PBP-tm-GZM" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PBP-tm-GZM" customClass="UserNavigationController" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person.fill" id="tF2-wg-l9S"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fIM-cb-a57">
@@ -340,7 +340,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Wew-eK-Q2I" kind="relationship" relationship="rootViewController" id="OAY-Mn-0Gy"/>
+                        <segue destination="Wew-eK-Q2I" kind="relationship" relationship="rootViewController" destinationCreationSelector="UserProfileSegue" id="OAY-Mn-0Gy"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mum-dW-4lp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -408,7 +408,7 @@
         <!--Explore-->
         <scene sceneID="TTi-GH-SX1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cSE-tk-t47" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cSE-tk-t47" customClass="ExploreNavController" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="fork-and-spoon" selectedImage="fork-and-spoon-filled" id="du9-oz-mdX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aOy-gm-1JE">
@@ -417,7 +417,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Bcr-JR-8lT" kind="relationship" relationship="rootViewController" id="ki6-8Q-8b7"/>
+                        <segue destination="Bcr-JR-8lT" kind="relationship" relationship="rootViewController" destinationCreationSelector="ExploreVCSegue" id="ki6-8Q-8b7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qaa-ut-UDz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

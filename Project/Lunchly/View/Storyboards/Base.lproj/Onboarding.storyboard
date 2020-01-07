@@ -37,7 +37,7 @@ Let's Create An Account And Get Started!</string>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3ed-30-15E"/>
                                         </constraints>
-                                        <state key="normal" title="Next">
+                                        <state key="normal" title="Create Account">
                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -109,7 +109,7 @@ Let's Create An Account And Get Started!</string>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxc-4D-nLI">
                                 <rect key="frame" x="0.0" y="88" width="414" height="663"/>
                                 <connections>
-                                    <segue destination="8TT-u3-Xo1" kind="embed" id="2Af-as-gE3"/>
+                                    <segue destination="8TT-u3-Xo1" kind="embed" identifier="OnboardingGroupProfileSegue" id="2Af-as-gE3"/>
                                 </connections>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dAo-BM-4oq">
@@ -121,7 +121,7 @@ Let's Create An Account And Get Started!</string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="LkV-bK-wMt"/>
                                         </constraints>
-                                        <state key="normal" title="Next">
+                                        <state key="normal" title="Final Step!">
                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -189,7 +189,7 @@ Let's Create An Account And Get Started!</string>
         <!--Lunchly-->
         <scene sceneID="KAk-1X-7bC">
             <objects>
-                <viewController id="ZAW-ey-0Xc" sceneMemberID="viewController">
+                <viewController id="ZAW-ey-0Xc" customClass="OnboardingLetsGetStartedVC" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zDf-gl-zSZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,6 +221,9 @@ Let's Create An Account And Get Started!</string>
                                                 <real key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="LetsGetStartedWasTapped:" destination="ZAW-ey-0Xc" eventType="touchUpInside" id="p2c-4N-i4g"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -233,8 +236,10 @@ Let's Create An Account And Get Started!</string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BjK-5u-WMY">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BjK-5u-WMY">
                                         <rect key="frame" x="349" y="0.0" width="51" height="31"/>
+                                        <color key="onTintColor" name="Secondary"/>
+                                        <color key="thumbTintColor" name="Action"/>
                                     </switch>
                                 </subviews>
                             </stackView>
@@ -242,21 +247,19 @@ Let's Create An Account And Get Started!</string>
                         <color key="backgroundColor" name="Secondary"/>
                         <constraints>
                             <constraint firstItem="GcA-ir-5B2" firstAttribute="top" secondItem="hX6-zl-g8A" secondAttribute="bottom" constant="40" id="G3s-RO-nMQ"/>
+                            <constraint firstItem="cfO-dE-ZLB" firstAttribute="width" secondItem="zDf-gl-zSZ" secondAttribute="width" multiplier="0.66" id="HWa-so-JRL"/>
                             <constraint firstItem="dNo-hO-7cY" firstAttribute="top" secondItem="HGD-cb-B59" secondAttribute="top" id="Kp7-vF-bfo"/>
                             <constraint firstItem="HGD-cb-B59" firstAttribute="trailing" secondItem="GcA-ir-5B2" secondAttribute="trailing" constant="8" id="OWi-BA-l2F"/>
-                            <constraint firstItem="R8p-bz-eqj" firstAttribute="top" secondItem="dNo-hO-7cY" secondAttribute="bottom" constant="60" id="UKg-zX-7TZ"/>
+                            <constraint firstItem="cfO-dE-ZLB" firstAttribute="top" secondItem="dNo-hO-7cY" secondAttribute="bottom" constant="60" id="RdK-Te-MSB"/>
                             <constraint firstItem="dNo-hO-7cY" firstAttribute="trailing" secondItem="HGD-cb-B59" secondAttribute="trailing" id="Y71-Dl-2QZ"/>
                             <constraint firstItem="HGD-cb-B59" firstAttribute="bottom" secondItem="cfO-dE-ZLB" secondAttribute="bottom" constant="8" id="aP9-3S-Ir3"/>
-                            <constraint firstItem="R8p-bz-eqj" firstAttribute="width" secondItem="zDf-gl-zSZ" secondAttribute="width" multiplier="0.66" id="bTF-gy-RQI"/>
                             <constraint firstItem="hX6-zl-g8A" firstAttribute="centerY" secondItem="HGD-cb-B59" secondAttribute="centerY" id="dgQ-Im-HBU"/>
-                            <constraint firstItem="cfO-dE-ZLB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HGD-cb-B59" secondAttribute="leading" constant="8" id="fwj-TC-AOS"/>
                             <constraint firstItem="dNo-hO-7cY" firstAttribute="leading" secondItem="HGD-cb-B59" secondAttribute="leading" id="jTC-WF-RdB"/>
                             <constraint firstItem="hX6-zl-g8A" firstAttribute="leading" secondItem="HGD-cb-B59" secondAttribute="leading" constant="8" id="lcV-xs-Cti"/>
                             <constraint firstItem="cfO-dE-ZLB" firstAttribute="centerX" secondItem="HGD-cb-B59" secondAttribute="centerX" id="mqX-gX-Z0Y"/>
                             <constraint firstItem="HGD-cb-B59" firstAttribute="trailing" secondItem="hX6-zl-g8A" secondAttribute="trailing" constant="8" id="sEs-1Y-0HY"/>
                             <constraint firstItem="hX6-zl-g8A" firstAttribute="centerX" secondItem="HGD-cb-B59" secondAttribute="centerX" id="txG-I3-fQ2"/>
                             <constraint firstItem="GcA-ir-5B2" firstAttribute="leading" secondItem="HGD-cb-B59" secondAttribute="leading" constant="8" id="uYR-vr-qGR"/>
-                            <constraint firstItem="HGD-cb-B59" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cfO-dE-ZLB" secondAttribute="trailing" constant="8" id="vec-AJ-8e2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HGD-cb-B59"/>
                     </view>
@@ -289,7 +292,7 @@ Let's Create An Account And Get Started!</string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="u9i-Sc-bfv"/>
                                         </constraints>
-                                        <state key="normal" title="Next">
+                                        <state key="normal" title="Create A Group">
                                             <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -298,7 +301,7 @@ Let's Create An Account And Get Started!</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="erS-k2-BXG" kind="show" id="e3Y-0k-swk"/>
+                                            <action selector="nextButtonWasTapped:" destination="fxK-Yy-qxF" eventType="touchUpInside" id="mpF-0I-QxQ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wWr-cV-Iv8">
@@ -315,19 +318,22 @@ Let's Create An Account And Get Started!</string>
                                                 <real key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="skipButtonWasTapped:" destination="fxK-Yy-qxF" eventType="touchUpInside" id="nLa-Dg-ZrU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="Secondary"/>
                         <constraints>
+                            <constraint firstItem="A7c-AK-esj" firstAttribute="width" secondItem="gS2-AJ-04J" secondAttribute="width" multiplier="0.66" id="5av-Ri-Aeo"/>
                             <constraint firstItem="A7c-AK-esj" firstAttribute="centerX" secondItem="Ui1-6r-ecc" secondAttribute="centerX" id="BFp-J4-eZS"/>
                             <constraint firstItem="OfD-j2-twM" firstAttribute="top" secondItem="Ui1-6r-ecc" secondAttribute="top" id="GRU-4c-JT1"/>
                             <constraint firstItem="OfD-j2-twM" firstAttribute="leading" secondItem="Ui1-6r-ecc" secondAttribute="leading" id="SCl-YN-x3T"/>
                             <constraint firstItem="Ui1-6r-ecc" firstAttribute="trailing" secondItem="OfD-j2-twM" secondAttribute="trailing" id="Vqz-zA-2hM"/>
                             <constraint firstItem="A7c-AK-esj" firstAttribute="top" secondItem="OfD-j2-twM" secondAttribute="bottom" constant="11" id="Yxf-LD-h7N"/>
                             <constraint firstItem="Ui1-6r-ecc" firstAttribute="bottom" secondItem="A7c-AK-esj" secondAttribute="bottom" constant="12" id="fZ6-HE-w9j"/>
-                            <constraint firstItem="A7c-AK-esj" firstAttribute="width" secondItem="gS2-AJ-04J" secondAttribute="width" multiplier="0.66" id="iMB-y7-Dxk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ui1-6r-ecc"/>
                     </view>
@@ -337,7 +343,7 @@ Let's Create An Account And Get Started!</string>
                     <connections>
                         <outlet property="nextButton" destination="p9F-gM-d5I" id="uC5-Hg-nWP"/>
                         <outlet property="skipButton" destination="wWr-cV-Iv8" id="iGm-sC-TDv"/>
-                        <outlet property="skipButtonWasTapped" destination="wWr-cV-Iv8" id="etU-QX-2vs"/>
+                        <segue destination="erS-k2-BXG" kind="show" identifier="CreateGroupSegue" id="NPW-vy-GCf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKc-MY-aYN" sceneMemberID="firstResponder"/>

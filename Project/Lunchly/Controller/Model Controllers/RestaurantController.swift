@@ -29,7 +29,6 @@ class RestaurantController {
             let mountainImage = UIImage(named: "mountainGrounds")
             let lemongrassImage = UIImage(named: "lemongrassBistro")
             let barrelistaImage = UIImage(named: "barrelistaCoffee")
-            
             restaurants = [
                 Restaurant(name: "Joe's Pizza Shack",
                            imageData: pizzaImage?.pngData() ?? Data(),

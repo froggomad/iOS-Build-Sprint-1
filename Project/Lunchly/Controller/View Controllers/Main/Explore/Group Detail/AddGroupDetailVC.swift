@@ -44,6 +44,9 @@ class AddGroupDetailVC: UIViewController {
     
     //MARK: Helper Methods
     func updateViews() {
+        if group == nil {
+            group = Group(categoryType: .group, name: "", imageData: UIImage(systemName: "person.3.fill")?.jpegData(compressionQuality: 1.0) ?? Data(), serviceTypes: [.dineIn,.delivery,.takeout], users: [], restaurants: [], meetups: [])
+        }
         guard let group = group else {return}
         //if there's a restaurant controller, we're displaying restaurants
         if let restaurantController = restaurantController {
@@ -63,7 +66,7 @@ class AddGroupDetailVC: UIViewController {
             //filter restaurant by serviceTypes the group allows
             for restaurant in remainingRestaurantArray {
                 for serviceType in group.serviceTypes {
-                    if restaurant.serviceTypes.contains(serviceType) {
+                    if restaurant.serviceTypes.contains(serviceType) && !filteredRestaurantArray.contains(restaurant) {
                         filteredRestaurantArray.append(restaurant)
                     }
                 }

@@ -15,7 +15,7 @@ class GroupDetailVC: UIViewController {
     @IBOutlet weak var meetupTableView: UITableView!
     @IBOutlet weak var restaurantTableView: UITableView!
     @IBOutlet weak var membersTableView: UITableView!
-    @IBOutlet weak var segueButtonOutlet: UIButton!
+    @IBOutlet weak var cameraButtonOutlet: UIButton!
     
     //MARK: IBActions
     @IBAction func backBtnTapped(_ sender: Any) {
@@ -24,9 +24,7 @@ class GroupDetailVC: UIViewController {
     
     //MARK: Class Properties
     var group: Group?
-    var groupController: GroupController?
-    var restaurantController: RestaurantController?
-    var userController: UserController?
+    var coreDataController: CoreDataController?
     //Timer for updating meetupTableView to update remaining time
     var timer = Timer()
     
@@ -49,15 +47,16 @@ class GroupDetailVC: UIViewController {
   
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let groupController = coreDataController?.groupsController
         if segue.identifier == "AddRestaurantSegue" {
             guard let destination = segue.destination as? AddGroupDetailVC else {return}
-            destination.restaurantController = restaurantController
+            destination.restaurantController = coreDataController?.restaurantController
             destination.groupController = groupController
             destination.group = group
             destination.delegate = self
         } else if segue.identifier == "AddMemberSegue" {
                 guard let destination = segue.destination as? AddGroupDetailVC else {return}
-                destination.userController = userController
+                destination.userController = coreDataController?.usersController
                 destination.groupController = groupController
                 destination.group = group
                 destination.delegate = self
@@ -89,8 +88,8 @@ class GroupDetailVC: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
         guard let group = group else {return}
         self.imageView.image = UIImage(data: group.imageData)
-        segueButtonOutlet.frame.size.width = imageView.image?.size.width ?? 0
-        segueButtonOutlet.layoutIfNeeded()
+//        cameraButtonOutlet.frame.size.width = imageView.image?.size.width ?? 0
+//        cameraButtonOutlet.layoutIfNeeded()
         self.groupNameLabel.text = group.name
     }
     

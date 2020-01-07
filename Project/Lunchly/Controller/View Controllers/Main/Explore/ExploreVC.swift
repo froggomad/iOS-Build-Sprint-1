@@ -36,21 +36,20 @@ class ExploreVC: UIViewController {
         //MARK: CollectionView DataSource
         self.searchController = SearchController()
         if coreDataController == nil {
-            self.coreDataController = CoreDataController()
+            coreDataController = CoreDataController()
+            coreDataController?.groupsController.createGroups()
+            coreDataController?.restaurantController.createRestaurants()
+            coreDataController?.usersController.createUsers()
         }
         constructServiceArray()
         constructSearchArray()
-        
         self.keyboardHidesOnTap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        //get data from Persistent Store
         searchable = []
-        coreDataController?.loadGroupsFromPersistentStore()
-        coreDataController?.loadRestaurantsFromPersistentStore()
         tallyVotes()
         //construct search array
         if let restaurants = coreDataController?.restaurantController.restaurants {
@@ -77,9 +76,7 @@ class ExploreVC: UIViewController {
                   let group = filteredSearchArray[indexPath.item] as? Group
             else {return}
             destination.group = group
-            destination.groupController = coreDataController?.groupsController
-            destination.userController = coreDataController?.usersController
-            destination.restaurantController = coreDataController?.restaurantController
+            destination.coreDataController = coreDataController
         }
     }
     

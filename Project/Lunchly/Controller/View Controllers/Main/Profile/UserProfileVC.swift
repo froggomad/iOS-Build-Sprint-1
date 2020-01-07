@@ -17,15 +17,29 @@ class UserProfileVC: UIViewController {
     //MARK: Class Properties
     var userController: UserController?
     var pickedImage: UIImage?
+    var currentUser: User?
+    weak var delegate: OnboardingUserProfileVC?
     
     //MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
-
+    
+    //MARK: Navigation
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return saveUser()
+    }
+    
+    //MARK: Helper Methods
     func setupView() {
-        print(self.userController?.currentUser)
+        if userController == nil {
+            print("userController is nil")
+            let coreDataController = CoreDataController()
+            userController = coreDataController.usersController
+            userController?.createUsers()
+        }
+        
         textView.allowsEditingTextAttributes = false
         textView.textContainer.maximumNumberOfLines = 1
         textView.delegate = self
@@ -38,6 +52,23 @@ class UserProfileVC: UIViewController {
                 textView.textColor = .systemGray
         }
     }
+    
+    func saveUser() -> Bool {
+        guard let userController = userController,
+              let userNameText = textView.text,
+              userNameText != "",
+              userNameText != "Enter Your Name",
+              let currentUser = userController.currentUser,
+              let pickedData = self.pickedImage?.jpegData(compressionQuality: 1) ?? UIImage(systemName: "person.fill")?.jpegData(compressionQuality: 1)
+        else {return false}
+        print(userNameText)
+        let mutatedUser = User(name: userNameText, image: pickedData, groups: [], restaurants: [])
+        userController.updateUser(originalUser: currentUser, mutatedUser: mutatedUser)
+        print(userController.users[0])
+        textView.resignFirstResponder()
+        return true
+    }
+    
 }
 
 extension UserProfileVC: UITextViewDelegate {
@@ -54,19 +85,10 @@ extension UserProfileVC: UITextViewDelegate {
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" || text == "" {
-            textView.resignFirstResponder()
-            return false
+        if text == "\n" {
+            return saveUser()
         }
-        guard let userController = userController,
-              let userNameText = textView.text,
-              let pickedData = self.pickedImage?.jpegData(compressionQuality: 1) ?? UIImage(systemName: "person.fill")?.jpegData(compressionQuality: 1)
-        else {
-            print("Fail \(self.pickedImage ?? UIImage(systemName: "person.fill"))")
-            return true
-        }
-        let mutatedUser = User(name: userNameText, image: pickedData, groups: [], restaurants: [])
-        userController.updateUser(originalUser: userController.users[0], mutatedUser: mutatedUser)
+        print(text)
         return true
     }
 }

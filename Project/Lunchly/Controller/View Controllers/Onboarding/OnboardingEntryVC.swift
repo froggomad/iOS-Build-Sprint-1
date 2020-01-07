@@ -13,9 +13,8 @@ class OnboardingEntryVC: UIViewController {
     @IBOutlet weak var skipButton: UIButton!
     
     @IBAction func skipButtonWasTapped(_ sender: Any) {
-        self.modalPresentationStyle = .fullScreen
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "Main"))
-        if let tabbar = (storyboard.instantiateViewController(withIdentifier: "GroupTabBarController") as? UITabBarController) {
+        if let tabbar = storyboard.instantiateViewController(withIdentifier: "GroupTabBarController") as? ExploreTabBarController {
             self.present(tabbar, animated: true, completion: nil)
         }
     }
@@ -25,14 +24,13 @@ class OnboardingEntryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         coreDataController = CoreDataController()
-        nextButton.titlePadding()
-        skipButton.titlePadding()
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateUserSegue" {
             if let destination = segue.destination as? OnboardingUserProfileVC {
+                destination.coreDataConroller = coreDataController
                 destination.userController = coreDataController?.usersController
             }
         }
