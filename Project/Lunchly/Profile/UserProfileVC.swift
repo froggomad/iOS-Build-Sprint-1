@@ -38,7 +38,6 @@ class UserProfileVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddUserImageSegue" {
             guard let destination = segue.destination as? ChangeImageVC else {return}
-            #warning("Implement Dual Delegates")
             destination.userDelegate = self
             destination.user = userController?.currentUser
             destination.userController = userController
@@ -67,7 +66,15 @@ class UserProfileVC: UIViewController {
             textView.textColor = UIColor(named: "SecondaryAction")
         }
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap)))
-        self.imageView.image = UIImage(data: currentUser.image)
+        imageView.image = UIImage(data: currentUser.image) ?? UIImage(systemName: "person.fill")
+        roundImageView()
+    }
+    
+    func roundImageView() {
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = false
+        imageView.layer.cornerRadius = imageView.frame.height / 2
+        imageView.clipsToBounds = true
     }
     
     //MARK: Delegate Method Called From ChangeImageVC

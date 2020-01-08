@@ -15,11 +15,7 @@ class OnboardingUserProfileVC: UIViewController {
     
     //MARK: IBActions
     @IBAction func skipButtonWasTapped(_ sender: Any) {
-        settingsController.setUserSkipsTutorial()
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "Main"))
-        if let tabbar = storyboard.instantiateViewController(withIdentifier: "GroupTabBarController") as? ExploreTabBarController {
-            self.present(tabbar, animated: true, completion: nil)
-        }
+        SkipTutorial.skip(vc: self)
     }
     
     @IBAction func nextButtonWasTapped(_ sender: Any) {

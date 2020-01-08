@@ -14,11 +14,7 @@ class OnboardingLetsGetStartedVC: UIViewController {
     
     //MARK: IBActions
     @IBAction func LetsGetStartedWasTapped(_ sender: UIButton) {
-        settingsController.setUserSkipsTutorial()
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "Main"))
-        if let tabbar = storyboard.instantiateViewController(withIdentifier: "GroupTabBarController") as? ExploreTabBarController {
-            self.present(tabbar, animated: true, completion: nil)
-        }
+        SkipTutorial.skip(vc: self)
         
     }
     
