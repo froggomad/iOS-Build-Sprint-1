@@ -23,6 +23,14 @@ class ExploreVC: UIViewController {
     var filteredSearchArray: [Searchable] = []
     var servicesArray: [ServiceType] = []
     
+    //MARK: Computed Properties
+    var groupsArray: [Searchable]? {
+        return searchable.filter {$0.categoryType == .group}
+    }
+    var restaurantsArray: [Searchable]? {
+        return searchable.filter {$0.categoryType == .group}
+    }
+    
     //MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

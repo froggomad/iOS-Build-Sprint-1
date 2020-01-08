@@ -100,6 +100,7 @@
                             <button opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drg-Tz-B2q" userLabel="TransparentSegueBtn">
                                 <rect key="frame" x="142.66666666666666" y="272" width="89.666666666666657" height="37"/>
                                 <color key="backgroundColor" red="0.30454869923857864" green="0.30454869923857864" blue="0.30454869923857864" alpha="0.67043022260273977" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" name="SecondaryAction"/>
                                 <state key="normal" image="camera" catalog="system"/>
                                 <connections>
                                     <segue destination="FVQ-2X-ZM3" kind="popoverPresentation" identifier="ImagePickerSegue" popoverAnchorView="mIq-o4-dOI" id="xMF-pB-ymI">
@@ -131,6 +132,7 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7N-Mt-vCF">
                                                             <rect key="frame" x="136.33333333333334" y="2" width="24.333333333333343" height="23.666666666666668"/>
+                                                            <color key="tintColor" name="SecondaryAction"/>
                                                             <state key="normal">
                                                                 <color key="titleColor" name="Action"/>
                                                             </state>
@@ -211,6 +213,7 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkF-Sb-tyX">
                                                             <rect key="frame" x="136" y="2" width="24.333333333333343" height="23.666666666666668"/>
+                                                            <color key="tintColor" name="SecondaryAction"/>
                                                             <state key="normal">
                                                                 <color key="titleColor" name="Action"/>
                                                             </state>
@@ -294,6 +297,7 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsr-dv-htj">
                                                     <rect key="frame" x="318.66666666666669" y="2" width="24.333333333333314" height="23.666666666666668"/>
+                                                    <color key="tintColor" name="SecondaryAction"/>
                                                     <connections>
                                                         <action selector="addButtonTapped:" destination="p8r-Rn-jl2" eventType="touchUpInside" id="mqu-TF-dtA"/>
                                                     </connections>
@@ -884,13 +888,16 @@
         <image name="rectangle.badge.checkmark" catalog="system" width="64" height="44"/>
         <image name="xmark.square.fill" catalog="system" width="64" height="56"/>
         <namedColor name="Action">
-            <color red="0.28200000524520874" green="0.72899997234344482" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.28200000524520874" green="0.7290000319480896" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Primary">
             <color red="0.98400002717971802" green="0.3919999897480011" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Secondary">
             <color red="0.98400002717971802" green="0.87099999189376831" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryAction">
+            <color red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>

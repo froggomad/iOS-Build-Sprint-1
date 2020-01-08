@@ -48,18 +48,12 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
     var group: Group?
     var groupController: GroupController?
     let notificationHandler = NotificationController()
+    let userDefaultsController = UserSettingsController()
     
     //MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        datePicker.minimumDate = minimumDate
-        datePicker.date = minimumDate ?? Date(timeIntervalSinceNow: 3600)
-        self.meetupTime = datePicker.date
-        tableView.delegate = self
-        tableView.dataSource = self
-        notificationSwitch.isOn = false
-        saveButtonOutlet.titlePadding()
-        self.keyboardHidesOnTap()
+        setupViews()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,6 +62,16 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
     }
     
     //MARK: Helper Methods
+    func setupViews() {
+        datePicker.minimumDate = minimumDate
+        datePicker.date = minimumDate ?? Date(timeIntervalSinceNow: 3600)
+        self.meetupTime = datePicker.date
+        tableView.delegate = self
+        tableView.dataSource = self
+        saveButtonOutlet.titlePadding()
+        self.keyboardHidesOnTap()
+        notificationSwitch.isOn = userDefaultsController.notificationPreference ?? false
+    }
     func constructMeetup() -> Meetup? {
         guard let group = group else {return nil}
         guard let meetupTime = self.meetupTime else {

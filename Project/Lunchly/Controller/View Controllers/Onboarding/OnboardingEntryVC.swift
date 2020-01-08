@@ -20,10 +20,21 @@ class OnboardingEntryVC: UIViewController {
     }
     
     var coreDataController: CoreDataController?
+    var settingsController = UserSettingsController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateViews()
+    }
+    
+    func updateViews() {
         coreDataController = CoreDataController()
+        let skipsTutorial = settingsController.userSkipsTutorial ?? true
+        if skipsTutorial {
+            Alert.show(title: "No", message: "You Don't Belong Here. Go Away", vc: self) {
+                
+            }
+        }
     }
     
     // MARK: - Navigation

@@ -23,7 +23,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lunchly" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqh-d6-ehu">
                                 <rect key="frame" x="8" y="406" width="398" height="94"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="72"/>
-                                <color key="textColor" name="Action"/>
+                                <color key="textColor" name="SecondaryAction"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" name="Secondary"/>
                                 <size key="shadowOffset" width="0.0" height="4"/>
@@ -49,14 +49,14 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Action">
-            <color red="0.28200000524520874" green="0.72899997234344482" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="Primary">
             <color red="0.98400002717971802" green="0.3919999897480011" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Secondary">
             <color red="0.98400002717971802" green="0.87099999189376831" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryAction">
+            <color red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

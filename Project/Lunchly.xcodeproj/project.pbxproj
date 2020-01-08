@@ -14,6 +14,7 @@
 		B90AC2D023C4E9F200938F1B /* ExploreNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2CF23C4E9F200938F1B /* ExploreNavController.swift */; };
 		B90AC2D223C4EA0200938F1B /* UserNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2D123C4EA0200938F1B /* UserNavigationController.swift */; };
 		B90AC2D423C5240B00938F1B /* OnboardingLetsGetStartedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2D323C5240B00938F1B /* OnboardingLetsGetStartedVC.swift */; };
+		B90AC2D623C54BA800938F1B /* UserSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B90AC2D523C54BA800938F1B /* UserSettingsController.swift */; };
 		B932917C23B569E6002D633A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B932917B23B569E6002D633A /* User.swift */; };
 		B93291A523B794DC002D633A /* GroupDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93291A423B794DC002D633A /* GroupDetail.storyboard */; };
 		B93291A823B7B23E002D633A /* GroupDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291A723B7B23E002D633A /* GroupDetailVC.swift */; };
@@ -73,6 +74,7 @@
 		B90AC2CF23C4E9F200938F1B /* ExploreNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNavController.swift; sourceTree = "<group>"; };
 		B90AC2D123C4EA0200938F1B /* UserNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNavigationController.swift; sourceTree = "<group>"; };
 		B90AC2D323C5240B00938F1B /* OnboardingLetsGetStartedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingLetsGetStartedVC.swift; sourceTree = "<group>"; };
+		B90AC2D523C54BA800938F1B /* UserSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsController.swift; sourceTree = "<group>"; };
 		B932917B23B569E6002D633A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B93291A423B794DC002D633A /* GroupDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupDetail.storyboard; sourceTree = "<group>"; };
 		B93291A723B7B23E002D633A /* GroupDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailVC.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			children = (
 				B90AC2C423C3AA2600938F1B /* Onboarding */,
 				B968315423B08FFA0068412F /* Main */,
+				B94F154323C073B900B3345A /* Profile */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -304,13 +307,14 @@
 		B968315323B08FE20068412F /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B9EF5D0123BB8D160075A19D /* NotificationController.swift */,
-				B968317523B14AF80068412F /* RestaurantController.swift */,
 				B968317723B18AD80068412F /* CoreDataController.swift */,
 				B968317923B18AF80068412F /* GroupController.swift */,
+				B9EF5D4A23BD1A520075A19D /* MeetupController.swift */,
+				B9EF5D0123BB8D160075A19D /* NotificationController.swift */,
+				B968317523B14AF80068412F /* RestaurantController.swift */,
 				B968317B23B18B040068412F /* SearchController.swift */,
 				B93291B423B7EE20002D633A /* UserController.swift */,
-				B9EF5D4A23BD1A520075A19D /* MeetupController.swift */,
+				B90AC2D523C54BA800938F1B /* UserSettingsController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -318,7 +322,6 @@
 		B968315423B08FFA0068412F /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B94F154323C073B900B3345A /* Profile */,
 				B968315D23B1366A0068412F /* Explore */,
 			);
 			path = Main;
@@ -461,6 +464,7 @@
 				B93291AC23B7CFC4002D633A /* AddGroupDetailVC.swift in Sources */,
 				B90AC2C823C3C77F00938F1B /* OnboardingEntryVC.swift in Sources */,
 				B94F154723C0F7AE00B3345A /* UIViewController+endEditing.swift in Sources */,
+				B90AC2D623C54BA800938F1B /* UserSettingsController.swift in Sources */,
 				B968315F23B136830068412F /* ExploreVC.swift in Sources */,
 				B968317E23B29E240068412F /* UICollectionViewCell+setBorders.swift in Sources */,
 				B94B95DF23BEE10500AD8952 /* UpdatesMeetup.swift in Sources */,

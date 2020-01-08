@@ -39,17 +39,28 @@ class UserProfileVC: UIViewController {
             userController = coreDataController.usersController
             userController?.createUsers()
         }
-        
         textView.allowsEditingTextAttributes = false
         textView.textContainer.maximumNumberOfLines = 1
         textView.delegate = self
-        if let currentUser = userController?.currentUser,
-            currentUser.name != "Enter Your Name" {
-                textView.isUserInteractionEnabled = false
-                textView.text = currentUser.name
-            } else {
-                textView.text = "Enter Your Name"
-                textView.textColor = .systemGray
+        
+        if let currentUser = userController?.currentUser {
+            textView.text = currentUser.name
+            if currentUser.name != "Enter Your Name" {
+                    textView.isUserInteractionEnabled = false
+                } else {
+                    textView.becomeFirstResponder()
+                    textView.textColor = UIColor(named: "SecondaryAction")
+                }
+        }
+            
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap)))
+    }
+    
+    @objc func tap() {
+        if !textView.isFirstResponder && textView.text == "Enter Your Name" || textView.text == "" || textView.text == "\n" {
+            textView.becomeFirstResponder()
+        } else {
+            textView.resignFirstResponder()
         }
     }
     
@@ -73,18 +84,26 @@ class UserProfileVC: UIViewController {
 
 extension UserProfileVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
         textView.textColor = .label
+        if textView.text == "" || textView.text == "Enter Your Name" {
+            textView.text = "Enter Your Name"
+            textView.selectedRange = NSRange(location: 0, length: textView.text.count)
+            textView.textColor = UIColor(named: "SecondaryAction")
+        }
+        
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == "" || textView.text == "\n" {
+        if textView.text == "" || textView.text == "\n" || textView.text == "Enter Your Name" {
             textView.text = "Enter Your Name"
-            textView.textColor = .systemGray
+            textView.textColor = UIColor(named: "SecondaryAction")
         }
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "Enter Your Name" {
+            textView.text = ""
+        }
         if text == "\n" {
             return saveUser()
         }
