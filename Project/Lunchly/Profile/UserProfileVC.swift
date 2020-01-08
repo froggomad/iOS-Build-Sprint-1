@@ -83,7 +83,7 @@ class UserProfileVC: UIViewController {
         print("updating user from UserProfileVC")
     }
     
-    func saveUser() -> Bool {
+    @discardableResult func saveUser() -> Bool {
         guard let userController = userController,
               let userNameText = textView.text,
               userNameText != "",

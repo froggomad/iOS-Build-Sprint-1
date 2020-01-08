@@ -9,39 +9,38 @@
 import UIKit
 
 class OnboardingEntryVC: UIViewController {
+    //MARK: IBOutlets
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     
+    //MARK: IBActions
     @IBAction func skipButtonWasTapped(_ sender: Any) {
         SkipTutorial.skip(vc: self)
     }
     
+    //MARK: Class Properties
     var coreDataController: CoreDataController?
     let settingsController = UserSettingsController()
     
+    //MARK: View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViews()
-    }
-    
-    func updateViews() {
         coreDataController = CoreDataController()
-        let skipsTutorial = settingsController.userSkipsTutorial ?? true
-        if skipsTutorial {
-            #warning("lol")
-            Alert.show(title: "No", message: "You Don't Belong Here. Go Away", vc: self) {
-                
-            }
-        }
+        updateViews()
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateUserSegue" {
-            if let destination = segue.destination as? OnboardingUserProfileVC {
-                destination.coreDataConroller = coreDataController
-                destination.userController = coreDataController?.usersController
-            }
+            guard let destination = segue.destination as? OnboardingUserProfileVC else {return}
+            destination.coreDataConroller = coreDataController
+            destination.userController = coreDataController?.usersController
         }
     }
+    
+    //MARK: Helper Methods
+    func updateViews() {
+        
+    }
+    
 }

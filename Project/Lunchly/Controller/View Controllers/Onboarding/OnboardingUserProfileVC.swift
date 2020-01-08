@@ -15,17 +15,18 @@ class OnboardingUserProfileVC: UIViewController {
     
     //MARK: IBActions
     @IBAction func skipButtonWasTapped(_ sender: Any) {
+        guard let delegate = delegate else {return}
+        delegate.saveUser()
         SkipTutorial.skip(vc: self)
     }
     
     @IBAction func nextButtonWasTapped(_ sender: Any) {
         guard let delegate = delegate else {return}
         if !delegate.saveUser() {
-                Alert.show(title: "Oops!", message: "Please Enter a Username", vc: self) {}
-        
-            } else {
-                performSegue(withIdentifier: "CreateGroupSegue", sender: nil)
-            }
+            Alert.show(title: "Oops!", message: "Please Enter a Username", vc: self) {}
+        } else {
+            performSegue(withIdentifier: "CreateGroupSegue", sender: nil)
+        }
     }
     
     weak var delegate: UserProfileVC?
