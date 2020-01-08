@@ -26,6 +26,8 @@ class OnboardingLetsGetStartedVC: UIViewController {
         settingsController.setNotificationPreference()
         if notificationSwitch.isOn {
             notificationController.notificationRequest()
+        } else {
+            notificationController.disableNotifications()
         }
     }
     

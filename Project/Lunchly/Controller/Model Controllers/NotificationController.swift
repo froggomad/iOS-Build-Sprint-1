@@ -7,16 +7,18 @@
 //
 
 import UserNotifications
+import UIKit
 
 class NotificationController: NSObject, UNUserNotificationCenterDelegate {
     
     //MARK: Class Properties
     let notificationCenter = UNUserNotificationCenter.current()
+    private let options: UNAuthorizationOptions = [.alert, .sound, .badge]
     private var date = Date()
     
     //MARK: Request permission
     func notificationRequest() {
-        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        
         notificationCenter.requestAuthorization(options: options) {
            (didAllow, error) in
            if !didAllow {
@@ -39,6 +41,10 @@ class NotificationController: NSObject, UNUserNotificationCenterDelegate {
                 print("Error \(error.localizedDescription)")
             }
         }
+    }
+    
+    func disableNotifications() {
+        UIApplication.shared.unregisterForRemoteNotifications()
     }
     
     //MARK: Helper Methods

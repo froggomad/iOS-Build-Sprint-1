@@ -61,8 +61,8 @@ class GroupDetailVC: UIViewController {
                 destination.group = group
                 destination.delegate = self
         } else if segue.identifier == "ImagePickerSegue" {
-            guard let destination = segue.destination as? ChangeGroupImageVC else {return}
-            destination.delegate = self
+            guard let destination = segue.destination as? ChangeImageVC else {return}
+            destination.groupDelegate = self
             destination.group = group
             destination.groupController = groupController
         } else if segue.identifier == "AddMeetupSegue" {

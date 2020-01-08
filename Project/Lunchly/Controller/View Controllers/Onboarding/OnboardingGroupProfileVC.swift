@@ -38,14 +38,16 @@ class OnboardingGroupProfileVC: UIViewController {
             guard let destination = segue.destination as? GroupDetailVC else {return}
             currentUser = coreDataController?.usersController.currentUser
             destination.coreDataController = coreDataController
-            #warning("Populate Image Once Done")
             guard let currentUser = currentUser else {return}
             var defaultGroup = Group(categoryType: .group, name: "Enter Group Name", imageData: UIImage(systemName: "person.3.fill")?.jpegData(compressionQuality: 1) ?? Data(), serviceTypes: [.dineIn,.delivery,.takeout], users: [], restaurants: [], meetups: [])
-            coreDataController?.groupsController.addGroup(group: defaultGroup)
-            coreDataController?.groupsController.addUserToGroup(group: defaultGroup, user: currentUser)
-            coreDataController?.usersController.addGroupToUser(group: defaultGroup, user: currentUser)
-            defaultGroup.users.append(currentUser)
-            destination.group = defaultGroup
+            if currentUser.groups.count == 0 {
+                coreDataController?.groupsController.addGroup(group: defaultGroup)
+                coreDataController?.groupsController.addUserToGroup(group: defaultGroup, user: currentUser)
+                coreDataController?.usersController.addGroupToUser(group: defaultGroup, user: currentUser)
+                defaultGroup.users.append(currentUser)
+                destination.group = defaultGroup
+            }
+            
         }
     }
     

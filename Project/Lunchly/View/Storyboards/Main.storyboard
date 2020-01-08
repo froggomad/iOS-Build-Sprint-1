@@ -379,7 +379,13 @@
                                     <constraint firstAttribute="height" constant="33" id="IhR-ZR-9xd"/>
                                     <constraint firstAttribute="width" constant="60" id="L9U-jO-j9g"/>
                                 </constraints>
+                                <color key="tintColor" name="SecondaryAction"/>
                                 <state key="normal" image="camera" catalog="system"/>
+                                <connections>
+                                    <segue destination="yv4-LF-L44" kind="popoverPresentation" identifier="AddUserImageSegue" popoverAnchorView="4c2-7v-Hti" id="RYj-7A-nzv">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="Primary"/>
@@ -424,10 +430,81 @@
             </objects>
             <point key="canvasLocation" x="550.72463768115949" y="-409.15178571428572"/>
         </scene>
+        <!--Change ImageVC-->
+        <scene sceneID="sSG-Lu-afP">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="yv4-LF-L44" customClass="ChangeImageVC" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NO4-Qy-bZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="446"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="805-4s-h8O">
+                                <rect key="frame" x="8" y="90" width="398" height="294.5"/>
+                                <color key="backgroundColor" name="Primary"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IqW-3o-eMF">
+                                <rect key="frame" x="135.5" y="357" width="143" height="22"/>
+                                <color key="backgroundColor" name="Action"/>
+                                <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <state key="normal" title="Replace Image" image="camera.fill" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="imagePickerBtnTapped:" destination="yv4-LF-L44" eventType="touchUpInside" id="GRw-vP-aYJ"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="191-Qm-bjS">
+                                <rect key="frame" x="8" y="112" width="398" height="212"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="191-Qm-bjS" secondAttribute="height" multiplier="199:106" id="u7D-6a-UuG"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elu-Yh-97x">
+                                <rect key="frame" x="340" y="60" width="63" height="22"/>
+                                <color key="tintColor" name="Action"/>
+                                <state key="normal" title="Close" image="xmark.square.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="closeBtnTapped:" destination="AHz-pR-wnR" eventType="touchUpInside" id="a2f-sq-HHT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="Secondary"/>
+                        <constraints>
+                            <constraint firstItem="IYd-YB-73m" firstAttribute="trailing" secondItem="191-Qm-bjS" secondAttribute="trailing" constant="8" id="Caz-mI-H9h"/>
+                            <constraint firstItem="IYd-YB-73m" firstAttribute="trailing" secondItem="Elu-Yh-97x" secondAttribute="trailing" constant="11" id="OLw-LJ-nvB"/>
+                            <constraint firstItem="IqW-3o-eMF" firstAttribute="centerX" secondItem="191-Qm-bjS" secondAttribute="centerX" id="Rme-qC-4ja"/>
+                            <constraint firstItem="805-4s-h8O" firstAttribute="leading" secondItem="IYd-YB-73m" secondAttribute="leading" constant="8" id="Ydw-x1-y62"/>
+                            <constraint firstItem="IqW-3o-eMF" firstAttribute="top" secondItem="191-Qm-bjS" secondAttribute="bottom" constant="33" id="Z3E-qx-lMu"/>
+                            <constraint firstItem="805-4s-h8O" firstAttribute="trailing" secondItem="IYd-YB-73m" secondAttribute="trailing" constant="-8" id="hr4-2S-P7H"/>
+                            <constraint firstItem="805-4s-h8O" firstAttribute="top" secondItem="Elu-Yh-97x" secondAttribute="bottom" constant="8" id="irq-sT-xks"/>
+                            <constraint firstItem="191-Qm-bjS" firstAttribute="leading" secondItem="IYd-YB-73m" secondAttribute="leading" constant="8" id="kP2-g4-8m4"/>
+                            <constraint firstItem="805-4s-h8O" firstAttribute="height" secondItem="NO4-Qy-bZJ" secondAttribute="height" multiplier="0.66" id="sj7-Hz-9q2"/>
+                            <constraint firstItem="191-Qm-bjS" firstAttribute="top" secondItem="Elu-Yh-97x" secondAttribute="bottom" constant="30" id="wJ9-Is-Op4"/>
+                            <constraint firstItem="IYd-YB-73m" firstAttribute="top" secondItem="Elu-Yh-97x" secondAttribute="top" constant="-60" id="wra-fw-YKz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IYd-YB-73m"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mdx-ap-HW9"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="414" height="400"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="500"/>
+                    <connections>
+                        <outlet property="imagePickerButtonOutlet" destination="IqW-3o-eMF" id="ttX-vQ-gto"/>
+                        <outlet property="userImageView" destination="191-Qm-bjS" id="0Ro-lF-nCS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AHz-pR-wnR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2226" y="3"/>
+        </scene>
     </scenes>
     <resources>
         <image name="View AllFilled" width="50" height="50"/>
         <image name="camera" catalog="system" width="64" height="48"/>
+        <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="fork-and-spoon" width="23" height="23"/>
         <image name="fork-and-spoon-filled" width="25" height="25"/>
         <image name="gear" catalog="system" width="64" height="58"/>
@@ -435,14 +512,18 @@
         <image name="person.3.fill" catalog="system" width="71" height="34"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="whole-pizza" width="150" height="150"/>
+        <image name="xmark.square.fill" catalog="system" width="64" height="56"/>
         <namedColor name="Action">
-            <color red="0.28200000524520874" green="0.72899997234344482" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.28200000524520874" green="0.72899997234344482" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Primary">
             <color red="0.98400002717971802" green="0.3919999897480011" blue="0.3919999897480011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Secondary">
             <color red="0.98400002717971802" green="0.87099999189376831" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryAction">
+            <color red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

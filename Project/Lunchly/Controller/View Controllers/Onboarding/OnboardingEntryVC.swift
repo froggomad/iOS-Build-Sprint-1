@@ -31,6 +31,7 @@ class OnboardingEntryVC: UIViewController {
         coreDataController = CoreDataController()
         let skipsTutorial = settingsController.userSkipsTutorial ?? true
         if skipsTutorial {
+            #warning("lol")
             Alert.show(title: "No", message: "You Don't Belong Here. Go Away", vc: self) {
                 
             }

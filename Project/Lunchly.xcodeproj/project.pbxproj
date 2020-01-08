@@ -18,7 +18,7 @@
 		B932917C23B569E6002D633A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B932917B23B569E6002D633A /* User.swift */; };
 		B93291A523B794DC002D633A /* GroupDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B93291A423B794DC002D633A /* GroupDetail.storyboard */; };
 		B93291A823B7B23E002D633A /* GroupDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291A723B7B23E002D633A /* GroupDetailVC.swift */; };
-		B93291AA23B7CB63002D633A /* ChangeGroupImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291A923B7CB63002D633A /* ChangeGroupImageVC.swift */; };
+		B93291AA23B7CB63002D633A /* ChangeImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291A923B7CB63002D633A /* ChangeImageVC.swift */; };
 		B93291AC23B7CFC4002D633A /* AddGroupDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291AB23B7CFC4002D633A /* AddGroupDetailVC.swift */; };
 		B93291B123B7D495002D633A /* GroupMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291B023B7D495002D633A /* GroupMemberCell.swift */; };
 		B93291B323B7D4A2002D633A /* GroupRestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93291B223B7D4A2002D633A /* GroupRestaurantCell.swift */; };
@@ -78,7 +78,7 @@
 		B932917B23B569E6002D633A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B93291A423B794DC002D633A /* GroupDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupDetail.storyboard; sourceTree = "<group>"; };
 		B93291A723B7B23E002D633A /* GroupDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailVC.swift; sourceTree = "<group>"; };
-		B93291A923B7CB63002D633A /* ChangeGroupImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeGroupImageVC.swift; sourceTree = "<group>"; };
+		B93291A923B7CB63002D633A /* ChangeImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageVC.swift; sourceTree = "<group>"; };
 		B93291AB23B7CFC4002D633A /* AddGroupDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupDetailVC.swift; sourceTree = "<group>"; };
 		B93291B023B7D495002D633A /* GroupMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberCell.swift; sourceTree = "<group>"; };
 		B93291B223B7D4A2002D633A /* GroupRestaurantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupRestaurantCell.swift; sourceTree = "<group>"; };
@@ -164,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				B93291A723B7B23E002D633A /* GroupDetailVC.swift */,
-				B93291A923B7CB63002D633A /* ChangeGroupImageVC.swift */,
 				B93291AB23B7CFC4002D633A /* AddGroupDetailVC.swift */,
 				B94F155223C2CAB000B3345A /* Meetups */,
 			);
@@ -224,6 +223,14 @@
 			path = Meetups;
 			sourceTree = "<group>";
 		};
+		B95144B323C64E2300D84E98 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B93291A923B7CB63002D633A /* ChangeImageVC.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		B968311023B081B30068412F = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +254,8 @@
 				B94F154823C0FC3900B3345A /* Extensions */,
 				B968314F23B08FB50068412F /* View */,
 				B968315223B08FD20068412F /* Controller */,
+				B95144B323C64E2300D84E98 /* Shared */,
+				B94F154323C073B900B3345A /* Profile */,
 				B968315023B08FC00068412F /* Resources */,
 			);
 			path = Lunchly;
@@ -290,7 +299,6 @@
 			children = (
 				B90AC2C423C3AA2600938F1B /* Onboarding */,
 				B968315423B08FFA0068412F /* Main */,
-				B94F154323C073B900B3345A /* Profile */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -483,7 +491,7 @@
 				B968317123B13FCB0068412F /* Group.swift in Sources */,
 				B93291B323B7D4A2002D633A /* GroupRestaurantCell.swift in Sources */,
 				B9EF5D5123BE97730075A19D /* MeetupDetailVC.swift in Sources */,
-				B93291AA23B7CB63002D633A /* ChangeGroupImageVC.swift in Sources */,
+				B93291AA23B7CB63002D633A /* ChangeImageVC.swift in Sources */,
 				B9EF5CFD23BB000E0075A19D /* AddMeetupVC.swift in Sources */,
 				B932917C23B569E6002D633A /* User.swift in Sources */,
 				B90AC2CE23C4CBDD00938F1B /* ExploreTabBarController.swift in Sources */,

@@ -18,6 +18,7 @@ class UserProfileVC: UIViewController {
     var userController: UserController?
     var pickedImage: UIImage?
     var currentUser: User?
+    var userSettingsController = UserSettingsController()
     weak var delegate: OnboardingUserProfileVC?
     
     //MARK: View Lifecycle
@@ -28,7 +29,20 @@ class UserProfileVC: UIViewController {
     
     //MARK: Navigation
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return saveUser()
+        if identifier == "CreateGroupSegue" {
+            return saveUser()
+        }
+        return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddUserImageSegue" {
+            guard let destination = segue.destination as? ChangeImageVC else {return}
+            #warning("Implement Dual Delegates")
+            destination.userDelegate = self
+            destination.user = userController?.currentUser
+            destination.userController = userController
+        }
     }
     
     //MARK: Helper Methods
@@ -43,25 +57,23 @@ class UserProfileVC: UIViewController {
         textView.textContainer.maximumNumberOfLines = 1
         textView.delegate = self
         
-        if let currentUser = userController?.currentUser {
-            textView.text = currentUser.name
-            if currentUser.name != "Enter Your Name" {
-                    textView.isUserInteractionEnabled = false
-                } else {
-                    textView.becomeFirstResponder()
-                    textView.textColor = UIColor(named: "SecondaryAction")
-                }
+        guard let currentUser = userController?.currentUser else {return}
+        textView.text = currentUser.name
+        if currentUser.name != "Enter Your Name" {
+            textView.isUserInteractionEnabled = false
+        } else {
+            textView.isUserInteractionEnabled = true
+            textView.becomeFirstResponder()
+            textView.textColor = UIColor(named: "SecondaryAction")
         }
-            
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap)))
+        self.imageView.image = UIImage(data: currentUser.image)
     }
     
-    @objc func tap() {
-        if !textView.isFirstResponder && textView.text == "Enter Your Name" || textView.text == "" || textView.text == "\n" {
-            textView.becomeFirstResponder()
-        } else {
-            textView.resignFirstResponder()
-        }
+    //MARK: Delegate Method Called From ChangeImageVC
+    func updateUserImage(user: User) {
+        self.imageView.image = UIImage(data: user.image)
+        print("updating user from UserProfileVC")
     }
     
     func saveUser() -> Bool {
@@ -82,6 +94,7 @@ class UserProfileVC: UIViewController {
     
 }
 
+//MARK: TextView Delegate
 extension UserProfileVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.textColor = .label
@@ -97,6 +110,13 @@ extension UserProfileVC: UITextViewDelegate {
         if textView.text == "" || textView.text == "\n" || textView.text == "Enter Your Name" {
             textView.text = "Enter Your Name"
             textView.textColor = UIColor(named: "SecondaryAction")
+        } else {
+            textView.textColor = .label
+            //if we're not in the onboarding view, we don't want the user to be able to edit their username
+            if let skipsTutorial = userSettingsController.userSkipsTutorial,
+                skipsTutorial != true {
+                textView.isUserInteractionEnabled = false
+            }
         }
     }
     
@@ -109,5 +129,13 @@ extension UserProfileVC: UITextViewDelegate {
         }
         print(text)
         return true
+    }
+    
+    @objc func tap() {
+        if !textView.isFirstResponder && (textView.text == "Enter Your Name" || textView.text == "" || textView.text == "\n" || !userSettingsController.userSkipsTutorial!) {
+            textView.becomeFirstResponder()
+        } else {
+            textView.resignFirstResponder()
+        }
     }
 }
