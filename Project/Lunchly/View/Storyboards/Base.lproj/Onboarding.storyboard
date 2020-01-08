@@ -367,7 +367,7 @@ Let's Create An Account And Get Started!</string>
         <!--Navigation Controller-->
         <scene sceneID="eIR-pi-6GI">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Fy-n6-LOw" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="OnboardingEntryVC" automaticallyAdjustsScrollViewInsets="NO" id="6Fy-n6-LOw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nt0-Go-l9M">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
