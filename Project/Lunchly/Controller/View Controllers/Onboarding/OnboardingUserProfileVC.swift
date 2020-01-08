@@ -9,9 +9,13 @@
 import UIKit
 
 class OnboardingUserProfileVC: UIViewController {
+    //MARK: IBOutlets
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
+    
+    //MARK: IBActions
     @IBAction func skipButtonWasTapped(_ sender: Any) {
+        settingsController.setUserSkipsTutorial()
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "Main"))
         if let tabbar = storyboard.instantiateViewController(withIdentifier: "GroupTabBarController") as? ExploreTabBarController {
             self.present(tabbar, animated: true, completion: nil)
@@ -28,10 +32,10 @@ class OnboardingUserProfileVC: UIViewController {
             }
     }
     
-    
+    weak var delegate: UserProfileVC?
     var coreDataConroller : CoreDataController?
     var userController: UserController?
-    weak var delegate: UserProfileVC?
+    let settingsController = UserSettingsController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

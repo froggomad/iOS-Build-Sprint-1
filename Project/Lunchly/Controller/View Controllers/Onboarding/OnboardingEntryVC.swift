@@ -13,6 +13,7 @@ class OnboardingEntryVC: UIViewController {
     @IBOutlet weak var skipButton: UIButton!
     
     @IBAction func skipButtonWasTapped(_ sender: Any) {
+        settingsController.setUserSkipsTutorial()
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "Main"))
         if let tabbar = storyboard.instantiateViewController(withIdentifier: "GroupTabBarController") as? ExploreTabBarController {
             self.present(tabbar, animated: true, completion: nil)
@@ -20,7 +21,7 @@ class OnboardingEntryVC: UIViewController {
     }
     
     var coreDataController: CoreDataController?
-    var settingsController = UserSettingsController()
+    let settingsController = UserSettingsController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
