@@ -52,7 +52,7 @@ class OnboardingUserProfileVC: UIViewController {
         } else if segue.identifier == "CreateGroupSegue" { //next button
             guard let destination = segue.destination as? OnboardingGroupProfileVC else {return}
             destination.coreDataController = coreDataConroller
-            #warning("Implement Delegate Pattern")
+            #warning("Implement Delegate Pattern for group name after implementing TextField")
         }
     }
     

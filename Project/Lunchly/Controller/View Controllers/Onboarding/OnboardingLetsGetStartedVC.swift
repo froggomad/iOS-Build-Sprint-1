@@ -15,16 +15,10 @@ class OnboardingLetsGetStartedVC: UIViewController {
     //MARK: IBActions
     @IBAction func LetsGetStartedWasTapped(_ sender: UIButton) {
         SkipTutorial.skip(vc: self)
-        
     }
     
-    @IBAction func notificationSwitchWasToggled(_ sender: Any) {
-        settingsController.setNotificationPreference()
-        if notificationSwitch.isOn {
-            notificationController.notificationRequest()
-        } else {
-            notificationController.disableNotifications()
-        }
+    @IBAction func notificationSwitchWasToggled(_ sender: UISwitch) {
+        NotificationSwitchUIHelper.instance.switchNotifications(sender)
     }
     
     //MARK: Class Properties
@@ -33,8 +27,7 @@ class OnboardingLetsGetStartedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        notificationSwitch.isOn = settingsController.notificationPreference ?? false
-        
+        NotificationSwitchUIHelper.instance.setupUI(notificationSwitch)
     }
     
 

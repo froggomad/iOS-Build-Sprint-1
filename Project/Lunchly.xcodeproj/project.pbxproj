@@ -32,6 +32,8 @@
 		B94F154C23C0FE5000B3345A /* UIButton+titlePadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F154B23C0FE5000B3345A /* UIButton+titlePadding.swift */; };
 		B94F155123C29A1C00B3345A /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94F155023C29A1C00B3345A /* Vote.swift */; };
 		B95144B523C6675900D84E98 /* SkipTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95144B423C6675900D84E98 /* SkipTutorial.swift */; };
+		B95144B823C6833B00D84E98 /* UserSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95144B723C6833B00D84E98 /* UserSettingsVC.swift */; };
+		B95144BA23C6841C00D84E98 /* NotificationSwitchUIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95144B923C6841C00D84E98 /* NotificationSwitchUIHelper.swift */; };
 		B968311D23B081B30068412F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968311C23B081B30068412F /* AppDelegate.swift */; };
 		B968311F23B081B30068412F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968311E23B081B30068412F /* SceneDelegate.swift */; };
 		B968312423B081B30068412F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B968312223B081B30068412F /* Onboarding.storyboard */; };
@@ -93,6 +95,8 @@
 		B94F154B23C0FE5000B3345A /* UIButton+titlePadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+titlePadding.swift"; sourceTree = "<group>"; };
 		B94F155023C29A1C00B3345A /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		B95144B423C6675900D84E98 /* SkipTutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipTutorial.swift; sourceTree = "<group>"; };
+		B95144B723C6833B00D84E98 /* UserSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsVC.swift; sourceTree = "<group>"; };
+		B95144B923C6841C00D84E98 /* NotificationSwitchUIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSwitchUIHelper.swift; sourceTree = "<group>"; };
 		B968311923B081B30068412F /* Lunchly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunchly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B968311C23B081B30068412F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B968311E23B081B30068412F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +237,33 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		B95144B623C6831800D84E98 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B95144B723C6833B00D84E98 /* UserSettingsVC.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B95144BC23C685C500D84E98 /* Group Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B968317923B18AF80068412F /* GroupController.swift */,
+				B9EF5D4A23BD1A520075A19D /* MeetupController.swift */,
+			);
+			path = "Group Controllers";
+			sourceTree = "<group>";
+		};
+		B95144BD23C6861000D84E98 /* CoreData Controlled */ = {
+			isa = PBXGroup;
+			children = (
+				B95144BC23C685C500D84E98 /* Group Controllers */,
+				B968317523B14AF80068412F /* RestaurantController.swift */,
+				B93291B423B7EE20002D633A /* UserController.swift */,
+			);
+			path = "CoreData Controlled";
+			sourceTree = "<group>";
+		};
 		B968311023B081B30068412F = {
 			isa = PBXGroup;
 			children = (
@@ -256,8 +287,6 @@
 				B94F154823C0FC3900B3345A /* Extensions */,
 				B968314F23B08FB50068412F /* View */,
 				B968315223B08FD20068412F /* Controller */,
-				B95144B323C64E2300D84E98 /* Shared */,
-				B94F154323C073B900B3345A /* Profile */,
 				B968315023B08FC00068412F /* Resources */,
 			);
 			path = Lunchly;
@@ -266,10 +295,10 @@
 		B968314E23B08FAC0068412F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				B968312723B081B50068412F /* LaunchScreen.storyboard */,
+				B968312223B081B30068412F /* Onboarding.storyboard */,
 				B968314C23B08DCE0068412F /* Main.storyboard */,
 				B93291A423B794DC002D633A /* GroupDetail.storyboard */,
-				B968312223B081B30068412F /* Onboarding.storyboard */,
-				B968312723B081B50068412F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -301,6 +330,9 @@
 			children = (
 				B90AC2C423C3AA2600938F1B /* Onboarding */,
 				B968315423B08FFA0068412F /* Main */,
+				B95144B323C64E2300D84E98 /* Shared */,
+				B94F154323C073B900B3345A /* Profile */,
+				B95144B623C6831800D84E98 /* Settings */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -318,12 +350,9 @@
 			isa = PBXGroup;
 			children = (
 				B968317723B18AD80068412F /* CoreDataController.swift */,
-				B968317923B18AF80068412F /* GroupController.swift */,
-				B9EF5D4A23BD1A520075A19D /* MeetupController.swift */,
+				B95144BD23C6861000D84E98 /* CoreData Controlled */,
 				B9EF5D0123BB8D160075A19D /* NotificationController.swift */,
-				B968317523B14AF80068412F /* RestaurantController.swift */,
 				B968317B23B18B040068412F /* SearchController.swift */,
-				B93291B423B7EE20002D633A /* UserController.swift */,
 				B90AC2D523C54BA800938F1B /* UserSettingsController.swift */,
 			);
 			path = "Model Controllers";
@@ -395,6 +424,7 @@
 			children = (
 				B9EF5CFF23BB25FE0075A19D /* Alert.swift */,
 				B95144B423C6675900D84E98 /* SkipTutorial.swift */,
+				B95144B923C6841C00D84E98 /* NotificationSwitchUIHelper.swift */,
 			);
 			path = "Helper Classes";
 			sourceTree = "<group>";
@@ -490,6 +520,7 @@
 				B93291B923B900E5002D633A /* AddRestaurantToGroupCell.swift in Sources */,
 				B90AC2D423C5240B00938F1B /* OnboardingLetsGetStartedVC.swift in Sources */,
 				B9EF5D0B23BBD2720075A19D /* Meetup.swift in Sources */,
+				B95144B823C6833B00D84E98 /* UserSettingsVC.swift in Sources */,
 				B9EF5D5723BEC7AD0075A19D /* VoteRestaurantCell.swift in Sources */,
 				B968317123B13FCB0068412F /* Group.swift in Sources */,
 				B93291B323B7D4A2002D633A /* GroupRestaurantCell.swift in Sources */,
@@ -510,6 +541,7 @@
 				B9EF5D4923BCDD9C0075A19D /* MeetupCell.swift in Sources */,
 				B968316F23B13F330068412F /* Restaurant.swift in Sources */,
 				B968317823B18AD80068412F /* CoreDataController.swift in Sources */,
+				B95144BA23C6841C00D84E98 /* NotificationSwitchUIHelper.swift in Sources */,
 				B93291B523B7EE20002D633A /* UserController.swift in Sources */,
 				B9EF5D0923BBA9520075A19D /* HeaderCellCategoryTypes.swift in Sources */,
 				B93291A823B7B23E002D633A /* GroupDetailVC.swift in Sources */,

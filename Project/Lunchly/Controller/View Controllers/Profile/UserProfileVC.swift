@@ -74,6 +74,8 @@ class UserProfileVC: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = false
         imageView.layer.cornerRadius = imageView.frame.height / 2
+        imageView.layer.borderColor = UIColor.label.cgColor
+        imageView.layer.borderWidth = 2
         imageView.clipsToBounds = true
     }
     

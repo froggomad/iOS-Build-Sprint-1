@@ -49,7 +49,7 @@ class ChangeImageVC: UIViewController, UINavigationControllerDelegate {
         if let group = group {
             self.imageView.image = UIImage(data: group.imageData)
         } else if let user = user {
-            self.userImageView.image = UIImage(data: user.image)
+            self.userImageView.image = UIImage(data: user.image) ?? UIImage(systemName: "person.fill")
         }
     }
 }
@@ -73,7 +73,6 @@ extension ChangeImageVC: UIImagePickerControllerDelegate {
                 group.imageData = pickedImageData //it's now safe to mutate the group instance we just unwrapped
                 groupDelegate?.updateGroup(group: group) //finally the delegate gets the updated group
             } else if let user = user { //update the User
-                #warning("Would norally update a simpler method like UpdateImageData in GroupController")
                 let mutatedUser = User(name: user.name, image: pickedImageData, groups: user.groups, restaurants: user.restaurants) //pardon my shortcut
                 userController?.updateUser(originalUser: user, mutatedUser: mutatedUser)
                 userDelegate?.updateUserImage(user: mutatedUser)

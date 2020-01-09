@@ -25,7 +25,7 @@ class AddGroupDetailVC: UIViewController {
     var groupController: GroupController?
     var restaurantController: RestaurantController?
     var userController: UserController?
-    #warning("Could use a protocol here instead of Any")
+    
     //[Any] to be able to hold either users or restaurants for adding to group
     var tableViewDataSource: [Any]?
     
