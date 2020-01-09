@@ -30,7 +30,6 @@ class GroupController {
     func createGroups() {
         load()
         if groups.count == 0 {
-            print("creating groups")
             let dineInImage = UIImage(systemName: "person.3.fill")!
             groups = [
                 Group(name: "Dine in only group", imageData: dineInImage.jpegData(compressionQuality: 1.0)!, serviceTypes: [.dineIn])
@@ -61,10 +60,6 @@ class GroupController {
                 }
                 groups[index].users.append(user) //user doesn't exist, append to this group
                 save()
-                for user in groups[index].users {
-                    print(user.name)
-                }
-                
             }
         }
     }

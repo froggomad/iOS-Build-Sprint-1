@@ -85,7 +85,6 @@ class CoreDataController {
         do {
             let userArray = try decodeUserData()
             self.usersController.users = userArray
-            print(self.usersController.users)
         } catch {
             print("Error loading users from plist: \(error)")
         }

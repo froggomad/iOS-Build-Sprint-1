@@ -104,6 +104,12 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
         }
     }
     
+    
+    /**
+     Checks to see if user has requested that notifications be enabled for this meetup
+     - Parameter complete:`@escaping (_ status: Bool) -> ()`
+     - Parameter status: if true, meetup should be saved, and ViewController should be dismissed
+    */
     func checkNotifications(meetup: Meetup, complete: @escaping (_ status: Bool) -> ()) {
         if notificationSwitch.isOn {
             if let pickedRestaurant = pickedRestaurant {
@@ -123,7 +129,6 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
                 }
             } else {
                 if pickedRestaurants.count > 1 {
-                    print("Vote triggered, scheduling notifications")
                     notificationHandler.triggerNotification(meetup: meetup, notificationType: .votingBegan, onDate: Date(timeIntervalSinceNow: 15), withId: "\(meetup.id)-\(NotificationType.votingBegan.rawValue)")
                     if let voteEnds = meetup.voteEnds {
                         if voteEnds > Date(timeIntervalSinceNow: 1800) {
