@@ -449,7 +449,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGj-5t-huF">
-                                                    <rect key="frame" x="15" y="14.666666666666664" width="42" height="21"/>
+                                                    <rect key="frame" x="14.999999999999996" y="14.999999999999998" width="41.666666666666657" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -483,26 +483,53 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tjk-a4-nmH">
-                                <rect key="frame" x="168.66666666666666" y="460" width="38" height="21"/>
+                                <rect key="frame" x="168.66666666666666" y="460" width="37.666666666666657" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n1j-wF-EaR">
-                                <rect key="frame" x="167.66666666666666" y="541" width="40" height="21"/>
+                                <rect key="frame" x="167.66666666666666" y="488.33333333333331" width="39.666666666666657" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="4EF-eR-1q2">
+                                <rect key="frame" x="8" y="673" width="359" height="45"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Turn on Notifications for this meetup?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMK-vz-lwu">
+                                        <rect key="frame" x="0.0" y="0.0" width="316" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="am3-8N-bb1">
+                                        <rect key="frame" x="316" y="0.0" width="45" height="45"/>
+                                        <color key="onTintColor" name="Secondary"/>
+                                        <color key="thumbTintColor" name="Action"/>
+                                        <connections>
+                                            <action selector="notificationSwitchWasToggled:" destination="7bf-7M-rLN" eventType="valueChanged" id="OAM-W2-XPe"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="W1f-wP-SnH"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" name="Primary"/>
                         <constraints>
+                            <constraint firstItem="Icl-EO-ggB" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4EF-eR-1q2" secondAttribute="bottom" constant="8" id="8k8-Ud-xmZ"/>
                             <constraint firstItem="kQq-fk-z1o" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Icl-EO-ggB" secondAttribute="leading" constant="8" id="8vs-Zf-spt"/>
                             <constraint firstItem="n1j-wF-EaR" firstAttribute="centerX" secondItem="Icl-EO-ggB" secondAttribute="centerX" id="96a-58-iW8"/>
                             <constraint firstItem="Icl-EO-ggB" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kQq-fk-z1o" secondAttribute="trailing" constant="8" id="CFq-dq-Qot"/>
                             <constraint firstItem="kQq-fk-z1o" firstAttribute="centerX" secondItem="Icl-EO-ggB" secondAttribute="centerX" id="Ikz-gP-jnd"/>
                             <constraint firstItem="3IB-mB-mIn" firstAttribute="top" secondItem="kQq-fk-z1o" secondAttribute="bottom" constant="36" id="JmW-7u-ifv"/>
-                            <constraint firstItem="n1j-wF-EaR" firstAttribute="top" secondItem="Tjk-a4-nmH" secondAttribute="bottom" constant="60" id="LOb-eT-rCR"/>
+                            <constraint firstItem="n1j-wF-EaR" firstAttribute="top" secondItem="Tjk-a4-nmH" secondAttribute="bottom" constant="8" id="LOb-eT-rCR"/>
+                            <constraint firstItem="4EF-eR-1q2" firstAttribute="leading" secondItem="Icl-EO-ggB" secondAttribute="leading" constant="8" id="NWw-Ht-HOZ"/>
+                            <constraint firstItem="Icl-EO-ggB" firstAttribute="trailing" secondItem="4EF-eR-1q2" secondAttribute="trailing" constant="8" id="Psh-uy-cAF"/>
+                            <constraint firstItem="4EF-eR-1q2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="n1j-wF-EaR" secondAttribute="bottom" constant="8" id="TRg-Or-YVp"/>
+                            <constraint firstItem="Icl-EO-ggB" firstAttribute="bottom" secondItem="4EF-eR-1q2" secondAttribute="bottom" priority="750" constant="60" id="YW6-O2-XtM"/>
                             <constraint firstItem="kQq-fk-z1o" firstAttribute="top" secondItem="Icl-EO-ggB" secondAttribute="top" constant="32" id="eCN-o7-AcG"/>
                             <constraint firstItem="Tjk-a4-nmH" firstAttribute="centerX" secondItem="Icl-EO-ggB" secondAttribute="centerX" id="meW-Bx-xEe"/>
                             <constraint firstItem="Tjk-a4-nmH" firstAttribute="top" secondItem="3IB-mB-mIn" secondAttribute="bottom" constant="53.333333333333371" id="odX-0F-HJo"/>
@@ -516,6 +543,9 @@
                     <connections>
                         <outlet property="dateLabel" destination="Tjk-a4-nmH" id="Q22-XX-BUJ"/>
                         <outlet property="nameLabel" destination="kQq-fk-z1o" id="5Ly-LC-0bh"/>
+                        <outlet property="notificationSwitch" destination="am3-8N-bb1" id="ywv-6Y-vs3"/>
+                        <outlet property="notificationSwitchLabel" destination="QMK-vz-lwu" id="QXG-qr-O1R"/>
+                        <outlet property="notificationView" destination="4EF-eR-1q2" id="sIZ-F0-EDB"/>
                         <outlet property="tableView" destination="3IB-mB-mIn" id="AYA-9K-ZDI"/>
                         <outlet property="timeLabel" destination="n1j-wF-EaR" id="nYd-qD-L3l"/>
                     </connections>

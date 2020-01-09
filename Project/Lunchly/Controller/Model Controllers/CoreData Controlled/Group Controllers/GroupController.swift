@@ -31,8 +31,14 @@ class GroupController {
         load()
         if groups.count == 0 {
             let dineInImage = UIImage(systemName: "person.3.fill")!
+            let takeOutImage = UIImage(systemName: "person.3.fill")!
+            let deliveryImage = UIImage(systemName: "person.3.fill")!
             groups = [
-                Group(name: "Dine in only group", imageData: dineInImage.jpegData(compressionQuality: 1.0)!, serviceTypes: [.dineIn])
+                Group(name: "Kenny's Dine in only group", imageData: dineInImage.jpegData(compressionQuality: 1.0)!, serviceTypes: [.dineIn]),
+                Group(name: "James's Delivery only group", imageData: deliveryImage.jpegData(compressionQuality: 1.0)!, serviceTypes: [.delivery]),
+                Group(name: "Aaron's Take Out only group", imageData: takeOutImage.jpegData(compressionQuality: 1.0)!, serviceTypes: [.takeout]),
+                Group(name: "Michael's Take Out and Dine In group", imageData: takeOutImage.jpegData(compressionQuality: 1.0)!, serviceTypes: [.takeout, .dineIn]),
+                Group(name: "Tobi's Everything Group", imageData: takeOutImage.jpegData(compressionQuality: 1.0)!, serviceTypes: [.viewAll])
             ]
             save()
         }
