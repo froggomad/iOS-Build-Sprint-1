@@ -75,9 +75,7 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
     func constructMeetup() -> Meetup? {
         guard let group = group else {return nil}
         guard let meetupTime = self.meetupTime else {
-            Alert.show(title: "Time not entered", message: "Please Choose a Time to Leave", vc: self) {
-                
-            }
+            Alert.show(title: "Time not entered", message: "Please Choose a Time to Leave", vc: self) {}
             return nil
         }
         guard let meetupName = meetupNameTextField.text,
@@ -90,11 +88,13 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
         }
         
         var meetup: Meetup
-        if pickedRestaurant != nil {
+//        if pickedRestaurant != nil {
             meetup = Meetup(id: "\(group.name)-\(meetupTime)", name: meetupName, meetupStarts: meetupTime, possibleRestaurants: pickedRestaurants)
-        } else {
-            meetup = Meetup(id: "\(group.name)-\(meetupTime)", name: meetupName, meetupStarts: meetupTime, possibleRestaurants: pickedRestaurants)
-        }
+//        }
+        
+//        else {
+//            meetup = Meetup(id: "\(group.name)-\(meetupTime)", name: meetupName, meetupStarts: meetupTime, possibleRestaurants: pickedRestaurants)
+//        }
         return meetup
     }
     
@@ -104,7 +104,7 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
         }
     }
     
-    func checkNotifications(meetup: Meetup) {
+    func checkNotifications(meetup: Meetup, complete: @escaping (_ status: Bool) -> ()) {
         if notificationSwitch.isOn {
             if let pickedRestaurant = pickedRestaurant {
                 Alert.inputForMeetupNotification(title: "Travel Time", message: "How long does it normally take you to get to \(pickedRestaurant.name)?", vc: self) { time, status in
@@ -112,14 +112,14 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
                         let timeToLeave = Calendar.current.date(byAdding: .minute, value: -time, to: meetup.meetupStarts)
                         
                         self.notificationHandler.triggerNotification(meetup: meetup, notificationType: .timeToLeave, onDate: timeToLeave!, withId: "\(meetup.id)-\(NotificationType.timeToLeave.rawValue)")
-                        
-                        
+                        complete(true)
                     } else {
                         self.notificationSwitch.isOn = false
                         Alert.show(title: "Oops!", message: "Please enter a number", vc: self) {
-                            
+                            complete(false)
                         }
                     }
+                    
                 }
             } else {
                 if pickedRestaurants.count > 1 {
@@ -130,12 +130,16 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
                             notificationHandler.triggerNotification(meetup: meetup, notificationType: .votingEndsSoon, onDate: Date(timeInterval: -1800, since: voteEnds), withId: "\(meetup.id)-\(NotificationType.votingEndsSoon.rawValue)")
                         }
                     }
+                    complete(true)
                 }
             }
             UNUserNotificationCenter.current().getPendingNotificationRequests { (notification) in
                 print(notification.description)
             }
+        } else {
+            complete(true)
         }
+        
     }
     
     func save() {
@@ -151,14 +155,17 @@ class AddMeetupVC: UIViewController, UpdatesMeetup {
             guard let group = group,
                   let meetup = constructMeetup()
             else {return}
-            checkNotifications(meetup: meetup)
+            self.checkNotifications(meetup: meetup) { status in
+                //save meetup
+                //group is force unwrapped because we definitely have a group at this point
+                if status {
+                    self.group!.meetups.append(meetup)
+                    self.groupController?.addMeetupToGroup(group: group, meetup: meetup)
+                    self.delegate?.updateGroup(group: self.group!)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } //This Doesn't appear to be blocking
             
-            //save meetup
-            //group is force unwrapped because we definitely have a group at this point
-            self.group!.meetups.append(meetup)
-            groupController?.addMeetupToGroup(group: group, meetup: meetup)
-            delegate?.updateGroup(group: self.group!)
-            self.dismiss(animated: true, completion: nil)
         } else {
             Alert.show(title: "No Restaurant Chosen", message: "Please Choose at least one Restaurant", vc: self) {
                            

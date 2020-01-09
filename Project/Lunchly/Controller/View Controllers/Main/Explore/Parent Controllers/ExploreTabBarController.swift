@@ -25,8 +25,6 @@ class ExploreTabBarController: UITabBarController {
         coreDataController?.restaurantController.createRestaurants()
     }
     
-
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -41,5 +39,4 @@ class ExploreTabBarController: UITabBarController {
         }
     }
     
-
 }
