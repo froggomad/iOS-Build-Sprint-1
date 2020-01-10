@@ -25,10 +25,10 @@ class ExploreVC: UIViewController {
     
     //MARK: Computed Properties
     var groupsArray: [Searchable]? {
-        return searchable.filter {$0.categoryType == .group}
+        return filteredSearchArray.filter {$0.categoryType == .group}
     }
     var restaurantsArray: [Searchable]? {
-        return searchable.filter {$0.categoryType == .restaurant}
+        return filteredSearchArray.filter {$0.categoryType == .restaurant}
     }
     
     //MARK: View Lifecycle
@@ -129,6 +129,7 @@ extension ExploreVC: UICollectionViewDelegate {
     //MARK: DidSelectItem
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let thisCell = collectionView.cellForItem(at: indexPath) as? CategoryCell else {return} //to check for .viewAll who's cell is set to selected on instantiation (also ensures we have a CategoryCell, not a Restaurant or Group Cell)
+        
         //filter searchResultsCollectionView by selected CategoryCell
         for cell in categoryCollectionView.visibleCells {
             if thisCell.service != .viewAll {
@@ -150,6 +151,7 @@ extension ExploreVC: UICollectionViewDelegate {
                 cell.setActive()
             }
         }
+        //re-set filtered arrays??
         searchResultsCollectionView.reloadData()
     }
     
@@ -192,8 +194,6 @@ extension ExploreVC: UICollectionViewDataSource {
         }
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
             case categoryCollectionView:
@@ -204,7 +204,6 @@ extension ExploreVC: UICollectionViewDataSource {
                 switch indexPath.section {
                 case 0:
                     if let groupData = groupsArray?[indexPath.item] as? Group {
-                        print(groupData.name)
                         guard let groupCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCell", for: indexPath) as? GroupCell else {return UICollectionViewCell()}
                         groupCell.group = groupData
                         return groupCell
@@ -219,13 +218,11 @@ extension ExploreVC: UICollectionViewDataSource {
                 default:
                     return UICollectionViewCell()
                 }
-                
+            default:
             return UICollectionViewCell() //failed
-        default:
-            return UICollectionViewCell()
         }
+        return UICollectionViewCell()
     }
-    
     
 }
 
