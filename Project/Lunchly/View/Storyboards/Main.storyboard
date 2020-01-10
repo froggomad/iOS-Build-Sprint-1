@@ -34,30 +34,8 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dBt-vy-EAg" secondAttribute="trailing" constant="8" id="vg8-hy-YQL"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MA4-N2-o6Y" userLabel="SearchBarView">
-                                <rect key="frame" x="0.0" y="138" width="414" height="81.5"/>
-                                <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="What are you looking for?" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OfT-4T-JJb">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="81.5"/>
-                                        <offsetWrapper key="searchTextPositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                        <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                        <scopeButtonTitles>
-                                            <string>Title</string>
-                                            <string>Title</string>
-                                        </scopeButtonTitles>
-                                    </searchBar>
-                                </subviews>
-                                <color key="backgroundColor" name="Primary"/>
-                                <constraints>
-                                    <constraint firstItem="OfT-4T-JJb" firstAttribute="width" secondItem="MA4-N2-o6Y" secondAttribute="width" id="TD6-QW-hKR"/>
-                                    <constraint firstItem="OfT-4T-JJb" firstAttribute="centerX" secondItem="MA4-N2-o6Y" secondAttribute="centerX" id="Va9-sE-nbu"/>
-                                    <constraint firstItem="OfT-4T-JJb" firstAttribute="centerY" secondItem="MA4-N2-o6Y" secondAttribute="centerY" id="nBG-cl-dco"/>
-                                    <constraint firstItem="OfT-4T-JJb" firstAttribute="height" secondItem="MA4-N2-o6Y" secondAttribute="height" id="p1G-ZP-9nr"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qaH-yo-XBa" userLabel="Category Collection View">
-                                <rect key="frame" x="109" y="218.5" width="305" height="101"/>
+                                <rect key="frame" x="109" y="138" width="305" height="101"/>
                                 <color key="backgroundColor" name="Primary"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="Vl8-dR-8g9"/>
@@ -110,7 +88,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oBl-yR-jF5" userLabel="Search Results Collection View">
-                                <rect key="frame" x="0.0" y="318.5" width="414" height="494.5"/>
+                                <rect key="frame" x="0.0" y="238" width="414" height="575"/>
                                 <color key="backgroundColor" name="Primary"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wr1-zu-BoJ">
                                     <size key="itemSize" width="110" height="110"/>
@@ -243,11 +221,11 @@
                                 </collectionReusableView>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WC-1T-Hsn">
-                                <rect key="frame" x="0.0" y="218.5" width="109" height="101"/>
+                                <rect key="frame" x="0.0" y="138" width="109" height="101"/>
                                 <color key="backgroundColor" name="Primary"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter By" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-9d-EK2">
-                                <rect key="frame" x="20" y="238.5" width="81" height="60.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter By -&gt;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-9d-EK2">
+                                <rect key="frame" x="20" y="158" width="81" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="dbS-eY-bJZ"/>
                                 </constraints>
@@ -262,17 +240,13 @@
                             <constraint firstItem="jjZ-Xe-K6K" firstAttribute="height" secondItem="xwc-pZ-oHI" secondAttribute="height" multiplier="0.110701" id="4m1-J0-LPE"/>
                             <constraint firstItem="qaH-yo-XBa" firstAttribute="leading" secondItem="t2a-9d-EK2" secondAttribute="trailing" constant="8" id="8ca-hi-8qm"/>
                             <constraint firstItem="jjZ-Xe-K6K" firstAttribute="leading" secondItem="5Fp-6b-KmB" secondAttribute="leading" id="8fl-cM-CGM"/>
-                            <constraint firstItem="MA4-N2-o6Y" firstAttribute="leading" secondItem="5Fp-6b-KmB" secondAttribute="leading" id="AR3-S7-Ojg"/>
-                            <constraint firstItem="MA4-N2-o6Y" firstAttribute="top" secondItem="jjZ-Xe-K6K" secondAttribute="bottom" constant="8" symbolic="YES" id="D2W-Ln-7sl"/>
                             <constraint firstItem="t2a-9d-EK2" firstAttribute="height" secondItem="qaH-yo-XBa" secondAttribute="height" multiplier="0.6" id="Dm6-eJ-IsR"/>
                             <constraint firstItem="oBl-yR-jF5" firstAttribute="top" secondItem="qaH-yo-XBa" secondAttribute="bottom" constant="-1" id="Dr1-Al-iYH"/>
                             <constraint firstItem="0WC-1T-Hsn" firstAttribute="centerY" secondItem="qaH-yo-XBa" secondAttribute="centerY" id="KKl-H8-HVN"/>
-                            <constraint firstItem="qaH-yo-XBa" firstAttribute="top" secondItem="MA4-N2-o6Y" secondAttribute="bottom" constant="-1" id="OSI-c0-goe"/>
                             <constraint firstItem="jjZ-Xe-K6K" firstAttribute="top" secondItem="xwc-pZ-oHI" secondAttribute="top" constant="40" id="PW7-cL-gpI"/>
                             <constraint firstItem="t2a-9d-EK2" firstAttribute="leading" secondItem="5Fp-6b-KmB" secondAttribute="leading" constant="20" id="eTc-9w-ee1"/>
                             <constraint firstItem="0WC-1T-Hsn" firstAttribute="height" secondItem="qaH-yo-XBa" secondAttribute="height" id="gpi-gh-Tl7"/>
-                            <constraint firstItem="MA4-N2-o6Y" firstAttribute="trailing" secondItem="5Fp-6b-KmB" secondAttribute="trailing" id="i5u-Pq-PbI"/>
-                            <constraint firstItem="MA4-N2-o6Y" firstAttribute="height" secondItem="xwc-pZ-oHI" secondAttribute="height" multiplier="0.1" id="kLp-eS-XNL"/>
+                            <constraint firstItem="qaH-yo-XBa" firstAttribute="top" secondItem="jjZ-Xe-K6K" secondAttribute="bottom" constant="8" id="gy9-8c-81b"/>
                             <constraint firstItem="jjZ-Xe-K6K" firstAttribute="trailing" secondItem="5Fp-6b-KmB" secondAttribute="trailing" id="nMY-Pl-y2R"/>
                             <constraint firstItem="oBl-yR-jF5" firstAttribute="leading" secondItem="5Fp-6b-KmB" secondAttribute="leading" id="nNJ-Al-9uk"/>
                             <constraint firstItem="0WC-1T-Hsn" firstAttribute="leading" secondItem="5Fp-6b-KmB" secondAttribute="leading" id="o4N-54-gcb"/>
@@ -287,7 +261,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="categoryCollectionView" destination="qaH-yo-XBa" id="GLi-HL-zIv"/>
-                        <outlet property="searchBar" destination="OfT-4T-JJb" id="8AC-tR-EZp"/>
                         <outlet property="searchResultsCollectionView" destination="oBl-yR-jF5" id="aTg-Cn-VMY"/>
                     </connections>
                 </viewController>
@@ -332,7 +305,7 @@
             </objects>
             <point key="canvasLocation" x="-1399" y="-14"/>
         </scene>
-        <!--User SettingsVC-->
+        <!--Lunchly-->
         <scene sceneID="jGB-o7-pdT">
             <objects>
                 <viewController id="qb6-5V-tlF" customClass="UserSettingsVC" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
@@ -369,7 +342,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dYC-2u-uh2"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0cC-Q0-WMB"/>
+                    <navigationItem key="navigationItem" title="Lunchly" id="0cC-Q0-WMB"/>
                     <connections>
                         <outlet property="notificationSwitchOutlet" destination="wdn-aV-cL2" id="yhw-nZ-y9u"/>
                     </connections>
@@ -398,7 +371,7 @@
             </objects>
             <point key="canvasLocation" x="550.72463768115949" y="285.9375"/>
         </scene>
-        <!--User ProfileVC-->
+        <!--Lunchly-->
         <scene sceneID="YGo-jb-FBs">
             <objects>
                 <viewController storyboardIdentifier="UserProfile" id="Wew-eK-Q2I" customClass="UserProfileVC" customModule="Lunchly" customModuleProvider="target" sceneMemberID="viewController">
@@ -461,7 +434,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vji-EM-Dhv"/>
                     </view>
-                    <navigationItem key="navigationItem" id="n9I-of-ub6"/>
+                    <navigationItem key="navigationItem" title="Lunchly" id="n9I-of-ub6"/>
                     <connections>
                         <outlet property="cameraPickerButton" destination="4c2-7v-Hti" id="LEa-6k-VER"/>
                         <outlet property="imageView" destination="1Fe-7x-rG7" id="tzh-cd-wGC"/>

@@ -11,7 +11,6 @@ import UIKit
 class AddGroupDetailVC: UIViewController {
     //MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     //MARK:IBActions
     @IBAction func closeBtnTapped(_ sender: UIButton) {

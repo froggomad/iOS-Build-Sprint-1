@@ -798,7 +798,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wFQ-sQ-KnE">
-                                <rect key="frame" x="0.0" y="114.66666666666669" width="375" height="609.33333333333326"/>
+                                <rect key="frame" x="0.0" y="65.666666666666686" width="375" height="658.33333333333326"/>
                                 <color key="backgroundColor" name="Primary"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddMemberCell" id="7Ss-b0-tdw" customClass="AddMemberCell" customModule="Lunchly" customModuleProvider="target">
@@ -883,32 +883,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="EqX-fP-0fb">
-                                <rect key="frame" x="0.0" y="58.666666666666657" width="375" height="56"/>
-                                <color key="backgroundColor" name="Primary"/>
-                                <color key="tintColor" name="Action"/>
-                                <color key="barTintColor" name="Secondary"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" name="Secondary"/>
                         <constraints>
+                            <constraint firstItem="wFQ-sQ-KnE" firstAttribute="top" secondItem="uWi-7N-rKy" secondAttribute="bottom" constant="20" id="07F-7I-QKa"/>
                             <constraint firstItem="uWi-7N-rKy" firstAttribute="top" secondItem="jAV-vR-PSk" secondAttribute="top" constant="24" id="0Wg-rf-SAh"/>
                             <constraint firstItem="jAV-vR-PSk" firstAttribute="trailing" secondItem="uWi-7N-rKy" secondAttribute="trailing" constant="11" id="1j3-lb-4f0"/>
-                            <constraint firstItem="wFQ-sQ-KnE" firstAttribute="top" secondItem="EqX-fP-0fb" secondAttribute="bottom" symbolic="YES" id="5lh-7d-7eD"/>
                             <constraint firstItem="jAV-vR-PSk" firstAttribute="trailing" secondItem="wFQ-sQ-KnE" secondAttribute="trailing" id="IJo-QY-Vvt"/>
-                            <constraint firstItem="EqX-fP-0fb" firstAttribute="leading" secondItem="jAV-vR-PSk" secondAttribute="leading" id="NeH-yW-d5H"/>
                             <constraint firstItem="jAV-vR-PSk" firstAttribute="bottom" secondItem="wFQ-sQ-KnE" secondAttribute="bottom" id="WNm-nx-44V"/>
-                            <constraint firstItem="EqX-fP-0fb" firstAttribute="top" secondItem="uWi-7N-rKy" secondAttribute="bottom" constant="13" id="ejJ-7h-cw2"/>
                             <constraint firstItem="wFQ-sQ-KnE" firstAttribute="leading" secondItem="jAV-vR-PSk" secondAttribute="leading" id="fcU-cb-Cr6"/>
-                            <constraint firstItem="EqX-fP-0fb" firstAttribute="trailing" secondItem="jAV-vR-PSk" secondAttribute="trailing" id="lJB-nS-W8K"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jAV-vR-PSk"/>
                     </view>
                     <navigationItem key="navigationItem" id="Aq7-TZ-hCu"/>
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="400"/>
                     <connections>
-                        <outlet property="searchBar" destination="EqX-fP-0fb" id="TNw-dK-SN9"/>
                         <outlet property="tableView" destination="wFQ-sQ-KnE" id="gtV-zu-1vj"/>
                     </connections>
                 </viewController>

@@ -14,7 +14,6 @@ class ExploreVC: UIViewController {
     @IBOutlet weak var searchResultsCollectionView: UICollectionView!
     
     //MARK: Search Outlets
-    @IBOutlet weak var searchBar: UISearchBar!
     
     //MARK: Class Properties
     var coreDataController: CoreDataController?
@@ -39,7 +38,6 @@ class ExploreVC: UIViewController {
         categoryCollectionView.dataSource = self
         searchResultsCollectionView.delegate = self
         searchResultsCollectionView.dataSource = self
-        searchBar.delegate = self
         
         //MARK: CollectionView DataSource
         self.searchController = SearchController()
@@ -148,7 +146,6 @@ extension ExploreVC: UICollectionViewDelegate {
                 cell.setActive()
             }
         }
-        //re-set filtered arrays??
         searchResultsCollectionView.reloadData()
     }
     
@@ -222,19 +219,3 @@ extension ExploreVC: UICollectionViewDataSource {
     }
     
 }
-
-//MARK: Search Delegate
-extension ExploreVC: UISearchBarDelegate {
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
-        
-    }
-}
-
-//extension ExploreVC: UISearchTextFieldDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//}
