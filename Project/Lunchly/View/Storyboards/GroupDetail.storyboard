@@ -459,6 +459,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="64" id="vBO-qI-5mr"/>
                                                     </constraints>
+                                                    <color key="tintColor" name="SecondaryAction"/>
                                                     <state key="normal" title="Vote" image="rectangle.badge.checkmark" catalog="system">
                                                         <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
@@ -633,6 +634,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="60" id="k3k-V8-UVf"/>
                                                             </constraints>
+                                                            <color key="tintColor" name="SecondaryAction"/>
                                                             <state key="normal" title="Add" image="rectangle.badge.checkmark" catalog="system">
                                                                 <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             </state>
@@ -817,7 +819,7 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEM-wL-a1G">
                                                             <rect key="frame" x="226" y="0.0" width="89" height="30"/>
-                                                            <color key="tintColor" name="Action"/>
+                                                            <color key="tintColor" name="SecondaryAction"/>
                                                             <state key="normal" title="Add Member"/>
                                                             <connections>
                                                                 <action selector="addBtnTapped:" destination="7Ss-b0-tdw" eventType="touchUpInside" id="V8q-hJ-Z0X"/>
@@ -857,7 +859,7 @@
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEm-Ma-jhR">
                                                             <rect key="frame" x="209" y="0.0" width="106" height="30"/>
-                                                            <color key="tintColor" name="Action"/>
+                                                            <color key="tintColor" name="SecondaryAction"/>
                                                             <state key="normal" title="Add Restaurant"/>
                                                             <connections>
                                                                 <action selector="addBtnTapped:" destination="TXV-bb-VXj" eventType="touchUpInside" id="CT4-Ta-Hak"/>

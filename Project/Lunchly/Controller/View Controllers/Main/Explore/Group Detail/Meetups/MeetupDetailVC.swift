@@ -148,7 +148,7 @@ extension MeetupDetailVC: UITableViewDataSource {
             cell.wasVotedOnOutlet.setImage(nil, for: .normal)
             cell.wasVotedOnOutlet.isEnabled = false
             if cell.restaurant == meetupRestaurant {
-                cell.backgroundColor = UIColor(named: "Secondary")
+                cell.backgroundColor = UIColor.secondaryColor()
                 cell.wasVotedOnOutlet.setTitle("Winner!", for: .normal)
             } else {
                 cell.wasVotedOnOutlet.setTitle("", for: .normal)

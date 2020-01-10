@@ -63,7 +63,7 @@ class UserProfileVC: UIViewController {
         } else {
             textView.isUserInteractionEnabled = true
             textView.becomeFirstResponder()
-            textView.textColor = UIColor(named: "SecondaryAction")
+            textView.textColor = UIColor.secondaryActionColor()
         }
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap)))
         imageView.image = UIImage(data: currentUser.image) ?? UIImage(systemName: "person.fill")
@@ -110,7 +110,7 @@ extension UserProfileVC: UITextViewDelegate {
         if textView.text == "" || textView.text == "Enter Your Name" {
             textView.text = "Enter Your Name"
             textView.selectedRange = NSRange(location: 0, length: textView.text.count)
-            textView.textColor = UIColor(named: "SecondaryAction")
+            textView.textColor = UIColor.secondaryActionColor()
         }
         
     }
@@ -118,7 +118,7 @@ extension UserProfileVC: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == "" || textView.text == "\n" || textView.text == "Enter Your Name" {
             textView.text = "Enter Your Name"
-            textView.textColor = UIColor(named: "SecondaryAction")
+            textView.textColor = UIColor.secondaryActionColor()
         } else {
             textView.textColor = .label
             //if we're not in the onboarding view, we don't want the user to be able to edit their username

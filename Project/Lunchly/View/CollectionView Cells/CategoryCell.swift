@@ -34,7 +34,7 @@ class CategoryCell: UICollectionViewCell {
     func setActive() {
         guard let service = service else {return}
         if self.isSelected {
-            self.setBorders(color: UIColor(named: "Action")!)
+            self.setBorders(color: UIColor.secondaryActionColor())
             self.imageView.image = UIImage(named: "\(service.rawValue)Filled")!
         } else {
             self.setBorders(color: .clear)

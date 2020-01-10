@@ -246,12 +246,12 @@
                                 <rect key="frame" x="0.0" y="218.5" width="109" height="101"/>
                                 <color key="backgroundColor" name="Primary"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Category" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-9d-EK2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter By" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-9d-EK2">
                                 <rect key="frame" x="20" y="238.5" width="81" height="60.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="81" id="dbS-eY-bJZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

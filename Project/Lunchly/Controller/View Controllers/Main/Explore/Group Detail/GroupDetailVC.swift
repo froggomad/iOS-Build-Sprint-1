@@ -85,7 +85,7 @@ class GroupDetailVC: UIViewController {
     //MARK: Helper Methods
     func updateViews() {
         self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "Secondary")
+        self.navigationController?.navigationBar.barTintColor = UIColor.secondaryColor()
         guard let group = group else {return}
         self.imageView.image = UIImage(data: group.imageData)
 //        cameraButtonOutlet.frame.size.width = imageView.image?.size.width ?? 0
@@ -160,19 +160,19 @@ extension GroupDetailVC: UITableViewDelegate {
             headerCell.delegate = self
             headerCell.updateViews(type: .meetup)
             headerCell.layoutMargins = .zero
-            headerCell.backgroundColor = UIColor(named:"Primary")
+            headerCell.backgroundColor = UIColor.primaryColor()
             return headerCell
         case .restaurant:
             guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "AddRestaurantHeaderCell") as? AddGroupDetailCell else {return clearView}
             headerCell.delegate = self
             headerCell.updateViews(type: .restaurant)
-            headerCell.backgroundColor = UIColor(named:"Primary")
+            headerCell.backgroundColor = UIColor.primaryColor()
             return headerCell
         case .member:
             guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "AddMemberHeaderCell") as? AddGroupDetailCell else {return clearView}
             headerCell.delegate = self
             headerCell.updateViews(type: .member)
-            headerCell.backgroundColor = UIColor(named:"Primary")
+            headerCell.backgroundColor = UIColor.primaryColor()
             return headerCell
         }
     }

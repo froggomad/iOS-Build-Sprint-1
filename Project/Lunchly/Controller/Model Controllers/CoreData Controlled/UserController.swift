@@ -28,7 +28,18 @@ class UserController {
             print("creating users")
             users = [
                 User(name: "Enter Your Name", image: Data(), groups: [], restaurants: []),
-                User(name: "TestUser", image: Data(), groups: [], restaurants: [])
+                User(name: "Aaron", image: Data(), groups: [], restaurants: []),
+                User(name: "Austin", image: Data(), groups: [], restaurants: []),
+                User(name: "CC", image: Data(), groups: [], restaurants: []),
+                User(name: "James", image: Data(), groups: [], restaurants: []),
+                User(name: "Jorge", image: Data(), groups: [], restaurants: []),
+                User(name: "Kenny", image: Data(), groups: [], restaurants: []),
+                User(name: "Malik", image: Data(), groups: [], restaurants: []),
+                User(name: "Michael", image: Data(), groups: [], restaurants: []),
+                User(name: "Spencer", image: Data(), groups: [], restaurants: []),
+                User(name: "Thomas", image: Data(), groups: [], restaurants: []),
+                User(name: "Tobi", image: Data(), groups: [], restaurants: []),
+                User(name: "Ufuk", image: Data(), groups: [], restaurants: [])
             ]
             save()
         }
