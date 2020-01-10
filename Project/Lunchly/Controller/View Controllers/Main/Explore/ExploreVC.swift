@@ -28,7 +28,7 @@ class ExploreVC: UIViewController {
         return searchable.filter {$0.categoryType == .group}
     }
     var restaurantsArray: [Searchable]? {
-        return searchable.filter {$0.categoryType == .group}
+        return searchable.filter {$0.categoryType == .restaurant}
     }
     
     //MARK: View Lifecycle
@@ -152,19 +152,47 @@ extension ExploreVC: UICollectionViewDelegate {
         }
         searchResultsCollectionView.reloadData()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? ExploreVCResultsSectionHeader {
+            switch indexPath.section {
+            case 0:
+                sectionHeader.sectionHeaderLabel.text = "Groups you can have a meetup with:"
+            case 1:
+                sectionHeader.sectionHeaderLabel.text = "Restaurants you can meetup at:"
+            default:
+                sectionHeader.sectionHeaderLabel.text = "Section \(indexPath.section)"
+            }
+            return sectionHeader
+        }
+        return UICollectionReusableView()
+    }
 }
 
 extension ExploreVC: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case categoryCollectionView:
             return servicesArray.count
         case searchResultsCollectionView:
-            return filteredSearchArray.count
+            switch section {
+            case 0:
+                return groupsArray?.count ?? 0
+            case 1:
+                return restaurantsArray?.count ?? 0
+            default: return 0
+            }
         default:
             return 0
         }
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
@@ -173,17 +201,25 @@ extension ExploreVC: UICollectionViewDataSource {
                 cell.service = servicesArray[indexPath.item]
                 return cell
             case searchResultsCollectionView:
-                //handle restaurants
-                if let restaurantData = filteredSearchArray[indexPath.item] as? Restaurant {
-                    guard let restaurantCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantCell", for: indexPath) as? RestaurantCell else {return UICollectionViewCell()}
-                    restaurantCell.restaurant = restaurantData
-                    return restaurantCell
-                    //handle groups
-                } else if let groupData = filteredSearchArray[indexPath.item] as? Group {
-                    guard let groupCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCell", for: indexPath) as? GroupCell else {return UICollectionViewCell()}
-                    groupCell.group = groupData
-                    return groupCell
+                switch indexPath.section {
+                case 0:
+                    if let groupData = groupsArray?[indexPath.item] as? Group {
+                        print(groupData.name)
+                        guard let groupCell = collectionView.dequeueReusableCell(withReuseIdentifier: "GroupCell", for: indexPath) as? GroupCell else {return UICollectionViewCell()}
+                        groupCell.group = groupData
+                        return groupCell
+                    }
+                case 1:
+                    //handle restaurants
+                    if let restaurantData = restaurantsArray?[indexPath.item] as? Restaurant {
+                        guard let restaurantCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RestaurantCell", for: indexPath) as? RestaurantCell else {return UICollectionViewCell()}
+                        restaurantCell.restaurant = restaurantData
+                        return restaurantCell
+                    }
+                default:
+                    return UICollectionViewCell()
                 }
+                
             return UICollectionViewCell() //failed
         default:
             return UICollectionViewCell()
