@@ -45,9 +45,6 @@ class ExploreVC: UIViewController {
         self.searchController = SearchController()
         if coreDataController == nil {
             coreDataController = CoreDataController()
-            coreDataController?.groupsController.createGroups()
-            coreDataController?.restaurantController.createRestaurants()
-            coreDataController?.usersController.createUsers()
         }
         constructServiceArray()
         constructSearchArray()
@@ -61,7 +58,7 @@ class ExploreVC: UIViewController {
         tallyVotes()
         //construct search array
         if let restaurants = coreDataController?.restaurantController.restaurants {
-            for restaurant in  restaurants {
+            for restaurant in restaurants {
                 self.searchable.append(restaurant)
             }
         }
@@ -81,7 +78,7 @@ class ExploreVC: UIViewController {
             guard let destination = segue.destination as? GroupDetailVC,
                   let cell = sender as? GroupCell,
                   let indexPath = self.searchResultsCollectionView!.indexPath(for: cell),
-                  let group = filteredSearchArray[indexPath.item] as? Group
+                  let group = groupsArray?[indexPath.item] as? Group
             else {return}
             destination.group = group
             destination.coreDataController = coreDataController
