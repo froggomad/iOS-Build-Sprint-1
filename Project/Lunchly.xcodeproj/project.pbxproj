@@ -34,6 +34,7 @@
 		B95144B523C6675900D84E98 /* SkipTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95144B423C6675900D84E98 /* SkipTutorial.swift */; };
 		B95144B823C6833B00D84E98 /* UserSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95144B723C6833B00D84E98 /* UserSettingsVC.swift */; };
 		B95144BA23C6841C00D84E98 /* NotificationSwitchUIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95144B923C6841C00D84E98 /* NotificationSwitchUIHelper.swift */; };
+		B95144C023C7CDE700D84E98 /* UIColor+customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95144BF23C7CDE700D84E98 /* UIColor+customColors.swift */; };
 		B968311D23B081B30068412F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968311C23B081B30068412F /* AppDelegate.swift */; };
 		B968311F23B081B30068412F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B968311E23B081B30068412F /* SceneDelegate.swift */; };
 		B968312423B081B30068412F /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B968312223B081B30068412F /* Onboarding.storyboard */; };
@@ -97,6 +98,7 @@
 		B95144B423C6675900D84E98 /* SkipTutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipTutorial.swift; sourceTree = "<group>"; };
 		B95144B723C6833B00D84E98 /* UserSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsVC.swift; sourceTree = "<group>"; };
 		B95144B923C6841C00D84E98 /* NotificationSwitchUIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSwitchUIHelper.swift; sourceTree = "<group>"; };
+		B95144BF23C7CDE700D84E98 /* UIColor+customColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+customColors.swift"; sourceTree = "<group>"; };
 		B968311923B081B30068412F /* Lunchly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunchly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B968311C23B081B30068412F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B968311E23B081B30068412F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				B94F154623C0F7AE00B3345A /* UIViewController+keyboardHidesOnTap.swift */,
 				B968317D23B29E240068412F /* UICollectionViewCell+setBorders.swift */,
 				B94F154B23C0FE5000B3345A /* UIButton+titlePadding.swift */,
+				B95144BF23C7CDE700D84E98 /* UIColor+customColors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				B93291AA23B7CB63002D633A /* ChangeImageVC.swift in Sources */,
 				B9EF5CFD23BB000E0075A19D /* AddMeetupVC.swift in Sources */,
 				B932917C23B569E6002D633A /* User.swift in Sources */,
+				B95144C023C7CDE700D84E98 /* UIColor+customColors.swift in Sources */,
 				B90AC2CE23C4CBDD00938F1B /* ExploreTabBarController.swift in Sources */,
 				B968317C23B18B040068412F /* SearchController.swift in Sources */,
 				B968315A23B1257D0068412F /* CategoryCell.swift in Sources */,

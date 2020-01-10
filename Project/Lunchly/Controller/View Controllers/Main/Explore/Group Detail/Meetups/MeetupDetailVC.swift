@@ -14,11 +14,31 @@ class MeetupDetailVC: UIViewController, UpdatesMeetup {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    //Notification Stack View
+    @IBOutlet weak var notificationView: UIStackView!
+    @IBOutlet weak var notificationSwitchLabel: UILabel!
+    @IBOutlet weak var notificationSwitch: UISwitch!
+    
+    //MARK: IBActions
+    @IBAction func notificationSwitchWasToggled(_ sender: UISwitch) {
+        guard let meetup = meetup,
+              let restaurant = meetup.restaurant
+        else {return}
+        Alert.inputForMeetupNotification(title: "Travel Time", message: "How long does it normally take you to get to \(restaurant.name)?", vc: self) { (minutes, status) in
+            if status {
+                guard let timeToLeave = Calendar.current.date(byAdding: .minute, value: -minutes, to: meetup.meetupStarts) else {return}
+                self.notificationController.triggerNotification(meetup: meetup, notificationType: .timeToLeave, onDate: timeToLeave, withId: "")
+            }
+            
+        }
+        NotificationSwitchUIHelper.instance.switchNotifications(sender)
+    }
     
     //MARK: Class Properties
     weak var delegate: GroupDetailVC?
     var meetup: Meetup?
     var meetupController: MeetupController?
+    var notificationController = NotificationController()
     var restaurantVotes: [Restaurant:Int] = [:]
     var user: User?
     var group: Group?
@@ -42,9 +62,29 @@ class MeetupDetailVC: UIViewController, UpdatesMeetup {
     //MARK: Helper Methods
     func updateViews() {
         guard let meetup = meetup else {return}
+        NotificationSwitchUIHelper.instance.setupUI(notificationSwitch)
         nameLabel.text = meetup.name
-        dateLabel.text = formatDate(isTime: false)
-        timeLabel.text = formatDate(isTime: true)
+        dateLabel.text = "\(meetup.name) is happening on \(formatDate(isTime: false))"
+        timeLabel.text = "at \(formatDate(isTime: true))"
+        updateVoteHasHappened()
+    }
+    
+    func voteHasHappened() -> Bool {
+        if meetup?.restaurant != nil {
+            return true
+        }
+        return false
+    }
+    
+    func updateVoteHasHappened() {
+        notificationView.isUserInteractionEnabled = voteHasHappened()
+        if !voteHasHappened() {
+            notificationSwitch.thumbTintColor = .systemGray
+            notificationSwitchLabel.textColor = .systemGray
+        } else {
+            notificationSwitch.thumbTintColor = .actionColor()
+            notificationSwitchLabel.textColor = .label
+        }
     }
     
     func formatDate(isTime: Bool) -> String {

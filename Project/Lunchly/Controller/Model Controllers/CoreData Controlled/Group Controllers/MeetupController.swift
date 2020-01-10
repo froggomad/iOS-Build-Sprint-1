@@ -13,7 +13,7 @@ class MeetupController {
     var meetups: [Meetup] = []
     let notificationHandler = NotificationController()
     
-    //MARK: Update
+    //MARK: Delegate Methods
     func updateMeetup(group: Group, originalMeetup: Meetup, mutatedMeetup: Meetup) {
         print("updating meetup from MeetupController")
         delegate?.updateMeetup(group: group, originalMeetup: originalMeetup, amendedMeetup: mutatedMeetup)
@@ -39,22 +39,22 @@ class MeetupController {
                 }
                 let sortedVotes = constructVotes(restaurantVotes: restaurantVotes) //returns [Vote] for easy sorting
                 var mutatedMeetup = meetup
+                
+            //trigger vote
             if sortedVotes.count >= 2 {
                 if sortedVotes[0].votes > sortedVotes[1].votes {
                     mutatedMeetup.restaurant = sortedVotes[0].restaurant
                     updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: mutatedMeetup)
-                    print("\(sortedVotes[0].restaurant.name) is clearly the winner!")
                     triggerVoteEndNotification(meetup: meetup)
                 } else {
                     if let duplicateVotes = getDuplicateWinningVotes(sortedRestaurantVotes: sortedVotes) {
                         mutatedMeetup.restaurant = randomVote(duplicateRestaurants: duplicateVotes)
                         updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: mutatedMeetup)
-                        print("There was a tie between \(duplicateVotes)")
-                        print("The winner is \(String(describing: mutatedMeetup.restaurant?.name))")
                         triggerVoteEndNotification(meetup: meetup)
                     }
                 }
             } else {
+                //assign restaurant
                 let restaurantArray = meetup.possibleRestaurants
                 if let randomRestaurant = randomVote(duplicateRestaurants: restaurantArray) {
                     mutatedMeetup.restaurant = randomRestaurant
@@ -62,7 +62,6 @@ class MeetupController {
                     mutatedMeetup.restaurant = meetup.possibleRestaurants[0]
                 }
                 updateMeetup(group: group, originalMeetup: meetup, mutatedMeetup: mutatedMeetup)
-                print("nobody voted, so a random restaurant was chosen: \(String(describing: mutatedMeetup.restaurant?.name))")
                 triggerVoteEndNotification(meetup: meetup)
             }
             

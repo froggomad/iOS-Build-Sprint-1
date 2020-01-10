@@ -42,7 +42,6 @@ class AddMemberCell: UITableViewCell {
         guard let group = group,
               let user = member
         else {return}
-        print("adding user to group")
         groupController?.addUserToGroup(group: group, user: user)
         userController?.addGroupToUser(group: group, user: user)
         self.group?.users.append(user)
