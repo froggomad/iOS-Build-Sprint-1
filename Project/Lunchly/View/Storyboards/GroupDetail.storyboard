@@ -687,7 +687,7 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqA-rG-UhW">
-                                        <rect key="frame" x="115" y="523" width="145" height="34"/>
+                                        <rect key="frame" x="20" y="523" width="335" height="34"/>
                                         <color key="backgroundColor" name="Action"/>
                                         <color key="tintColor" name="Action"/>
                                         <state key="normal" title="Save This Meetup"/>
@@ -744,7 +744,9 @@
                                     <constraint firstItem="6so-SQ-ZpO" firstAttribute="centerX" secondItem="wLt-kh-E0g" secondAttribute="centerX" id="rNe-6T-zpE"/>
                                     <constraint firstItem="fqA-rG-UhW" firstAttribute="top" secondItem="6so-SQ-ZpO" secondAttribute="bottom" constant="8" id="u9Q-jg-OqW"/>
                                     <constraint firstItem="8VZ-Lx-E2n" firstAttribute="leading" secondItem="ADz-Va-ucE" secondAttribute="leading" id="uUm-q9-btC"/>
+                                    <constraint firstAttribute="trailing" secondItem="fqA-rG-UhW" secondAttribute="trailing" constant="20" id="vMY-NX-9d1"/>
                                     <constraint firstItem="CdV-Ej-j87" firstAttribute="trailing" secondItem="Few-BI-6Mh" secondAttribute="trailing" id="vjG-cg-Zxo"/>
+                                    <constraint firstItem="fqA-rG-UhW" firstAttribute="leading" secondItem="wLt-kh-E0g" secondAttribute="leading" constant="20" id="w4V-z1-aw8"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule a Meetup!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JXx-qF-DYn">
